@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+ 
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  
+    --foreground: #ededed;
+  }
+}
+
+@media (min-width: 768px) {
+  html, body {
+    cursor: none !important;
+  }
+  
+  a, button, input, input, select, textarea, span, div {
+    cursor: none !important;
+  }
+}
+
+body {
+ 
+  font-family: syne;
+}
+
+.grainy {
+  filter: contrast(150%) brightness(1000%);
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05; /* Jemný šum */
+  pointer-events: none;
+}
