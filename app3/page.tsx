@@ -4,6 +4,7 @@ import { motion,AnimatePresence, useScroll, useTransform, useVelocity, useSpring
 import Image from 'next/image'
 import { Truck, RotateCcw, Gem } from 'lucide-react';
 import { Reenie_Beanie } from 'next/font/google';
+import { Variants } from 'framer-motion';
 
 
 
@@ -81,7 +82,7 @@ const reenieBeanie = Reenie_Beanie({
 
 
 // 1. Definícia variantov mimo komponentu (aby sa predišlo chybám pri re-renderovaní)
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: (delay: number) => ({
     opacity: 1,
@@ -92,7 +93,8 @@ const containerVariants = {
   }),
 };
 
-const letterVariants: any = { // PRIDALI SME : any
+
+const letterVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
