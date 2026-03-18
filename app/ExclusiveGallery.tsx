@@ -8,11 +8,13 @@ const ExclusiveCard = ({ src, title, index, scrollVelocity }: any) => {
 
   return (
     <motion.div 
-      style={{ skewX: skew }} // Odobrali sme spring pre vyšší výkon
-      className="relative min-w-[300px] md:min-w-[500px] h-[600px] bg-neutral-900 overflow-hidden"
-      // Kľúčové pre výkon:
-      style={{ willChange: 'transform' }} 
-    >
+  style={{ 
+    skewX: skew,               // Prvá vlastnosť
+    willChange: 'transform'    // Druhá vlastnosť (oddelená čiarkou)
+  }}
+  className="relative min-w-[300px] md:min-w-[500px] h-[600px] bg-neutral-900 overflow-hidden"
+  // Ten druhý style tu už nebude!
+>
       <img 
         src={src} 
         alt={title} 
