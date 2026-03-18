@@ -123,6 +123,8 @@ const HandwrittenNote = ({ text, delay = 0, className = "" }: { text: string, de
       {letters.map((letter, index) => (
         <motion.span 
   key={index} 
+
+  // @ts-ignore
   variants={letterVariants as any} // PRIDAJ "as any" PRIAMO SEM
 >
           {letter === " " ? "\u00A0" : letter}
@@ -130,6 +132,7 @@ const HandwrittenNote = ({ text, delay = 0, className = "" }: { text: string, de
       ))}
     </motion.div>
   );
+  
 };
 
 
