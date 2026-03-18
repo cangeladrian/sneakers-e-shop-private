@@ -92,13 +92,13 @@ const containerVariants = {
   }),
 };
 
-const letterVariants = {
+const letterVariants: any = { // PRIDALI SME : any
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring" as const, // PRIDAJ TOTO "as const"
+      type: "spring",
       damping: 12,
       stiffness: 100,
     },
