@@ -381,12 +381,12 @@ const [isCartOpen, setIsCartOpen] = useState(false);
           <section className="w-full flex justify-center justify-center
            py-10">
   {/* TENTO DIV DRŽÍ VŠETKY TRI POLOŽKY VEDĽA SEBA */}
-  <div className="flex md:flex-row flex-col gap-10 md:gap-80 items-center justify-center text-[12px]   font-normal text-black-800">
+  <div className="flex md:flex-row flex-col gap-10 md:gap-80 items-center justify-center text-[16px]   font-normal text-black-900">
     
     {/* 1. POLOŽKA */}
-    <div className="flex flex-col items-center gap-4 text-justify">
+    <div className="flex flex-col items-center gap-4 text-center">
       <Truck size={32} strokeWidth={1.5} />
-      <span>Doprava zadarmo</span>
+      <span>Doprava zadarmo pre <br /> všetky objednávky.</span>
     </div>
 
     {/* 2. POLOŽKA */}
@@ -398,7 +398,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
     {/* 3. POLOŽKA */}
     <div className="flex flex-col items-center gap-4 text-center">
       <Gem size={32} strokeWidth={1.5} />
-      <span>Prémiové materiály</span>
+      <span>Prémiové materiály a <br /> exkluzívne modely</span>
     </div>
 
   </div>
@@ -747,47 +747,45 @@ const [isCartOpen, setIsCartOpen] = useState(false);
 
 
 
-<div className="max-w-7xl relative mx-auto md:mt-50 mt-10 px-6 pt-25">
-        <div className="flex justify-start mb-15 items-start ">
-         
-          <button className="bg-black text-[13px] text-white px-6 py-3 font-bold  hover:invert transition-all">
-            Zobraziť všetko
-          </button>
-        </div>
+<div className="max-w-9xl relative mx-auto md:mt-50 mt-10 px-6 pt-25">
+  <div className="flex justify-start mb-15 items-start">
+    <button className="bg-black text-[13px] text-white px-6 py-3 font-bold hover:invert transition-all">
+      Zobraziť všetko
+    </button>
+  </div>
 
-    {/* DOLNÁ ČASŤ - PRODUKTOVÝ GRID (Tvojich 12 stĺpcov) */}
-    <div className="grid grid-cols-1 md:grid-cols-3 justify-between flex gap-12">
-      
-      {/* Prvá topánka - vľavo */}
-      <div className=" group cursor-pointer">
-        <div className="bg-white/50 p-6 mb-4 ">
-           <Image src="/urbanlow.png" width={400} height={300} alt="Retro Dinamic" className='group-hover:scale-110 transition duration-0'/>
-        </div>
-        <h3 className="font-bold uppercase tracking-tighter text-xl">Retro Dinamic</h3>
-        <p className="text-sm opacity-60">280,00 €</p>
+  {/* PRODUKTOVÝ GRID / SCROLL */}
+  <div className="flex md:grid md:grid-cols-3 gap-8 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-10">
+    
+    {/* Prvá topánka - pridal som flex-shrink-0 a min-w-[85%] */}
+    <div className="flex-shrink-0 w-[65%] md:w-full snap-center group cursor-pointer">
+      <div className="bg-white/50 p-6 mb-4">
+        <Image src="/urbanlow.png" width={400} height={300} alt="Retro Dinamic" className='group-hover:scale-110 transition duration-0'/>
       </div>
-
-      {/* Druhá topánka - v strede (vyššie položená) */}
-      <div className="  group cursor-pointer">
-        <div className="bg-white/50 p-6 mb-4 ">
-           <Image src="/ecostreet.png" width={400} height={300} alt="Retro Dinamic"className='group-hover:scale-110 transition duration-0' />
-        </div>
-        <h3 className="font-bold uppercase tracking-tighter text-xl text-left">Retro Dinamic</h3>
-        <p className="text-sm opacity-60 text-left">280,00 €</p>
-      </div>
- {/* Druhá topánka - v strede (vyššie položená) */}
-      <div className="  group cursor-pointer">
-        <div className="bg-white/50 p-6 mb-4 ">
-           <Image src="/skatepro..png" width={400} height={300} alt="Retro Dinamic"className='group-hover:scale-110 transition duration-0' />
-        </div>
-        <h3 className="font-bold uppercase tracking-tighter text-xl text-left">Retro Dinamic</h3>
-        <p className="text-sm opacity-60 text-left">280,00 €</p>
-      </div>
-     
-
-
+      <h3 className="font-bold uppercase tracking-tighter text-xl">Retro Dinamic</h3>
+      <p className="text-sm opacity-60">280,00 €</p>
     </div>
- </div>
+
+    {/* Druhá topánka */}
+    <div className="flex-shrink-0 w-[65%] md:w-full snap-center group cursor-pointer">
+      <div className="bg-white/50 p-6 mb-4">
+        <Image src="/ecostreet.png" width={400} height={300} alt="Retro Dinamic" className='group-hover:scale-110 transition duration-0' />
+      </div>
+      <h3 className="font-bold uppercase tracking-tighter text-xl text-left">Retro Dinamic</h3>
+      <p className="text-sm opacity-60 text-left">280,00 €</p>
+    </div>
+
+    {/* Tretia topánka */}
+    <div className="flex-shrink-0 w-[65%] md:w-full snap-center group cursor-pointer">
+      <div className="bg-white/50 p-6 mb-4">
+        <Image src="/skatepro..png" width={400} height={300} alt="Retro Dinamic" className='group-hover:scale-110 transition duration-0' />
+      </div>
+      <h3 className="font-bold uppercase tracking-tighter text-xl text-left">Retro Dinamic</h3>
+      <p className="text-sm opacity-60 text-left">280,00 €</p>
+    </div>
+
+  </div>
+</div>
  </section>
 <br />
 <br />
