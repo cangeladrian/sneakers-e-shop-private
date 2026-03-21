@@ -410,7 +410,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
     
     {/* 1. VRSTVA: VIDEO (Dole) */}
     <video 
-      src="/untitledvideo.mp4" //
+      src="/untitledvideo2.mp4" //
       autoPlay
       loop
       muted 
