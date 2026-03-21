@@ -145,33 +145,37 @@ const HandwrittenNote = ({ text, delay = 0, className = "" }: { text: string, de
 export default function Home() {
   
 
+
+
+  
 const [isCartOpen, setIsCartOpen] = useState(false);
-
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // Sledovanie scrollu
+  // 1. SLEDOVANIE SCROLLU (Pre farbu Navbaru)
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      // Ak odskroluješ viac ako 50px, isScrolled bude true
+      setIsScrolled(window.scrollY > 50);
+    };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Sledovanie myši (Optimalizované pre výkon)
+  // 2. ZÁKAZ SCROLLU PRI OTVORENOM MENU
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
+  }, [isMenuOpen]);
+
+  // 3. SLEDOVANIE MYŠI
   const handleMouseMove = (e: React.MouseEvent) => {
     setMousePos({
       x: (e.clientX / window.innerWidth) - 0.5,
       y: (e.clientY / window.innerHeight) - 0.5,
     });
   };
-
-  // Zákaz scrollu pri otvorenom menu
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
-  }, [isMenuOpen]);
-
 
 
 
@@ -187,61 +191,87 @@ const [isCartOpen, setIsCartOpen] = useState(false);
     <main className="min-h-screen bg-white relative overflow-hidden">
       <CustomCursor />
       {/* --- 1. NAVIGÁCIA (VRCH) --- */}
-      <nav className={`fixed top-0 left-0 w-full z-[130] flex justify-between items-center px-10 py-1  transition-all duration-500 ${
-        isMenuOpen ? 'text-black' : (isScrolled ? 'bg-white border-b-1 text-black ' : 'text-white' )
-      }`}>
-        <div className="flex-1">
-         <button 
-  onClick={() => setIsMenuOpen(!isMenuOpen)}
-  className="z-[130] relative mix-blend-difference justify-center mb-5 items-center text-white uppercase font-bold tracking-tighter"
->
-  {isMenuOpen ? (
-    /* Ak je menu OTVORENÉ - ukážeme text ZAVRIEŤ (X) */
-    <span className='text-black '>ZAVRIEŤ</span>
-  ) : (
-    /* Ak je menu ZATVORENÉ */
-    <>
-      {/* Na PC (md a vyššie) vidíme text MENU */}
-      <span className="hidden md:block">MENU</span>
-      
-      {/* Na mobile (pod md) vidíme IKONU HAMBURGER */}
-      <div className="md:hidden flex flex-col gap-1.5 w-8">
-        <div className="h-[2px] w-full bg-white"></div>
-        <div className="h-[2px] w-full bg-white"></div>
-        <div className="h-[2px] w-full bg-white"></div>
-      </div>
-    </>
-  )}
-</button>
-        </div>
+      <nav className={`
+  fixed top-0 left-0 w-full z-[130] flex justify-between items-center px-10 transition-all duration-500
+  ${isScrolled || isMenuOpen 
+    ? 'bg-white py-3 md:py-3  border-b border-black/30' // Stav po skrolovaní alebo pri otvorenom menu
+    : 'bg-transparent py-6 md:py-8' // Stav na začiatku (nad videom)
+  }
+`}>
+  {/* 1. LEFT: MENU BUTTON */}
+  <div className="flex-1">
+    <button 
+      onClick={() => setIsMenuOpen(!isMenuOpen)}
+      className={`
+        z-[130] relative flex items-center uppercase font-bold tracking-tighter transition-colors duration-500
+        ${isScrolled || isMenuOpen ? 'text-black' : 'text-white'}
+      `}
+    >
+      {isMenuOpen ? (
+        <span>ZAVRIEŤ</span>
+      ) : (
+        <>
+          {/* PC TEXT */}
+          <span className="hidden md:block">MENU</span>
+          
+          {/* MOBIL HAMBURGER */}
+          <div className="md:hidden flex flex-col gap-1.5 w-8">
+            <div className={`h-[2px] w-full transition-colors ${isScrolled ? 'bg-black' : 'bg-white'}`}></div>
+            <div className={`h-[2px] w-full transition-colors ${isScrolled ? 'bg-black' : 'bg-white'}`}></div>
+            <div className={`h-[2px] w-full transition-colors ${isScrolled ? 'bg-black' : 'bg-white'}`}></div>
+          </div>
+        </>
+      )}
+    </button>
+  </div>
 
-        <div className="flex-none">
-          <img 
-            src="/logo.png" 
-            alt="logo" 
-            className={`w-10 md:w-15 h-auto mr-5 transition-all duration-500 ${isScrolled && !isMenuOpen ? '' : ''}`} 
-          />
-        </div>
+  {/* 2. CENTER: LOGO */}
+  <div className="flex-none">
+    <img 
+      src="/logo.png" 
+      alt="logo" 
+      className={`
+        h-auto transition-all duration-500
+        ${isScrolled ? 'w-8 md:w-10 ' : 'w-10 md:w-15'} 
+      `}
+      /* Poznámka: 'invert' pridaj len ak je tvoje logo čierne a chceš ho na videu biele */
+    />
+  </div>
 
-        <div className="flex-1 flex justify-end gap-10 uppercase text-xs md:text-xs font-bold items-center">
-          <span className=" "><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  {/* 3. RIGHT: ICONS */}
+  <div className={`
+    flex-1 flex justify-end gap-6 md:gap-10 uppercase font-bold items-center transition-colors duration-500
+    ${isScrolled || isMenuOpen ? 'text-black' : 'text-white'}
+  `}>
+    {/* SEARCH */}
+    <button className="hover:scale-110 transition-transform">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="11" cy="11" r="8"></circle>
         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg> <a href=""></a></span>
-          <div 
-  onClick={() => setIsCartOpen(true)} // Otvorí košík
-  className="relative cursor-pointer flex items-center group"
->
-  <button><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <path d="M16 10a4 4 0 0 1-8 0"></path>
-      </svg></button>
-  <span className="ml-2 px-2 py-0.5 rounded-full text-[10px] md:text-xs bg-black text-white group-hover:scale-110 transition">0</span>
-</div>
-        </div>
-      </nav>
+      </svg>
+    </button>
 
+    {/* CART */}
+    <div 
+      onClick={() => setIsCartOpen(true)} 
+      className="relative cursor-pointer flex items-center group"
+    >
+      <button className="hover:scale-110 transition-transform">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+      </button>
+      <span className={`
+        ml-1 px-2 py-0.5 rounded-full text-[10px] transition-all
+        ${isScrolled ? 'bg-black text-white' : 'bg-white text-black'}
+      `}>
+        0
+      </span>
+    </div>
+  </div>
+</nav>
 
 
       
@@ -374,20 +404,59 @@ const [isCartOpen, setIsCartOpen] = useState(false);
 
 
 
-      <section className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[100vh] flex items-center justify-center overflow-hidden">
   
   <div className="relative w-full h-auto flex items-center justify-center">
     
     {/* 1. VRSTVA: VIDEO (Dole) */}
     <video 
-      src="/v.mp4" //
+      src="/untitledvideo.mp4" //
       autoPlay
       loop
       muted 
       playsInline
-      className="w-full h-screen object-cover z-0" 
+      className="w-full h-200 md:h-screen mb-30 md:mb-0 object-cover z-0" 
     />
 
+{/* 2. VRSTVA: TEXTY (V popredí) */}
+      {/* Používame Flexbox na vycentrovanie obsahu */}
+      <div className="absolute z-20 h-full container mx-auto px-6 md:px-12 flex flex-col items-start justify-center text-white">
+        
+        {/* KONTAJNER PRE NÁPISY (S animáciou, ak chceš) */}
+        <div className="max-w-5xl">
+          {/* Malý nadpis / Kategória */}
+          <span className="text-sm md:text-base font-light uppercase tracking-[0.2em] text-white/80 mb-3 block">
+             kolekcia 2026
+          </span>
+
+          {/* Hlavný, dominantný nápis */}
+          <h1 className="text-[5vw] md:text-[1vw] font-light uppercase tracking-tighter leading-none mb-6">
+            Urban <br className="hidden md:block" /> Classic.
+          </h1>
+
+          {/* Podnadpis */}
+          <p className="text-lg md:text-2xl font-light tracking-tight text-white/90 max-w-xl mb-12">
+            Štýl, ktorý definuje mesto. Pohodlie, ktoré ťa posunie vpred.
+          </p>
+
+          {/* TLAČIDLO (Call to Action) */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button className="bg-white text-black px-10 py-4 font-bold text-[14px] uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300">
+              Nakupovať 
+            </button>
+          
+          </div>
+        </div>
+
+        {/* 3. VRSTVA: SCROLL INDICATOR (Úplne dole - voliteľné) */}
+        <div className="absolute bottom-30 md:bottom-30 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-70">
+          <span className="text-[10px] uppercase tracking-widest mb-2">Scroll</span>
+          <div className="w-[1px] h-10 bg-white/50 relative overflow-hidden">
+            {/* Animovaná čiara */}
+            <div className="absolute top-0 left-0 w-full h-1/2 bg-white animate-scroll-down"></div>
+          </div>
+        </div>
+      </div>
     {/* 2. VRSTVA: NÁPIS (Hore na videu) */}
     {/* Používame absolute inset-0 na vycentrovanie nad video */}
  
@@ -398,40 +467,14 @@ const [isCartOpen, setIsCartOpen] = useState(false);
 
 
 
-          <section className="w-full flex justify-center justify-center
-           py-10">
-  {/* TENTO DIV DRŽÍ VŠETKY TRI POLOŽKY VEDĽA SEBA */}
-  <div className=" md:flex-row  md:gap-80 flex flex-col md:grid md:grid-cols-3  gap-10 text-center   text-[12px]   font-normal ">
-    
-    {/* 1. POLOŽKA */}
-    <div className="flex flex-col items-center gap-4 text-center">
-      <Truck size={32} strokeWidth={1.5} />
-      <span>Doprava zadarmo pre <br /> všetky objednávky.</span>
-    </div>
-
-    {/* 2. POLOŽKA */}
-    <div className="flex flex-col items-center gap-4 text-justify">
-      <RotateCcw size={32} strokeWidth={1.5} />
-      <span>30 dní na vrátenie tovaru</span>
-    </div>
-
-    {/* 3. POLOŽKA */}
-    <div className="flex flex-col items-center gap-4 text-center">
-      <Gem size={32} strokeWidth={1.5} />
-      <span>Prémiové materiály a <br /> exkluzívne modely</span>
-    </div>
-
-  </div>
-
-  <br />
-</section>
+     
 
 
 
 
 
       {/* 3. PRODUCT GRID (PRODUKTY POD SEBOU) */}
-      <section className="max-w-7xl mx-auto px-6 pt-10 md:pt-25">
+      <section className="max-w-7xl mx-auto mt-20 px-6 pt-10 md:pt-25">
         <div className="flex-col md:flex justify-center md:items-start items-center mb-15">
           <div className='flex items-start justify-center'>
           <h2 className="text-[24px] md:text-[32px] font-normal  uppercase leading-tight ">
@@ -446,7 +489,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
         </div>
 
         {/* Mriežka s 3 stĺpcami */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Produkt 1 */}
           <div className="group cursor-pointer">
@@ -456,7 +499,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
             <div className="mt-6 flex justify-between items-start px-2">
               <div>
                 <h3 className="font-normal uppercase text-sm tracking-tight">Urban Dinamic</h3>
-                <p className="text-black-400 text-[10px] uppercase font-bold mt-1 tracking-widest">280,00 €</p>
+                <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">280,00 €</p>
               </div>
              
             </div>
@@ -470,7 +513,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
             <div className="mt-6 flex justify-between items-start px-2">
               <div>
                 <h3 className="font-normal uppercase text-sm tracking-tight">U-3</h3>
-                <p className="text-black-400 text-[10px] uppercase font-bold mt-1 tracking-widest">300,00 €</p>
+                <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">300,00 €</p>
               </div>
              
             </div>
@@ -484,7 +527,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
             <div className="mt-6 flex justify-between items-start px-2">
               <div>
                 <h3 className="font-normal uppercase text-sm tracking-tight">Retro Low</h3>
-                <p className="text-black-400 text-[10px] uppercase font-bold mt-1 tracking-widest">249,99 €</p>
+                <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">249,99 €</p>
               </div>
  
             </div>
@@ -498,7 +541,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
             <div className="mt-6 flex justify-between items-start px-2">
               <div>
                 <h3 className="font-normal uppercase text-sm tracking-tight">Retro Low</h3>
-                <p className="text-black-400 text-[10px] uppercase font-bold mt-1 tracking-widest">249,99 €</p>
+                <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">249,99 €</p>
               </div>
  
             </div>
@@ -772,9 +815,9 @@ const [isCartOpen, setIsCartOpen] = useState(false);
     {/* 2. DOLNÁ ČASŤ - PRODUKTY (Teraz vnútri mx-auto kontajnera) */}
     <div className="w-full mt-50 md:mt-130">
       <div className="flex md:justify-center justify-center mb-15">
-        <button className="bg-black text-[13px] text-white px-8 py-4 font-bold hover:invert transition-all uppercase tracking-widest">
-          Zobraziť všetko
-        </button>
+        <button className="bg-black text-[13px] text-white mt-10 px-6 py-3 font-bold  hover:invert transition-all">
+            Zobraziť všetko
+          </button>
       </div>
 
       {/* PRODUKTOVÝ GRID / SCROLL */}
@@ -785,7 +828,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
             <Image src="/urbanlow.png" width={400} height={300} alt="Retro Dinamic" className='group-hover:scale-110 transition duration-0'/>
           </div>
           <h3 className="font-bold uppercase tracking-tighter text-xl">Retro Dinamic</h3>
-          <p className="text-sm opacity-60">280,00 €</p>
+          <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">280,00 €</p>
         </div>
 
         {/* Druhá topánka */}
@@ -794,7 +837,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
             <Image src="/ecostreet.png" width={400} height={300} alt="Retro Dinamic" className='group-hover:scale-110 transition duration-0' />
           </div>
           <h3 className="font-bold uppercase tracking-tighter text-xl">Retro Dinamic</h3>
-          <p className="text-sm opacity-60">280,00 €</p>
+          <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">280,00 €</p>
         </div>
 
         {/* Tretia topánka */}
@@ -803,7 +846,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
             <Image src="/skatepro..png" width={400} height={300} alt="Retro Dinamic" className='group-hover:scale-110 transition duration-0' />
           </div>
           <h3 className="font-bold uppercase tracking-tighter text-xl">Retro Dinamic</h3>
-          <p className="text-sm opacity-60">280,00 €</p>
+          <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">280,00 €</p>
         </div>
       </div>
     </div>
@@ -838,27 +881,39 @@ const [isCartOpen, setIsCartOpen] = useState(false);
 </section>
 
 
+     <section className="w-full flex justify-center justify-center
+           py-10">
+  {/* TENTO DIV DRŽÍ VŠETKY TRI POLOŽKY VEDĽA SEBA */}
+  <div className=" md:flex-row  md:gap-80 flex flex-col md:grid md:grid-cols-3  gap-10 text-center   text-[12px]   font-normal ">
+    
+    {/* 1. POLOŽKA */}
+    <div className="flex flex-col items-center gap-4 text-center">
+      <Truck size={32} strokeWidth={1.5} />
+      <span>Doprava zadarmo pre <br /> všetky objednávky.</span>
+    </div>
 
+    {/* 2. POLOŽKA */}
+    <div className="flex flex-col items-center gap-4 text-justify">
+      <RotateCcw size={32} strokeWidth={1.5} />
+      <span>30 dní na vrátenie tovaru</span>
+    </div>
+
+    {/* 3. POLOŽKA */}
+    <div className="flex flex-col items-center gap-4 text-center">
+      <Gem size={32} strokeWidth={1.5} />
+      <span>Prémiové materiály a <br /> exkluzívne modely</span>
+    </div>
+
+  </div>
+
+  <br />
+</section>
 
 
       <footer className="bg-white text-black py-16 px-6 md:px-24 border-t border-gray-100">
   <div className="max-w-7xl mx-auto space-y-16">
     
-    {/* 1. SEKČIA: STATISTIKY (Horný riadok) */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-sm font-medium border-b border-gray-100 pb-12">
-      <div>
-        <p className="font-bold text-lg">98%</p>
-        <p className="text-gray-500 uppercase tracking-widest text-[10px]">spokojnosť zákazníkov</p>
-      </div>
-      <div>
-        <p className="font-bold text-lg">4.8 / 5.0</p>
-        <p className="text-gray-500 uppercase tracking-widest text-[10px]">Priemerné hodnotenie</p>
-      </div>
-      <div>
-        <p className="font-bold text-lg">20 000+</p>
-        <p className="text-gray-500 uppercase tracking-widest text-[10px]">Doručených párov</p>
-      </div>
-    </div>
+    
 
     {/* 2. SEKČIA: LOGÁ PLATBY A DOPRAVY */}
     <div className="flex flex-col items-center space-y-8">
