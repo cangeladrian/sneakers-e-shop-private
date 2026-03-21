@@ -415,7 +415,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
       loop
       muted 
       playsInline
-      className="w-full h-190 md:h-screen mb-40 md:mb-0 object-cover z-0" 
+      className="w-full h-200 md:h-screen mb-30 md:mb-0 object-cover z-0" 
     />
 
 {/* 2. VRSTVA: TEXTY (V popredí) */}
