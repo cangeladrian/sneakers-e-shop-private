@@ -467,7 +467,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
         </div>
 
         {/* 3. VRSTVA: SCROLL INDICATOR (Úplne dole - voliteľné) */}
-        <div className="absolute bottom-60 md:bottom-30 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-70">
+        <div className="absolute top-60 md:top-80 left-1/2 -translate-x-1/2 flex flex-col justify-end items-center opacity-70">
           <span className="text-[10px] uppercase tracking-widest mb-2">Scroll</span>
           <div className="w-[1px] h-10 bg-white/50 relative overflow-hidden">
             {/* Animovaná čiara */}
@@ -579,7 +579,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
 
 
 
-      <section className="max-w-7xl mx-auto px-6  mt-20  md:mb-20">
+      <section className="max-w-7xl mx-auto px-2  mt-20  md:mb-20">
   {/* Hlavný kontajner s Flexboxom */}
   <div className="relative w-full min-h-[500px]  md:h-[800px]  flex flex-col md:flex-row items-center overflow-hidden">
     
