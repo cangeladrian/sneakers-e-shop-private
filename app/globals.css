@@ -19,6 +19,15 @@
   }
 }
 
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  /* Toto sa spustí len na otočenom mobile */
+  section {
+    /* Zmenšíme celú sekciu tak, aby sa zmestila na nízky displej */
+    transform: scale(0.8); 
+    transform-origin: top center;
+  }
+}
+
 @media (min-width: 768px) {
   html, body {
     cursor: none !important;
