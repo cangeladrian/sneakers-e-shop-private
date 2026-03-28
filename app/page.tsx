@@ -11,68 +11,6 @@ import { Analytics } from "@vercel/analytics/next"
 
 
 
-const CustomCursor = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.closest('button')) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseover', handleMouseOver);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseover', handleMouseOver);
-    };
-  }, []);
-
-  return (
-  <motion.div
-      className="fixed top-0 left-0 z-[9999] pointer-events-none hidden md:block mix-blend-difference"
-      animate={{ 
-        x: mousePos.x, 
-        y: mousePos.y,
-        // Brutalistické natiahnutie: keď hoveruješ, šípka sa vertikálne natiahne
-        scaleY: isHovering ? 1.8 : 1, 
-        scaleX: isHovering ? 0.9 : 1, // Jemne ju zúžime, aby vyzerala ešte ostrejšie
-        rotate: isHovering ? 15 : 0,  // Jemné pootočenie pre dynamiku
-      }}
-      // Rýchla pružinová animácia pre okamžitú reakciu
-      transition={{ type: 'spring', stiffness: 1200, damping: 50, mass: 0.2 }}
-    >
-      {/* BRUTALISTICKÁ ŠÍPKA (SVG) 
-         Vycentrovali sme ju pomocou translate, aby hrot (0,0) bol presne pod myšou.
-      */}
-      <svg 
-        width="16" 
-        height="50" 
-        viewBox="0 0 26 50" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ transform: 'translate(-3px, -3px)' }} 
-      >
-        <path 
-          // Cesta nakreslí ostrú, vysokú šípku
-          d="M0 0V50L8.5 37H26L0 0Z" 
-          fill="white" // Biela farba, mix-blend-difference sa postará o negatív
-        />
-      </svg>
-    </motion.div>
-  );
-};
-
 
 
 
@@ -149,34 +87,6 @@ export default function Home() {
 
 
   
-const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  // 1. SLEDOVANIE SCROLLU (Pre farbu Navbaru)
-  useEffect(() => {
-    const handleScroll = () => {
-      // Ak odskroluješ viac ako 50px, isScrolled bude true
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // 2. ZÁKAZ SCROLLU PRI OTVORENOM MENU
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
-  }, [isMenuOpen]);
-
-  // 3. SLEDOVANIE MYŠI
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePos({
-      x: (e.clientX / window.innerWidth) - 0.5,
-      y: (e.clientY / window.innerHeight) - 0.5,
-    });
-  };
 
 
 
@@ -190,222 +100,8 @@ const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-white relative overflow-hidden">
-      <CustomCursor />
-      {/* --- 1. NAVIGÁCIA (VRCH) --- */}
-      <nav className={`
-  fixed top-0 left-0 w-full z-[130] flex justify-between items-center px-10 transition-all duration-500
-  ${isScrolled || isMenuOpen 
-    ? 'bg-white py-3 md:py-3  border-b border-black/30' // Stav po skrolovaní alebo pri otvorenom menu
-    : 'bg-transparent py-6 md:py-8' // Stav na začiatku (nad videom)
-  }
-`}>
-  {/* 1. LEFT: MENU BUTTON */}
-  <div className="flex-1">
-    <button 
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
-      className={`
-        z-[130] relative flex items-center uppercase font-bold tracking-tighter transition-colors duration-500
-        ${isScrolled || isMenuOpen ? 'text-black' : 'text-white'}
-      `}
-    >
-      {isMenuOpen ? (
-        <span>ZAVRIEŤ</span>
-      ) : (
-        <>
-          {/* PC TEXT */}
-          <span className="hidden md:block">MENU</span>
-          
-          {/* MOBIL HAMBURGER */}
-          <div className="md:hidden flex flex-col gap-1.5 w-8">
-            <div className={`h-[2px] w-full transition-colors ${isScrolled ? 'bg-black' : 'bg-white'}`}></div>
-            <div className={`h-[2px] w-full transition-colors ${isScrolled ? 'bg-black' : 'bg-white'}`}></div>
-            <div className={`h-[2px] w-full transition-colors ${isScrolled ? 'bg-black' : 'bg-white'}`}></div>
-          </div>
-        </>
-      )}
-    </button>
-  </div>
-
-  {/* 2. CENTER: LOGO */}
-  <div className="flex-none">
-    <img 
-      src="/logo.png" 
-      alt="logo" 
-      className={`
-        h-auto transition-all duration-500
-        ${isScrolled ? 'w-8 md:w-10 ' : 'w-10 md:w-15'} 
-      `}
-      /* Poznámka: 'invert' pridaj len ak je tvoje logo čierne a chceš ho na videu biele */
-    />
-  </div>
-
-  {/* 3. RIGHT: ICONS */}
-  <div className={`
-    flex-1 flex justify-end gap-6 md:gap-10 uppercase font-bold items-center transition-colors duration-500
-    ${isScrolled || isMenuOpen ? 'text-black' : 'text-white'}
-  `}>
-    {/* SEARCH */}
-    <button className="hover:scale-110 transition-transform">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-    </button>
-
-    {/* CART */}
-    <div 
-      onClick={() => setIsCartOpen(true)} 
-      className="relative cursor-pointer flex items-center group"
-    >
-      <button className="hover:scale-110 transition-transform">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>
-      </button>
-      <span className={`
-        ml-1 px-2 py-0.5 rounded-full text-[10px] transition-all
-        ${isScrolled ? 'bg-black text-white' : 'bg-white text-black'}
-      `}>
-        0
-      </span>
-    </div>
-  </div>
-</nav>
-
-
-      
-
-
-<AnimatePresence>
-  {isCartOpen && (
-    <>
-      {/* 1. TMAVÉ POZADIE (Overlay) */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={() => setIsCartOpen(false)}
-        className="fixed inset-0 bg-black/40 z-[200] "
-      />
-
-      {/* 2. BOČNÝ PANEL */}
-      <motion.div 
-        initial={{ x: '100%' }}
-        animate={{ x: 0 }}
-        exit={{ x: '100%' }}
-        transition={{ type: 'tween', ease: [0.22, 1, 0.36, 1], duration: 0.5 }}
-        className="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[210]  flex flex-col"
-      >
-        {/* HLAVIČKA KOŠÍKA */}
-        <div className="p-8 flex justify-between items-center border-b">
-          <h2 className="text-xl font-bold uppercase tracking-widest">Tvoj košík</h2>
-          <button 
-            onClick={() => setIsCartOpen(false)}
-            className="text-xs uppercase font-bold text-black hover:opacity-50 transition"
-          >
-            Zavrieť
-          </button>
-        </div>
-
-        {/* OBSAH KOŠÍKA (Prázdny stav) */}
-        <div className="flex-1 overflow-y-auto p-8 flex flex-col items-center justify-center text-center">
-          <p className="text-gray-400 mb-6">Tvoj košík je momentálne prázdny.</p>
-          <button 
-            onClick={() => setIsCartOpen(false)}
-            className="border-b border-black text-sm uppercase font-bold pb-1 hover:text-red-500 hover:border-red-500 transition"
-          >
-            Pokračovať v nákupe
-          </button>
-        </div>
-
-        {/* SPODNÁ ČASŤ (Súhrn) */}
-        <div className="p-8 border-t bg-gray-50">
-          <div className="flex justify-between mb-6">
-            <span className="uppercase text-xs font-bold text-gray-500">Celkom</span>
-            <span className="text-xl font-bold">0,00 €</span>
-          </div>
-          <button className="w-full bg-black text-white py-5 uppercase text-xs font-bold tracking-[0.2em] hover:bg-neutral-800 transition">
-            Pokladňa
-          </button>
-          <p className="text-[10px] text-gray-400 text-center mt-4 uppercase">
-            Doprava zadarmo
-          </p>
-        </div>
-      </motion.div>
-    </>
-  )}
-
-
-
-
-
-</AnimatePresence>
-
-      {/* --- 2. FULLSCREEN OVERLAY MENU --- */}
-      <div 
-        onMouseMove={handleMouseMove}
-        className={`fixed inset-0 z-[120] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          isMenuOpen ? 'translate-y-0 text-black' : '-translate-y-full'
-        }`}
-      >
-        {/* POZADIE S PARALLAXOM */}
-        <div className="absolute inset-0 bg-black overflow-hidden">
-          
-          {/* VRSTVA 1: NÁPIS VIREX (Hýbe sa pomaly) */}
-          <motion.div 
-          
-            
-            transition={{ type: 'tween', ease: 'linear', duration: 0.2 }}
-            className="absolute inset-0  pointer-events-none"
-            style={{
-              
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              willChange: 'transform',
-              transformStyle: 'preserve-3d'
-            }}
-          />
-
-          {/* VRSTVA 2: TVARY (Hýbu sa silnejšie a opačne) */}
-          <motion.div 
-            animate={isMenuOpen ? { x: mousePos.x * 30, y: mousePos.y * 30 } : { x: 0, y: 0 }}
-            transition={{ type: 'tween', ease: 'linear', duration: 0.5 }}
-            className="absolute inset-0  mt-80 md:mt-0 opacity-100 pointer-events-none"
-            style={{
-              backgroundImage: "url('/tvary.png')",
-              backgroundSize: 'contain',
-              backgroundPosition: 'left  ',
-              backgroundRepeat: 'no-repeat',
-              willChange: 'transform',
-              transformStyle: 'preserve-3d'
-            }}
-          />
-
-          {/* Jemný Noise filter */}
-          
-        </div>
-
-        {/* ODKAZY V MENU */}
-        <div className="relative h-full container mx-auto px-12 flex md:items-center md:justify-end justify-center items-top">
-          <div className="flex flex-col items-start text-white cursior-pointer space-y-4 md:space-y-8 pr-0 mt-50 md:mt-0 md:text-[32px] text-[24px] md:pr-20">
-           <Link href="/" onClick={() => setIsMenuOpen(false)}>
-  <h1 className="hover:text-red-800 transition-colors">
-    DOMOV
-  </h1>
-</Link>
-            <h1>ŽENY</h1>
-            <h1>MUŽI</h1>
-                     
-          </div>
-        </div>
-      </div>
-
-
-
-  
-
+     
+    
 
 
 
@@ -458,12 +154,17 @@ const [isCartOpen, setIsCartOpen] = useState(false);
           </p>
 
           {/* TLAČIDLO (Call to Action) */}
+         
           <div className="flex flex-col sm:flex-row gap-4">
+             <Link href="/spring">
             <button className="bg-white text-black px-6 py-3 font-bold text-[13px] uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300">
               Nakupovať 
             </button>
-          
+           </Link>
           </div>
+         
+
+
         </div>
 
         {/* 3. VRSTVA: SCROLL INDICATOR (Úplne dole - voliteľné) */}
@@ -500,9 +201,11 @@ const [isCartOpen, setIsCartOpen] = useState(false);
           </h2>
           </div>
           <div className='flex items-start md:items-end justify-center'>
+            <Link href="/pro2">
           <button className="bg-black text-[13px] text-white mt-10 px-6 py-3 font-bold md:items-end hover:invert transition-all">
             Zobraziť všetko
           </button>
+          </Link>
           </div>
         </div>
 
@@ -510,6 +213,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Produkt 1 */}
+          <Link href="/produkt/dinamic">
           <div className="group cursor-pointer">
             <div className=" aspect-[7/5] flex items-center justify-center p-12 overflow-hidden">
               <img src="/dinamic..png" alt="shoe" className="w-full group-hover:scale-110 transition duration-0" />
@@ -522,6 +226,8 @@ const [isCartOpen, setIsCartOpen] = useState(false);
              
             </div>
           </div>
+           </Link>
+
 
           {/* Produkt 2 */}
           <div className="group cursor-pointer">
@@ -581,7 +287,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
 
       <section className="max-w-7xl mx-auto px-2  mt-20  md:mb-20">
   {/* Hlavný kontajner s Flexboxom */}
-  <div className="relative w-full min-h-[500px]  md:h-[800px]  flex flex-col md:flex-row items-center overflow-hidden">
+  <div className="relative w-full min-h-[400px]  md:h-[800px]  flex flex-col md:flex-row items-center overflow-hidden">
     
     {/* 1. OBRÁZKOVÁ ČASŤ (Pohľadnica s nápisom Spring) */}
     {/* Na mobile (flex-col) bude prvá vďaka 'order-first' */}
@@ -626,111 +332,88 @@ const [isCartOpen, setIsCartOpen] = useState(false);
 <br />
 
 
- <section className='w-full h-auto flex items-center justify-center md:mt-10 md:mb-10 md:pt-10 mb-0 text-5 overflow-hidden'>
-    <h1 className='font-light text-[20px] md:text-[80px] text-center text-gray-500 uppercase leading-none tracking-[0.5em] '>NAŠA <br />
-    LEGENDA
-    </h1>
-    
-    
-   </section>
+ 
 
 
 {/* 1. HLAVNÁ SEKCIA - Teraz používa Flexbox pod sebou (flex-col) */}
-<section className="relative w-full bg-white overflow-hidden flex flex-col items-center">
+<section className="relative w-full flex flex-col items-center">
   
   {/* ========================================================= */}
-  {/* 1. HORNÁ ČASŤ (Pozadie + Nápis + Topánka) */}
+  {/* 1. HORNÁ ČASŤ (Nápis PRO2 za Topánkou) */}
   {/* ========================================================= */}
-  <div className="relative w-full h-[500px] landscape:mb-20  md:h-screen flex items-center justify-center overflow-hidden">
+  {/* Používame aspect-ratio na mobile, aby sa výška prispôsobila šírke */}
+  <div className="relative w-full aspect-[3.5/5]  bg-black md:aspect-video flex items-center justify-center   overflow-hidden z-10  ">
     
-    {/* POZADIE - Teraz je len v tejto hornej časti */}
-    <div className="absolute inset-0 z-0">
+    {/* POZADIE (Zostáva absolute) */}
+    <div className="absolute   inset-0 z-0">
       <Image 
         src="/group.png" 
         alt="Background" 
         fill 
-        className="object-cover opacity-100" 
+        className="object-cover grayscale opacity-90" 
+        priority
       />
-      {/* Gradienty */}
-      <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white/0 to-transparent" />
-      <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent" />
     </div>
 
-    {/* VEĽKÝ NÁPIS PRO 2 (z-10) */}
-    <div className="absolute inset-0 flex items-start justify-center z-10 pointer-events-none">
+    {/* NÁPIS PRO2 (S VRÁTENOU ANIMÁCIOU) */}
+    <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
       <motion.h1 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 3.0, ease: [0.22, 1, 0.36, 1] }}
-        className="text-[32vw] landscape:text-[20vh] landscape:md:text-[40vh] md:text-[24vw] mt-20 md:mt-10 font-semibold tracking-[-0.08em] text-black leading-none"
+        // VRÁTENÉ ANIMAČNÉ VLASTNOSTI (Props)
+        initial={{ opacity: 0, y: 50 }}         // Začne dole a priesvitný
+        whileInView={{ opacity: 1, y: 0 }}      // Keď k nemu prídeš, vysunie sa
+        transition={{ 
+          duration: 3.0, 
+          ease: [0.22, 1, 0.36, 1]              // Luxusný plynulý dojazd
+        }}
+        
+        // STYLOVANIE (Triedy)
+        className="text-[35vw] md:text-[8vw] mb-[28%] font-NORMAL text-red-900 "
       >
-        PRO2
+       NEXT 3
       </motion.h1>
     </div>
 
-    {/* TOPÁNKA (z-20) */}
-    <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
-      <div className="relative w-[150%] landscape:w-[50%] landscape:md:w-[70%] md:w-[60%] lg:w-[70%] aspect-video">
-        <Image src="/topankabeton3.png" alt="Topánka" fill className="object-contain" priority />
-      </div>
+    {/* TOPÁNKA NA KOCKE (V popredí, relative) */}
+    <div className="relative z-20 w-[140%] md:w-[40%]  pointer-events-none">
+      <Image 
+        src="/Untitled-1asak.png" 
+        alt="Topánka na kocke" 
+        width={1200} 
+        height={800} 
+        className="object-contain"
+        priority 
+      />
     </div>
+    
   </div>
 
   {/* ========================================================= */}
-  {/* 2. SPODNÁ ČASŤ (Texty pod topánkou na čistom bielom pozadí) */}
+  {/* 2. SPODNÁ ČASŤ (Texty pod topánkou) */}
   {/* ========================================================= */}
- <div className="relative z-30 w-full bg-white -mt-16 md:-mt-50 pt-0 pb-10 flex flex-col items-center text-center">
+  {/* Odstránili sme -mt-16! Teraz texty začínajú prirodzene pod kockou */}
+  <div className="absolute z-30 w-full flex flex-col items-center text-center md:top-[90vh]  top-[50vh] md:mb-80">
     
     {/* Prvá skupina poznámok */}
-    <div className="flex flex-col items-center space-y-4 mb-4">
-      <HandwrittenNote 
-        text="40% Shock" 
+    <div className="flex flex-col items-center space-y-4  ">
+<HandwrittenNote 
+        text="nike x move " 
         delay={0.2} 
-        className="text-[7vw] md:text-5xl text-neutral-800" 
+        className="text-4xl md:text-8xl text-black" 
       />
-      <HandwrittenNote 
-        text="Absorption" 
-        delay={0.3} 
-        className="text-[7vw] md:text-5xl text-neutral-800" 
-      />
+         
+
+   
     </div>
 
-    {/* Druhá skupina poznámok */}
-    <div className="flex flex-col items-center space-y-4">
-      <HandwrittenNote 
-        text="6mm Flat-waxed" 
-        delay={0.5} 
-        className="text-[7vw] md:text-5xl text-neutral-800" 
-      />
-      <HandwrittenNote 
-        text="Cotton Laces" 
-        delay={0.8} 
-        className="text-[7vw] md:text-5xl text-neutral-800" 
-      />
-      <HandwrittenNote 
-        text="Origin Slovakia" 
-        delay={1.1} 
-        className="text-[7vw] md:text-5xl font-bold text-neutral-900" 
-      />
-    </div>
+    {/* TLAČIDLO (Úplne na konci) */}
+    <Link href="/produkt/pro2">
+    <button className="bg-black text-white  px-6 py-3 font-bold uppercase tracking-widest hover:invert transition-all w-full max-w-sm pointer-events-auto">
+      Objav
+    </button>
+    </Link>
   </div>
-  
-<div className="  relative z-50  mb-20 flex items-center justify-center  pointer-events-none">
-       
-
-
-        {/* Tlačidlo Objav */}
-        <div className="flex justify-center items-center md:py-20 pointer-events-auto">
-          <button className="bg-black text-[13px] text-white px-6 py-3 font-bold  hover:invert transition-all">
-            Objav
-          </button>
-        </div>
-        
-       </div>
-
 
 </section>
-        
 
       
 
