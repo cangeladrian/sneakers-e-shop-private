@@ -25,8 +25,8 @@ export default function ProduktyPage() {
         
         {/* HLAVIČKA SEKCIÍ */}
         <div className="flex justify-between items-end mb-12">
-          <h1 className="text-4xl font-bold uppercase tracking-tighter">
-            Kolekcia Spring <span className="text-zinc-400 font-light">({vsetkyProdukty.length})</span>
+          <h1 className="text-3xl font-normal uppercase tracking-tighter">
+            Kolekcia Spring <span className="text-black font-light">({vsetkyProdukty.length})</span>
           </h1>
           <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
             <button className="hover:opacity-50">Skryť filtre</button>
@@ -50,7 +50,7 @@ export default function ProduktyPage() {
           </aside>
 
           {/* GRID S PRODUKTMI */}
-          <div className="flex-1 grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-y-12 gap-x-4">
+          <div className="flex-1 grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-4 gap-y-12 gap-x-4">
             {vsetkyProdukty.map((produkt, index) => (
               <Link href={`/produkt/${produkt.id}`} key={produkt.id}>
                 <motion.div 

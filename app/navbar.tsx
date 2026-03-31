@@ -3,9 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useCart } from './store';
 
 export default function Navbar() {
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  const items = useCart((state) => state.items);
+const isCartOpen = useCart((state) => state.isCartOpen);
+const setIsCartOpen = useCart((state) => state.setCartOpen);
+const removeItem = useCart((state) => state.removeItem);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -34,13 +38,19 @@ export default function Navbar() {
     setMousePos({ x, y });
   };
 
+  const celkovaCena = items.reduce((total, item) => {
+  // Odstránime " €" a zmeníme čiarku na bodku, aby sme mohli sčítať čísla
+  const cenaCislo = parseFloat(item.cena.replace(' €', '').replace(',', '.'));
+  return total + cenaCislo;
+}, 0);
+
   return (
     <>
       {/* --- 1. NAVIGÁCIA (VRCH) --- */}
       <nav className={`
         fixed top-0 left-0 w-full z-[130] flex justify-between items-center px-10 transition-all duration-500
         ${isScrolled || isMenuOpen 
-          ? 'bg-white py-3 border-b border-black/30' 
+          ? 'bg-white py-4 border-b border-black/30' 
           : 'bg-transparent py-6 md:py-8'
         }
       `}>
@@ -50,16 +60,16 @@ export default function Navbar() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`
               z-[130] relative flex items-center uppercase font-bold tracking-tighter transition-colors duration-500
-              ${isScrolled || isMenuOpen ? 'text-black' : 'text-white'}
+              ${isScrolled || isMenuOpen ? 'text-black' : 'text-black'}
             `}
           >
             {isMenuOpen ? <span>ZAVRIEŤ</span> : (
               <>
                 <span className="hidden md:block">MENU</span>
                 <div className="md:hidden flex flex-col gap-1.5 w-8">
-                  <div className={`h-[2px] w-full transition-colors ${isScrolled || isMenuOpen ? 'bg-black' : 'bg-white'}`}></div>
-                  <div className={`h-[2px] w-full transition-colors ${isScrolled || isMenuOpen ? 'bg-black' : 'bg-white'}`}></div>
-                  <div className={`h-[2px] w-full transition-colors ${isScrolled || isMenuOpen ? 'bg-black' : 'bg-white'}`}></div>
+                  <div className={`h-[2px] w-full transition-colors bg-black`}></div>
+                  <div className={`h-[2px] w-full transition-colors bg-black`}></div>
+                  <div className={`h-[2px] w-full transition-colors bg-black`}></div>
                 </div>
               </>
             )}
@@ -72,36 +82,47 @@ export default function Navbar() {
             <img 
               src="/logo.png" 
               alt="logo" 
-              className={`h-auto transition-all duration-500 ${isScrolled ? 'w-8 md:w-10' : 'w-10 md:w-15'}`}
+              className={`h-auto transition-all mr-10 duration-500 ${isScrolled ? 'w-8 md:w-10' : 'w-10 md:w-15'}`}
             />
           </Link>
         </div>
 
-        {/* RIGHT: ICONS */}
-        <div className={`
-          flex-1 flex justify-end gap-6 md:gap-10 uppercase font-bold items-center transition-colors duration-500
-          ${isScrolled || isMenuOpen ? 'text-black' : 'text-white'}
-        `}>
-          <button className="hover:scale-110 transition-transform">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </button>
+       {/* RIGHT: ICONS */}
+<div className={`
+  flex-1 flex justify-end gap-6 md:gap-8 uppercase font-bold items-center transition-colors duration-500
+  ${isScrolled || isMenuOpen ? 'text-black' : 'text-black'}
+`}>
+  {/* SEARCH */}
+  <button className="hover:scale-110 transition-transform">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </button>
 
-          <div onClick={() => setIsCartOpen(true)} className="relative cursor-pointer flex items-center group">
-            <button className="hover:scale-110 transition-transform">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <path d="M16 10a4 4 0 0 1-8 0"></path>
-              </svg>
-            </button>
-            <span className={`ml-1 px-2 py-0.5 rounded-full text-[10px] transition-all ${isScrolled || isMenuOpen ? 'bg-black text-white' : 'bg-white text-black'}`}>
-              0
-            </span>
-          </div>
-        </div>
+  {/* ACCOUNT / USER */}
+  <button className="hover:scale-110 transition-transform">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
+    </svg>
+  </button>
+
+  {/* CART */}
+  <div onClick={() => setIsCartOpen(true)} className="relative cursor-pointer flex items-center group">
+    <button className="hover:scale-110 transition-transform">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <path d="M16 10a4 4 0 0 1-8 0"></path>
+      </svg>
+    </button>
+    <span className={`ml-1 px-2 py-0.5 rounded-full text-[12px] transition-all ${isScrolled || isMenuOpen ? ' text-black' : ' text-black'}`}>
+      {items.length}
+      
+    </span>
+  </div>
+</div>
       </nav>
 
       {/* --- 2. KOŠÍK (DRAWER) --- */}
@@ -115,6 +136,7 @@ export default function Navbar() {
               onClick={() => setIsCartOpen(false)}
               className="fixed inset-0 bg-black/40 z-[200]"
             />
+            
             <motion.div 
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -122,18 +144,42 @@ export default function Navbar() {
               transition={{ type: 'tween', ease: [0.22, 1, 0.36, 1], duration: 0.5 }}
               className="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[210] flex flex-col"
             >
-              <div className="p-8 flex justify-between items-center border-b">
-                <h2 className="text-xl font-bold uppercase tracking-widest">Tvoj košík</h2>
-                <button onClick={() => setIsCartOpen(false)} className="text-xs uppercase font-bold text-black hover:opacity-50 transition">Zavrieť</button>
-              </div>
-              <div className="flex-1 overflow-y-auto p-8 flex flex-col items-center justify-center text-center text-black">
-                <p className="text-gray-400 mb-6">Tvoj košík je momentálne prázdny.</p>
-                <button onClick={() => setIsCartOpen(false)} className="border-b border-black text-sm uppercase font-bold pb-1 hover:text-red-500 hover:border-red-500 transition">Pokračovať v nákupe</button>
-              </div>
+              <div className="flex-1 overflow-y-auto p-8 space-y-6 text-black">
+  {items.length === 0 ? (
+    <>
+     <button onClick={() => setIsCartOpen(false)} className="text-xs uppercase  font-bold text-black hover:opacity-50 transition">Zavrieť</button>
+     <h2 className="text-xl text-center font-bold uppercase tracking-widest">Tvoj košík</h2>
+     <p className="text-gray-400 text-center mb-6">Tvoj košík je momentálne prázdny.</p> 
+                
+       </>      
+
+                ) : (
+    items.map((item, index) => (
+      
+      <div key={index} className="flex gap-4 border-b border-zinc-100 pb-4">
+             <button onClick={() => setIsCartOpen(false)} className="text-xs uppercase  font-bold text-black hover:opacity-50 transition">Zavrieť</button>
+
+        <img src={item.foto} className="w-20 h-20 object-contain bg-zinc-50" />
+        <div className="flex-1">
+          <h4 className="font-bold uppercase text-xs tracking-tighter">{item.nazov}</h4>
+          <p className="text-[10px] text-zinc-400 uppercase mt-1">Veľkosť: {item.size}</p>
+          <p className="font-bold text-sm mt-2">{item.cena}</p>
+        </div>
+        <button onClick={() => removeItem(index)} className="text-[10px] uppercase font-bold text-red-500 self-start">
+          X
+        </button>
+      </div>
+    ))
+  )}
+</div>
+              
+           
               <div className="p-8 border-t bg-gray-50 text-black">
                 <div className="flex justify-between mb-6">
                   <span className="uppercase text-xs font-bold text-gray-500">Celkom</span>
-                  <span className="text-xl font-bold">0,00 €</span>
+                  <span className="text-xl font-bold">
+  {celkovaCena.toFixed(2).replace('.', ',')} €
+</span>
                 </div>
                 <button className="w-full bg-black text-white py-5 uppercase text-xs font-bold tracking-[0.2em] hover:bg-neutral-800 transition">Pokladňa</button>
               </div>
@@ -152,9 +198,9 @@ export default function Navbar() {
         <div className="absolute inset-0 bg-black overflow-hidden">
           {/* TVARY S PARALLAXOM */}
           <motion.div 
-            animate={isMenuOpen ? { x: mousePos.x * 50, y: mousePos.y * 50 } : { x: 0, y: 0 }}
+            animate={isMenuOpen ? { x: mousePos.x * 120, y: mousePos.y * 30 } : { x: 0, y: 0 }}
             transition={{ type: 'tween', ease: 'linear', duration: 0.5 }}
-            className="absolute inset-0 opacity-40 pointer-events-none"
+            className="absolute inset-0 opacity-90 pointer-events-none"
             style={{
               backgroundImage: "url('/tvary.png')",
               backgroundSize: 'contain',

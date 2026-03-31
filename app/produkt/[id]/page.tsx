@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Truck, RotateCcw, Gem } from 'lucide-react';
 import Link from 'next/link';
+import { useCart } from '../../store';
 
 // 1. DEFINÍCIA TYPU (Musí presne sedieť s dátami nižšie)
 interface Produkt {
@@ -22,23 +23,23 @@ interface Produkt {
 // 2. DÁTA PRODUKTOV (Pridaná galeria a opravený opis)
 const dataTopanok: { [key: string]: Produkt } = {
   "pro2": {
-    nazov: "Urban Classic PRO2",
-    cena: "350.00 €",
-    foto: "/pro2.png",
-    popis: "Naša vlajková loď. Revolučné tlmenie a slovenský dizajn.",
-    popis2: "Návrat ku koreňom v modernom prevedení.",
-    opis: "Navrhnuté pre maximálny komfort počas celého dňa. Horný diel z prémiovej kože kombinovaný s priedušnou sieťovinou.",
-    galeria: ["/pro2.png", "/pro2.png", "/pro2.png"], // Sem daj cesty k detailom
-    plagat: "/sekciapro22.png"
+    nazov: "Nike Air Zoom Alphafly Next% „MOVES 3 Edition“",
+    cena: "380.00 €",
+    foto: "/airzoom1.png",
+    popis: "Budúcnosť rýchlosti",
+    popis2: "Zvršok: 100% Textil (AtomKnit – technické syntetické vlákna)Vnútro / Stielka: 100% Textil (Priedušná sieťovina)Medzipodošva: 90% ZoomX (Pebaxová pena), 10% Karbónové vlákno (Flyplate)Podrážka: 100% Odľahčená guma (Strategicky umiestnená v bodoch najväčšieho trenia) Hmotnosť: cca 210g (extrémna ľahkosť)Drop: 4 mm (výškový rozdiel medzi pätou a špičkou pre prirodzený nášľap)Určenie: Cestný beh, maratón, pretekyFarba: White / Cream / Black",
+    opis: "Nike Air Zoom Alphafly Next% je výsledkom rokov výskumu a spolupráce s najrýchlejšími bežcami planéty (ako Eliud Kipchoge). Tento model je navrhnutý tak, aby maximalizoval návrat energie a minimalizoval únavu svalov pri každom kroku. Ak hľadáte to najlepšie na beh, čo súčasná technológia ponúka, toto je vaša odpoveď.",
+    galeria: ["/airzoom2.png",  "/airzoom4.png"], // Sem daj cesty k detailom
+    plagat: "/run.png"
   },
   "dinamic": {
     nazov: "Speed Runner X",
     cena: "159.00 €",
-    foto: "/dinamic..png",
-    popis: "Ľahká bežecká topánka pre mestských prieskumníkov.",
-    popis2: "Návrat ku koreňom v modernom prevedení.",
-    opis: "Ultraľahká podrážka a anatomicky tvarovaná vložka pre prirodzený pohyb v meste.",
-    galeria: ["/dinamic..png", "/dinamic..png", "/dinamic..png"],
+    foto: "/dinamic1.png",
+    popis: "Keď sa umenie stretáva s ikonickou siluetou: Dekonštruovaná klasika",
+    popis2: "Zvršok: 100% Prémiová hovädzia koža (Smooth Leather)Vnútro / Podšívka: 80% Textil (Bavlna), 20% KožaPodrážka: 100% Vulkanizovaná guma (Hand-molded Rubber)Šnúrky: 100% Bavlna (Chunky Laces) Hmotnosť: cca 600g (v závislosti od veľkosti) Profil: Nízky (Low-top) Sezóna: Celoročná (vďaka koženému prevedeniu)",
+    opis: "Japonský avantgardný dizajnér Mihara Yasuhiro vzal najznámejšiu siluetu na svete a podrobil ju svojej signature dekonštrukcii. Výsledkom je topánka, ktorá na prvý pohľad pôsobí familiárne, no pri bližšom skúmaní odhaľuje svoju divokú, umeleckú dušu.   ",
+    galeria: ["/dinamic2.png", "/dinamic3.png", "/dinamic4.png"],
     plagat: "/pro2-plagat.jpg"
   },
   "u3": {
@@ -75,11 +76,30 @@ export default function ProduktStranka() {
 
   const sizes = ['38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48'];
 
+
+const addItem = useCart((state) => state.addItem);
+
+const handleAddToCart = () => {
+  if (!selectedSize) {
+    alert("Prosím, vyber si veľkosť!");
+    return;
+  }
+
+  addItem({
+    id: id,
+    nazov: produkt.nazov,
+    cena: produkt.cena,
+    foto: produkt.foto,
+    size: selectedSize
+  });
+};
+
+
   return (
     <main className="min-h-screen bg-white pb-20 pt-20">
       
       {/* --- 1. HERO SEKCIÁ (HLAVNÁ FOTKA) --- */}
-      <section className="relative w-full h-[50vh] flex flex-col items-center justify-center overflow-hidden ">
+      <section className="relative w-full md:h-[60vh] h-[40vh]  flex flex-col items-center justify-center overflow-hidden ">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -98,37 +118,23 @@ export default function ProduktStranka() {
 
       {/* --- 2. INFO SEKCIÁ (NÁZOV, CENA, VEĽKOSTI) --- */}
       <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-20">
-        
-        {/* TEXTY */}
-        <div className="space-y-10">
-          <div>
-            <h1 className="text-4xl font-bold uppercase tracking-tighter mb-4">{produkt.nazov}</h1>
-            <p className="text-2xl font-light text-zinc-900">{produkt.cena}</p>
+         <div>
+            <h1 className="text-1xl md:text-2xl font-semibold  tracking-tighter mb-4">{produkt.nazov}</h1>
+            <p className="text-2xl md:text-4xl font-light text-zinc-900">{produkt.cena}</p>
           </div>
           
-          <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400">O produkte</h3>
-            <p className="text-zinc-600 leading-relaxed text-lg">{produkt.popis}</p>
-          </div>
-
-          <div className="pt-10 border-t border-zinc-100">
-             <p className="text-zinc-400 text-sm leading-relaxed">{produkt.opis}</p>
-          </div>
-        </div>
-
-        {/* VÝBER VEĽKOSTI A NÁKUP */}
-        <div className="space-y-12">
+         <div className="space-y-10">
           <div className="space-y-4">
             <div className="flex justify-between items-end">
-              <h3 className="text-xs font-bold uppercase tracking-widest">Vybrať veľkosť (EU)</h3>
-              <span className="text-[10px] border-b border-black cursor-help uppercase font-bold">Size Guide</span>
+              <h3 className="text-xs font-semibold  tracking-widest">Vybrať veľkosť (EU)</h3>
+              <span className="text-[10px] border-b border-black cursor-help  font-bold">Tabuľka veľkosti</span>
             </div>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-6 gap-2">
               {sizes.map(size => (
                 <button 
                   key={size}
                   onClick={() => setSelectedSize(size)}
-                  className={`py-4 text-sm font-bold transition-all border ${
+                  className={`md:py-5 py-3 text-sm font-normal transition-all border ${
                     selectedSize === size 
                     ? 'bg-black text-white border-black' 
                     : 'border-zinc-200 hover:border-black text-black'
@@ -140,23 +146,51 @@ export default function ProduktStranka() {
             </div>
           </div>
 
-          <button className="w-full bg-black text-white py-6 font-bold uppercase tracking-[0.2em] hover:invert transition-all active:scale-[0.98]">
+          <button
+          onClick={handleAddToCart}
+          className="w-full bg-black text-white md:py-6 py-3 font-bold uppercase tracking-[0.2em] hover:invert transition-all active:scale-[0.98]">
             Pridať do košíka
           </button>
 
           {/* DOPLNKOVÉ INFO */}
-          <div className="grid grid-cols-2 gap-8 pt-10 border-t border-zinc-100 text-[10px] uppercase font-bold tracking-widest text-zinc-400">
-            <div>✓ Doprava zadarmo nad 150€</div>
+          <div className="grid grid-cols-3 gap-8 md:pt-10 pt-5 text-center text-[10px] uppercase font-semibold tracking-widest text-black">
+            <div>✓ Doprava zadarmo</div>
             <div>✓ Doručenie do 48 hodín</div>
+             <div>✓ Vrátenie tovaru do 30 dní</div>
           </div>
         </div>
+        {/* TEXTY */}
+        <div className="space-y-10">
+         
+          
+          <div className="space-y-4">
+            <p className="text-black text-center md:text-left leading-relaxed text-lg">{produkt.popis}</p>
+            
+          </div>
+
+          <div className="pt-10">
+            <br />
+            <h3 className="text-xs font-semibold  text-black">O produkte:</h3>
+             <p className="text-black text-sm leading-relaxed">{produkt.opis}</p>
+          </div>
+
+          <div className="pt-10 ">
+             <p className="text-black text-sm leading-relaxed">{produkt.popis2}</p>
+          </div>
+          
+        </div>
+
+        {/* VÝBER VEĽKOSTI A NÁKUP */}
+       
       </div>
 
+      
+        
+       
+
       {/* --- 3. GALÉRIA (SLIDER) --- */}
-      <section className="max-w-7xl mx-auto px-6 py-20 mt-10 border-t border-zinc-100">
-        <h3 className="text-[10px] uppercase tracking-[0.4em] mb-12 text-zinc-400 font-bold text-center">
-          Detailný pohľad
-        </h3>
+      <section className="max-w-7xl mx-auto px-6 md:py-20 py-10 mt-10 border-t border-black">
+        
         
         <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-10">
           {produkt.galeria.map((img, index) => (
@@ -165,7 +199,7 @@ export default function ProduktStranka() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="min-w-[85vw] md:min-w-[30vw] aspect-[4/5] relative bg-zinc-50 snap-center"
+              className="min-w-[65vw] md:min-w-[30vw] aspect-[4/5] relative bg-zinc-50 snap-center"
             >
               <Image 
                 src={img} 
@@ -178,47 +212,78 @@ export default function ProduktStranka() {
         </div>
       </section>
 
- {/* --- SEKCIÁ PLAGÁT (FULLSCREEN / EDITORIAL) --- */}
-      <section className="relative w-full h-[90vh] flex flex-col items-center justify-center overflow-hiddenmt-20">
-        
-      
 
-        {/* SAMOTNÝ PLAGÁT */}
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true, amount: 0.3 }} // Spustí sa, keď je 30% v zábere
-          className="relative w-[70vw] md:w-[80vw] h-[150vh]  overflow-hidden"
-        >
-          <Image 
-            src={produkt.plagat} 
-            alt={`${produkt.nazov} plagát`}
-            fill
-            className="object-cover transition-transform duration-[2000ms] hover:scale-110" // Jemný zoom na hover
-            priority={false} // Nemusí sa načítavať hneď
-          />
-        </motion.div>
-        
-        {/* Jemný Noise filter (ak chceš ten brutalistický vzhľad) */}
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none"></div>
-      </section>
-
-      <section className="bg-black text-white py-40">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          
-          <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-tight mb-12">
-            STREETWEAR <br/> MEETS LUXURY.
+<section className="py-36">
+  <div className="max-w-[1400px] mx-auto px-4 md:px-10">
+    {/* PRODUKTOVÝ GRID / SCROLL */}
+       <div className='flex items-start justify-center'>
+          <h2 className="text-[24px] md:text-[32px] font-normal  uppercase leading-tight ">
+            Podobné kúsky
           </h2>
-          <p className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed"> {produkt.popis2}
-          </p>
+          </div>
+    <div className="
+      flex md:grid 
+      md:grid-cols-3 lg:grid-cols-3 
+      gap-8 md:gap-12 
+      overflow-x-auto md:overflow-visible 
+      snap-x snap-mandatory 
+      no-scrollbar 
+      pb-10
+      -mx-4 px-4 md:mx-0 md:px-0 
+    ">
+      {/* Prvá topánka */}
+      <div className="flex-shrink-0 w-[85%] md:w-full snap-center group cursor-pointer">
+        <div className=" p-6 mb-4 overflow-hidden">
+          <Image 
+            src="/urbanlow.png" 
+            width={400} 
+            height={300} 
+            alt="Retro Dinamic" 
+            className="group-hover:scale-110 transition-transform duration-500 ease-in-out"
+          />
         </div>
-      </section>
+        <h3 className="font-semibold uppercase text-[16px] text-center text-sm tracking-tight">Retro Dinamic</h3>
+ 
+      </div>
+
+      {/* Druhá topánka */}
+      <div className="flex-shrink-0 w-[85%] md:w-full snap-center group cursor-pointer">
+        <div className=" p-6 mb-4 overflow-hidden">
+          <Image 
+            src="/ecostreet.png" 
+            width={400} 
+            height={300} 
+            alt="Eco Street" 
+            className="group-hover:scale-110 transition-transform duration-500 ease-in-out" 
+          />
+        </div>
+        <h3 className="font-semibold uppercase text-[16px] text-center text-sm tracking-tight">Eco Street</h3>
+   
+      </div>
+
+      {/* Tretia topánka */}
+      <div className="flex-shrink-0 w-[85%] md:w-full snap-center group cursor-pointer">
+        <div className="p-6 mb-4 overflow-hidden">
+          <Image 
+            src="/skatepro..png" 
+            width={400} 
+            height={300} 
+            alt="Skate Pro" 
+            className="group-hover:scale-110 transition-transform duration-500 ease-in-out" 
+          />
+        </div>
+        <h3 className="font-semibold uppercase text-[16px] text-center text-sm tracking-tight">Skate Pro</h3>
+      
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <section className="w-full flex justify-center justify-center
            py-10">
   {/* TENTO DIV DRŽÍ VŠETKY TRI POLOŽKY VEDĽA SEBA */}
-  <div className=" md:flex-row  md:gap-80 flex flex-row md:grid md:grid-cols-3 grid grid-cols-2  gap-10 text-center   text-[12px]   font-normal ">
+  <div className=" md:flex-row  md:gap-80 flex flex-col md:grid md:grid-cols-3  gap-10 text-center   text-[12px]   font-normal ">
     
     {/* 1. POLOŽKA */}
     <div className="flex flex-col items-center gap-4 text-center">
@@ -293,7 +358,7 @@ export default function ProduktStranka() {
         <h4 className="font-bold uppercase tracking-widest text-xs">Kontakt</h4>
         <ul className="space-y-2 text-sm text-gray-600">
           <li className="font-medium">+421 980 000 222</li>
-          <li>info@virex.sk</li>
+          <li>info@moves.sk</li>
           <li className="text-xs text-gray-400">Pon - Pia: 08:00 - 18:00</li>
         </ul>
       </div>
@@ -310,11 +375,11 @@ export default function ProduktStranka() {
 
     {/* SPODNÁ LIŠTA: COPYRIGHT */}
     <div className="border-t border-gray-100 pt-8 flex flex-col w-full  md:flex-row justify-between items-center text-[10px] text-black-400 uppercase tracking-widest">
-      <p>© 2026 VIREX Všetky práva vyhradené.</p>
+      <p>© 2026 MOVES Všetky práva vyhradené.</p>
       <div className="flex gap-4 mt-4 md:mt-0">
         <span className="hover:text-black cursor-pointer">Obchodné podmienky</span>
         <span className="hover:text-black cursor-pointer">Ochrana údajov</span>
-        <span className='hoover:text-black cursor-pointer'>Virex: SK  CZ  IT  HR  AT  FR  UK</span>
+        <span className='hoover:text-black cursor-pointer'>MOVES: SK  CZ  IT  HR  AT  FR  UK</span>
       </div>
     </div>
   </div>

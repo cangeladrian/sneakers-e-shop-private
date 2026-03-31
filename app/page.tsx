@@ -194,20 +194,7 @@ export default function Home() {
 
       {/* 3. PRODUCT GRID (PRODUKTY POD SEBOU) */}
       <section className="max-w-7xl mx-auto mt-0 md:mt-20 px-6 pt-10 md:pt-25">
-        <div className="flex-col md:flex justify-center md:items-start items-center mb-15">
-          <div className='flex items-start justify-center'>
-          <h2 className="text-[24px] md:text-[32px] font-normal  uppercase leading-tight ">
-            Najpredávanejšie kúsky
-          </h2>
-          </div>
-          <div className='flex items-start md:items-end justify-center'>
-            <Link href="/pro2">
-          <button className="bg-black text-[13px] text-white mt-10 px-6 py-3 font-bold md:items-end hover:invert transition-all">
-            Zobraziť všetko
-          </button>
-          </Link>
-          </div>
-        </div>
+      
 
         {/* Mriežka s 3 stĺpcami */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -216,12 +203,12 @@ export default function Home() {
           <Link href="/produkt/dinamic">
           <div className="group cursor-pointer">
             <div className=" aspect-[7/5] flex items-center justify-center p-12 overflow-hidden">
-              <img src="/dinamic..png" alt="shoe" className="w-full group-hover:scale-110 transition duration-0" />
+              <img src="/dinamic1.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-0" />
             </div>
-            <div className="mt-6 flex justify-between items-start px-2">
+            <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-normal uppercase text-sm tracking-tight">Urban Dinamic</h3>
-                <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">280,00 €</p>
+                <h3 className="font-semibold uppercase text-[16px] text-sm tracking-tight">Urban Dinamic</h3>
+                
               </div>
              
             </div>
@@ -232,12 +219,12 @@ export default function Home() {
           {/* Produkt 2 */}
           <div className="group cursor-pointer">
             <div className=" aspect-[7/5] flex items-center justify-center p-12 overflow-hidden">
-              <img src="/u3..png" alt="shoe" className="w-full group-hover:scale-110 transition duration-0" />
+              <img src="/u3.1.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-0" />
             </div>
-            <div className="mt-6 flex justify-between items-start px-2">
+            <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-normal uppercase text-sm tracking-tight">U-3</h3>
-                <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">300,00 €</p>
+                <h3 className="font-semibold uppercase text-[16px] text-sm tracking-tight">U-3</h3>
+             
               </div>
              
             </div>
@@ -246,12 +233,12 @@ export default function Home() {
           {/* Produkt 3 */}
           <div className="group cursor-pointer">
             <div className=" aspect-[7/5] flex items-center justify-center p-12 overflow-hidden">
-              <img src="/retrolow..png" alt="shoe" className="w-full group-hover:scale-110 transition duration-0" />
+              <img src="/retrolow1.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-0" />
             </div>
-            <div className="mt-6 flex justify-between items-start px-2">
+            <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-normal uppercase text-sm tracking-tight">Retro Low</h3>
-                <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">249,99 €</p>
+                <h3 className="font-semibold uppercase text-[16px] text-sm tracking-tight">Retro Low</h3>
+         
               </div>
  
             </div>
@@ -260,12 +247,12 @@ export default function Home() {
 
           <div className="group cursor-pointer">
             <div className=" aspect-[7/5] flex items-center justify-center p-12 overflow-hidden">
-              <img src="/retrohigh.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-0" />
+              <img src="/retrohigh1.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-0" />
             </div>
-            <div className="mt-6 flex justify-between items-start px-2">
+            <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-normal uppercase text-sm tracking-tight">Retro Low</h3>
-                <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">249,99 €</p>
+                <h3 className="font-semibold uppercase text-[16px] text-sm tracking-tight">Retro Low</h3>
+             
               </div>
  
             </div>
@@ -274,6 +261,17 @@ export default function Home() {
 
 
 
+        </div> 
+        
+         <div className="flex-col md:flex justify-center md:items-center items-center py-15">
+      
+          <div className='flex items-start md:items-end justify-center'>
+            <Link href="/">
+          <button className="bg-black text-[13px] text-white md:mt-10 px-6 py-3 font-bold md:items-end hover:invert transition-all">
+            Zobraziť všetko
+          </button>
+          </Link>
+          </div>
         </div>
       </section>
 
@@ -313,16 +311,18 @@ export default function Home() {
     {/* Na mobile bude druhá v poradí */}
     {/* Na PC bude vľavo vďaka šírke 'md:w-1/3' */}
     <div className="w-full md:w-1/3 flex flex-col justify-center items-center md:items-start py-10 md:pr-10 z-20 bg-white">
-      <h2 className="text-black text-[24px] md:text-[32px] font-normal  uppercase leading-tight mb-6">
+      <h2 className="text-black text-[24px] md:text-[32px] font-semibold uppercase leading-tight mb-6">
         Nová kolekcia
       </h2>
       <p className="text-zinc-900 text-[14px] text-center md:text-left md:text-[16px] font-light max-w-[280px] mb-8 leading-relaxed">
         Definuj jar výnimočnou obuvou <br className="hidden md:block" />
         z našej novej limitovanej edície.
       </p>
+       <Link href="/spring">
       <button className="bg-black text-[13px] text-white px-6 py-3 font-bold hover:invert transition-all ">
         Pozri sa
       </button>
+      </Link>
     </div>
 
   </div>
@@ -359,7 +359,7 @@ export default function Home() {
     <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
       <motion.h1 
         // VRÁTENÉ ANIMAČNÉ VLASTNOSTI (Props)
-        initial={{ opacity: 0, y: 50 }}         // Začne dole a priesvitný
+        initial={{ opacity: 0, y: 120 }}         // Začne dole a priesvitný
         whileInView={{ opacity: 1, y: 0 }}      // Keď k nemu prídeš, vysunie sa
         transition={{ 
           duration: 3.0, 
@@ -374,16 +374,24 @@ export default function Home() {
     </div>
 
     {/* TOPÁNKA NA KOCKE (V popredí, relative) */}
-    <div className="relative z-20 w-[140%] md:w-[40%]  pointer-events-none">
+    <motion.div 
+       initial={{ opacity: 0, x: -120 }}         // Začne dole a priesvitný
+        whileInView={{ opacity: 1, x: 0 }}      // Keď k nemu prídeš, vysunie sa
+        transition={{ 
+          duration: 0.8, 
+          ease: [0.22, 1, 0.36, 1]              // Luxusný plynulý dojazd
+        }}
+className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
+
       <Image 
-        src="/Untitled-1asak.png" 
+        src="/airzoom2..png" 
         alt="Topánka na kocke" 
         width={1200} 
         height={800} 
-        className="object-contain"
+        className="object-contain  "
         priority 
       />
-    </div>
+    </motion.div>
     
   </div>
 
@@ -391,25 +399,19 @@ export default function Home() {
   {/* 2. SPODNÁ ČASŤ (Texty pod topánkou) */}
   {/* ========================================================= */}
   {/* Odstránili sme -mt-16! Teraz texty začínajú prirodzene pod kockou */}
-  <div className="absolute z-30 w-full flex flex-col items-center text-center md:top-[90vh]  top-[50vh] md:mb-80">
+<div className="absolute bottom-10 md:bottom-20 z-30 w-full flex flex-col items-center justify-center px-6">
     
-    {/* Prvá skupina poznámok */}
-    <div className="flex flex-col items-center space-y-4  ">
-<HandwrittenNote 
-        text="nike x move " 
-        delay={0.2} 
-        className="text-4xl md:text-8xl text-black" 
+    <div className="mb-1 md:mb-10">
+      <HandwrittenNote 
+        text="nike x moves" 
+        className="text-5xl md:text-8xl text-black italic " 
       />
-         
-
-   
     </div>
 
-    {/* TLAČIDLO (Úplne na konci) */}
-    <Link href="/produkt/pro2">
-    <button className="bg-black text-white  px-6 py-3 font-bold uppercase tracking-widest hover:invert transition-all w-full max-w-sm pointer-events-auto">
-      Objav
-    </button>
+    <Link href="/produkt/pro2" className="w-fullmax-w-xs">
+      <button className="bg-black text-[13px] text-white px-6 py-3 font-bold hover:invert transition-all">
+        Objav
+      </button>
     </Link>
   </div>
 
@@ -430,12 +432,12 @@ export default function Home() {
   
 
 
-<section className='w-full bg-black flex flex-col items-center justify-center py-20 md:py-80 overflow-hidden'>
+<section className='w-full h-[100vw] md:h-[50vw] bg-black flex flex-col items-center justify-center py-20 md:py-80 overflow-hidden'>
   
   {/* Nadpisy pod sebou v strede */}
   <div className="flex flex-col items-center text-center">
   
-    <h1 className='font-light text-[80px] md:text-[400px] opacity-50 text-white uppercase leading-none tracking-[0.1em] '> UNDERMOVEUNDERMOVE <br />UNDERMOVE</h1>
+    <h1 className='font-semibold text-[80px] md:text-[400px] opacity-100 text-white uppercase leading-none tracking-[0.1em] '> UNDERMOVEUNDERMOVE <br />UNDERMOVE</h1>
     
   </div>
 
@@ -469,24 +471,24 @@ export default function Home() {
     <div className="relative aspect-[16/12] md:aspect-[16/8] w-full mb-10 md:mb-20">
       
       {/* Fotka vľavo - šírka v % zabezpečí, že sa nezrazí */}
-      <div className="absolute left-0 top-[10%] w-[35%] md:w-[30%] z-20 rotate-[-8deg]">
+      <div className="absolute left-0 top-[10%] w-[35%] md:w-[35%] z-230 hover:scale-105 duration-500 rotate-[-8deg]">
         <Image src="/urbancity3..png" width={550} height={450} alt="Lifestyle" className="w-full h-auto" />
       </div>
 
       {/* Fotka v strede - hlavný vizuál */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[45%] md:w-[35%] rotate-[2deg] z-10 ">
+      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[45%] md:w-[45%] hover:scale-105 duration-500 rotate-[2deg] z-10 ">
         <Image src="/urbancity..png" width={450} height={350} alt="City walk" className="w-full h-auto" />
       </div>
 
       {/* Fotka vpravo */}
-      <div className="absolute right-0 top-[15%] w-[30%] md:w-[28%] rotate-[3deg] z-20 ">
+      <div className="absolute right-0 top-[15%] w-[30%] md:w-[38%] hover:scale-105 duration-500 rotate-[3deg] z-220 ">
         <Image src="/urbancity2.png" width={500} height={450} alt="Models" className="w-full h-auto" />
       </div>
 
       {/* KRÚŽOK A TOPÁNKA (Plávajúci element) */}
       {/* Používame bottom namiesto top, aby to držalo spodok koláže */}
       <div className={`
-  absolute left-1/2 -translate-x-1/2 z-30 flex flex-col items-center
+  absolute left-1/2 -translate-x-1/2 md:z-30 z-600 flex flex-col items-center
   /* Mobil na výšku: držíme sa nižšie */
   bottom-[-25%] w-[60%]
   /* Mobil na ŠÍRKU (Landscape): posunieme to nižšie a zmenšíme, aby to neprekrylo fotky */
@@ -495,10 +497,10 @@ export default function Home() {
   md:bottom-[-10%] md:w-[400px] md:scale-100
 `}>
         
-        <div className="relative group transition-transform hover:scale-105 duration-500 w-full flex flex-col items-center">
+        <div className="relative  group transition-transform hover:scale-105 duration-500 w-full flex flex-col items-center">
           {/* Topánka */}
           <div className="w-[70%] mb-[-3.1%] ml-[-18%] z-10">
-             <Image src="/skatepro..png" width={400} height={200} alt="Retro Dinamic" className="w-full h-auto" />
+             <Image src="/skatepro..png" width={400} height={200} alt="Retro Dinamic" className="w-full  h-auto" />
           </div>
           {/* Podstavec */}
           <div className='w-full'>
@@ -507,10 +509,10 @@ export default function Home() {
         </div>
 
         {/* Nápis pod topánkou */}
-        <div className="relative w-full mt-4">
+        <div className="relative  hover:scale-105 duration-500 w-full mt-4">
           <Image src="/kresba.png" width={300} height={400} alt="Exkluzívne modely" className="w-full h-auto" />
-          <p className="absolute inset-0 flex mb-[19.5%] items-center justify-center font-bold text-[3.5vw] md:text-xl text-black uppercase tracking-tight">
-            Exkluzívne modely
+          <p className="absolute inset-0 flex mb-[19.5%] items-center justify-center text-black text-[24px] md:text-[32px] font-semibold uppercase leading-tight">
+            Exkluzívne 
           </p>
         </div>
       </div>
@@ -527,14 +529,14 @@ export default function Home() {
       </div>
 
       {/* PRODUKTOVÝ GRID / SCROLL */}
-      <div className="flex md:grid md:grid-cols-3 gap-12 ml-5 md:ml-0 overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar pb-10">
+      <div className="flex md:grid md:grid-cols-3 md:gap-12 gap-4 ml-5 md:ml-0 overflow-x-auto text-center md:overflow-visible snap-x snap-mandatory no-scrollbar pb-10">
         {/* Prvá topánka */}
         <div className="flex-shrink-0 w-[75%] md:w-full snap-center group cursor-pointer">
           <div className=" p-6 mb-4">
             <Image src="/urbanlow.png" width={400} height={300} alt="Retro Dinamic" className='group-hover:scale-110 transition duration-0'/>
           </div>
-          <h3 className="font-bold uppercase tracking-tighter text-xl">Retro Dinamic</h3>
-          <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">280,00 €</p>
+          <h3 className="font-semibold uppercase text-[16px] text-sm tracking-tight">Retro Dinamic</h3>
+    
         </div>
 
         {/* Druhá topánka */}
@@ -542,8 +544,8 @@ export default function Home() {
           <div className=" p-6 mb-4">
             <Image src="/ecostreet.png" width={400} height={300} alt="Retro Dinamic" className='group-hover:scale-110 transition duration-0' />
           </div>
-          <h3 className="font-bold uppercase tracking-tighter text-xl">Retro Dinamic</h3>
-          <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">280,00 €</p>
+          <h3 className="font-semibold uppercase text-[16px]  text-sm tracking-tight">Retro Dinamic</h3>
+       
         </div>
 
         {/* Tretia topánka */}
@@ -551,8 +553,8 @@ export default function Home() {
           <div className=" p-6 mb-4">
             <Image src="/skatepro..png" width={400} height={300} alt="Retro Dinamic" className='group-hover:scale-110 transition duration-0' />
           </div>
-          <h3 className="font-bold uppercase tracking-tighter text-xl">Retro Dinamic</h3>
-          <p className="text-normal text-[12px] uppercase font-normal mt-1 tracking-widest">280,00 €</p>
+          <h3 className="font-semibold uppercase text-[16px] text-sm tracking-tight">Retro Dinamic</h3>
+
         </div>
       </div>
     </div>
@@ -616,7 +618,7 @@ export default function Home() {
 </section>
 
 
-      <footer className="bg-white text-black py-16 px-6 md:px-24 border-t border-gray-100">
+      <footer className="bg-white text-black py-16 px-6 md:px-24 border-t border-gray-200">
   <div className="max-w-7xl mx-auto space-y-16">
     
     
@@ -624,14 +626,14 @@ export default function Home() {
     {/* 2. SEKČIA: LOGÁ PLATBY A DOPRAVY */}
     <div className="flex flex-col items-center py-10 space-y-8">
       <div className="text-center">
-        <p className="text-gray-400 uppercase tracking-widest text-[10px] mb-4">Spôsoby platby</p>
+        <p className="text-black uppercase tracking-widest text-[10px] mb-4">Spôsoby platby</p>
         <div className="flex flex-wrap justify-center gap-6 grayscale opacity-100">
           <img src="/platba.png" className="h-6" alt="Platba" />
         </div>
       </div>
       
       <div className="text-center">
-        <p className="text-gray-400 uppercase text-center tracking-widest text-[10px] mb-4">Doprava</p>
+        <p className="text-black uppercase text-center tracking-widest text-[10px] mb-4">Doprava</p>
         <div className="flex flex-wrap justify-center gap-8 grayscale opacity-100">
           <img src="/doprava.png" className="h-8" alt="Doprava" />
          
@@ -665,8 +667,8 @@ export default function Home() {
         <h4 className="font-bold uppercase tracking-widest text-xs">Kontakt</h4>
         <ul className="space-y-2 text-sm text-gray-600">
           <li className="font-medium">+421 980 000 222</li>
-          <li>info@virex.sk</li>
-          <li className="text-xs text-gray-400">Pon - Pia: 08:00 - 18:00</li>
+          <li>info@moves.sk</li>
+          <li className="text-xs text-black">Pon - Pia: 08:00 - 18:00</li>
         </ul>
       </div>
 
@@ -681,12 +683,12 @@ export default function Home() {
     </div>
 
     {/* SPODNÁ LIŠTA: COPYRIGHT */}
-    <div className="border-t border-gray-100 pt-8 flex flex-col w-full  md:flex-row justify-between items-center text-[10px] text-black-400 uppercase tracking-widest">
-      <p>© 2026 VIREX Všetky práva vyhradené.</p>
+    <div className="border-t border-gray-200 pt-8 flex flex-col w-full  md:flex-row justify-between items-center text-[10px] text-black-400 uppercase tracking-widest">
+      <p>© 2026 MOVES Všetky práva vyhradené.</p>
       <div className="flex gap-4 mt-4 md:mt-0">
         <span className="hover:text-black cursor-pointer">Obchodné podmienky</span>
         <span className="hover:text-black cursor-pointer">Ochrana údajov</span>
-        <span className='hoover:text-black cursor-pointer'>Virex: SK  CZ  IT  HR  AT  FR  UK</span>
+        <span className='hoover:text-black cursor-pointer'>MOVES: SK  CZ  IT  HR  AT  FR  UK</span>
       </div>
     </div>
   </div>
