@@ -43,7 +43,7 @@ export default function SpringCollection() {
         <h2 className="text-xl uppercase leading-tight md:text-8xl font-semibold text-center text-black tracking-tighter leading-tight mb-12">
           STREETWEAR  MEETS LUXURY.
         </h2>
-        <p className="text-black text-xm uppercase  leading-relaxed md:text-xl font-light [word-spacing:0.5rem] text-left ">
+        <p className="text-black text-xs uppercase  leading-relaxed md:text-xl font-light [word-spacing:0.5rem] text-left ">
           Naša jarná kolekcia Urban Classic Spring reflektuje surovosť betónu a ľahkosť jarného rána. 
             Každý pár je výsledkom lokálnej produkcie a nekompromisnej kvality. Pri tvorbe tejto kolekcie sme hľadali
              rovnováhu v kontrastoch. Minimalistické línie a studené tóny sivej, inšpirované mestským brutalizmom, sme vyvážili
@@ -71,7 +71,7 @@ export default function SpringCollection() {
         <p className="text-black text-center text-xl uppercase  leading-relaxed  md:text-xl font-semibold  mb-6">
           Objav miesta z obuvou navrhnutou pre ľahkosť.
         </p>
-        <p className="text-black  md:text-xl text-xm uppercase leading-relaxed font-light [word-spacing:0.5rem] ">
+        <p className="text-black  md:text-xl text-xs uppercase leading-relaxed font-light [word-spacing:0.5rem] ">
         
        
   
@@ -89,7 +89,7 @@ export default function SpringCollection() {
   {/* --- ZÁVER --- */}
   <section className="bg-white pb-32 px-6">
     <div className="max-w-4xl mx-auto  pt-20">
-      <p className="text-black text-xm uppercase  [word-spacing:0.5rem]  md:text-xl font-light leading-relaxed">
+      <p className="text-black text-xs uppercase  [word-spacing:0.5rem]  md:text-xl font-light leading-relaxed">
        Záver procesu patrí detailom, ktoré definujú charakter Urban Classic. Anatomicky tvarované stielky vkladáme až po finálnej kontrole kvality, nasledované ručným voskovaním šnúrok, ktoré im dodáva nielen unikátny vzhľad, ale aj odolnosť voči jarnej vlhkosti. Každý pár tak prejde desiatkami rúk predtým, než sa prvýkrát dotkne ulice. Je to poctivý proces, ktorého výsledkom
             nie je len obuv, ale hmatateľný dôkaz toho, že lokálna produkcia a moderný dizajn môžu tvoriť dokonalú jednotu.
       </p>

@@ -82,7 +82,7 @@ const removeItem = useCart((state) => state.removeItem);
             <img 
               src="/logo.png" 
               alt="logo" 
-              className={`h-auto transition-all mr-10 duration-500 ${isScrolled ? 'w-8 md:w-10' : 'w-10 md:w-15'}`}
+              className={`h-auto transition-all mr-8 duration-500 ${isScrolled ? 'w-8 md:w-10' : 'w-10 md:w-15'}`}
             />
           </Link>
         </div>
@@ -117,7 +117,7 @@ const removeItem = useCart((state) => state.removeItem);
         <path d="M16 10a4 4 0 0 1-8 0"></path>
       </svg>
     </button>
-    <span className={`ml-1 px-2 py-0.5 rounded-full text-[12px] transition-all ${isScrolled || isMenuOpen ? ' text-black' : ' text-black'}`}>
+    <span className={`ml-1 py-0.5 rounded-full text-[12px] transition-all ${isScrolled || isMenuOpen ? ' text-black' : ' text-black'}`}>
       {items.length}
       
     </span>
