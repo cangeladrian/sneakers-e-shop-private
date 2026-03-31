@@ -319,7 +319,7 @@ const handleAddToCart = () => {
       <div className="text-center">
         <p className="text-gray-400 uppercase tracking-widest text-[10px] mb-4">Spôsoby platby</p>
         <div className="flex flex-wrap justify-center gap-6 grayscale opacity-100">
-          <img src="/platba.png" className="h-6" alt="Platba" />
+          <img src="/platba1.png" className="h-6" alt="Platba" />
         </div>
       </div>
       

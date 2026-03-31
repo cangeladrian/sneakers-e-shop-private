@@ -125,69 +125,92 @@ const removeItem = useCart((state) => state.removeItem);
 </div>
       </nav>
 
-      {/* --- 2. KOŠÍK (DRAWER) --- */}
-      <AnimatePresence>
-        {isCartOpen && (
-          <>
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsCartOpen(false)}
-              className="fixed inset-0 bg-black/40 z-[200]"
-            />
-            
-            <motion.div 
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'tween', ease: [0.22, 1, 0.36, 1], duration: 0.5 }}
-              className="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[210] flex flex-col"
-            >
-              <div className="flex-1 overflow-y-auto p-8 space-y-6 text-black">
-  {items.length === 0 ? (
+ {/* --- 2. KOŠÍK (DRAWER) --- */}
+<AnimatePresence>
+  {isCartOpen && (
     <>
-     <button onClick={() => setIsCartOpen(false)} className="text-xs uppercase  font-bold text-black hover:opacity-50 transition">Zavrieť</button>
-     <h2 className="text-xl text-center font-bold uppercase tracking-widest">Tvoj košík</h2>
-     <p className="text-gray-400 text-center mb-6">Tvoj košík je momentálne prázdny.</p> 
-                
-       </>      
-
-                ) : (
-    items.map((item, index) => (
+      {/* Overlay (Pozadie) */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setIsCartOpen(false)}
+        className="fixed inset-0 bg-black/40 z-[200]"
+      />
       
-      <div key={index} className="flex gap-4 border-b border-zinc-100 pb-4">
-             <button onClick={() => setIsCartOpen(false)} className="text-xs uppercase  font-bold text-black hover:opacity-50 transition">Zavrieť</button>
-
-        <img src={item.foto} className="w-20 h-20 object-contain bg-zinc-50" />
-        <div className="flex-1">
-          <h4 className="font-bold uppercase text-xs tracking-tighter">{item.nazov}</h4>
-          <p className="text-[10px] text-zinc-400 uppercase mt-1">Veľkosť: {item.size}</p>
-          <p className="font-bold text-sm mt-2">{item.cena}</p>
+      {/* Samotný Drawer */}
+      <motion.div 
+        initial={{ x: '100%' }}
+        animate={{ x: 0 }}
+        exit={{ x: '100%' }}
+        transition={{ type: 'tween', ease: [0.22, 1, 0.36, 1], duration: 0.5 }}
+        className="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[210] flex flex-col shadow-2xl"
+      >
+        
+        {/* --- FIXNÁ HLAVIČKA KOŠÍKA (Vždy na vrchu) --- */}
+        <div className="p-6 border-b border-zinc-100 flex justify-between items-center bg-white">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-black">Tvoj košík</h2>
+          <button 
+            onClick={() => setIsCartOpen(false)} 
+            className="text-[10px] uppercase font-bold text-black hover:opacity-50 transition border-b border-black pb-0.5"
+          >
+            Zavrieť
+          </button>
         </div>
-        <button onClick={() => removeItem(index)} className="text-[10px] uppercase font-bold text-red-500 self-start">
-          X
-        </button>
-      </div>
-    ))
-  )}
-</div>
-              
-           
-              <div className="p-8 border-t bg-gray-50 text-black">
-                <div className="flex justify-between mb-6">
-                  <span className="uppercase text-xs font-bold text-gray-500">Celkom</span>
-                  <span className="text-xl font-bold">
-  {celkovaCena.toFixed(2).replace('.', ',')} €
-</span>
-                </div>
-                <button className="w-full bg-black text-white py-5 uppercase text-xs font-bold tracking-[0.2em] hover:bg-neutral-800 transition">Pokladňa</button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
 
+        {/* --- OBSAH KOŠÍKA (Scrollable) --- */}
+        <div className="flex-1 overflow-y-auto p-8 space-y-6 text-black">
+          {items.length === 0 ? (
+            <div className="h-full flex flex-col items-center justify-center space-y-4">
+              <p className="text-gray-400 text-center uppercase text-[10px] tracking-widest">Tvoj košík je momentálne prázdny.</p> 
+            </div>
+          ) : (
+            items.map((item, index) => (
+              <div key={index} className="flex gap-4 border-b border-zinc-100 pb-6 items-center">
+                {/* Fotka */}
+                <div className="w-20 h-20 bg-zinc-50 relative flex-shrink-0">
+                  <img src={item.foto} className="w-full h-full object-contain p-2" />
+                </div>
+
+                {/* Info o produkte */}
+                <div className="flex-1">
+                  <h4 className="font-bold uppercase text-[11px] tracking-tighter leading-tight">{item.nazov}</h4>
+                  <p className="text-[10px] text-zinc-400 uppercase mt-1">Veľkosť: {item.size}</p>
+                  <div className="flex items-center justify-between mt-2">
+                    <p className="font-bold text-sm">{item.cena}</p>
+                    <span className="text-[10px] text-zinc-400 uppercase font-bold">1 ks</span>
+                  </div>
+                </div>
+
+                {/* Odstrániť button */}
+                <button 
+                  onClick={() => removeItem(index)} 
+                  className="text-[10px] uppercase font-bold text-red-500 hover:text-red-700 transition px-2"
+                >
+                  X
+                </button>
+              </div>
+            ))
+          )}
+        </div>
+        
+        {/* --- PÄTA KOŠÍKA (Suma) --- */}
+        <div className="p-8 border-t bg-gray-50 text-black">
+          <div className="flex justify-between mb-6">
+            <span className="uppercase text-[10px] font-bold text-gray-500 tracking-widest">Celkom</span>
+            <span className="text-xl font-bold italic">
+              {celkovaCena.toFixed(2).replace('.', ',')} €
+            </span>
+          </div>
+          <button className="w-full bg-black text-white py-5 uppercase text-[11px] font-bold tracking-[0.3em] hover:invert transition-all">
+            Pokladňa
+          </button>
+        </div>
+
+      </motion.div>
+    </>
+  )}
+</AnimatePresence>
       {/* --- 3. FULLSCREEN OVERLAY MENU --- */}
       <div 
         onMouseMove={handleMouseMove}

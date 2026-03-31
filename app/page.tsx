@@ -628,7 +628,7 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
       <div className="text-center">
         <p className="text-black uppercase tracking-widest text-[10px] mb-4">Spôsoby platby</p>
         <div className="flex flex-wrap justify-center gap-6 grayscale opacity-100">
-          <img src="/platba.png" className="h-6" alt="Platba" />
+          <img src="/platba1.png" className="h-6" alt="Platba" />
         </div>
       </div>
       
