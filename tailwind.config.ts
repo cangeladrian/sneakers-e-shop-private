@@ -8,6 +8,13 @@ export default {
   ],
   theme: {
     extend: {
+      theme: {
+  extend: {
+    screens: {
+      'mobile-h': { 'raw': '(max-height: 500px) and (orientation: landscape)' },
+    },
+  },
+},
  
     fontFamily: {
       // Povieme Tailwindu, aby pod triedou 'font-syne' hľadal našu premennú

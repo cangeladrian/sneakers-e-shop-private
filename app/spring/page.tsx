@@ -34,7 +34,7 @@ export default function SpringCollection() {
         <video
           autoPlay loop muted playsInline
           className="w-full h-full object-contain"
-          src="/tvarv.mp4"
+          src="/jarvideo.mp4"
         />
       </div>
       
@@ -43,7 +43,7 @@ export default function SpringCollection() {
         <h2 className="text-xl uppercase leading-tight md:text-8xl font-semibold text-center text-black tracking-tighter leading-tight mb-12">
           STREETWEAR  MEETS LUXURY.
         </h2>
-        <p className="text-black text-xs uppercase  leading-relaxed md:text-xl font-light [word-spacing:0.5rem] text-left ">
+        <p className="text-black text-xs uppercase  leading-relaxed [word-spacing:0.5rem] md:text-xl font-light  text-left ">
           Naša jarná kolekcia Urban Classic Spring reflektuje surovosť betónu a ľahkosť jarného rána. 
             Každý pár je výsledkom lokálnej produkcie a nekompromisnej kvality. Pri tvorbe tejto kolekcie sme hľadali
              rovnováhu v kontrastoch. Minimalistické línie a studené tóny sivej, inšpirované mestským brutalizmom, sme vyvážili
@@ -54,16 +54,16 @@ export default function SpringCollection() {
   </section>
 
   {/* --- GRID SEKCIÁ (Video + Text vedľa seba) --- */}
-  <section className="bg-white py-10 md:py-32 px-6">
+  <section className="bg-white py-12 md:py-32 px-6">
     <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center'>
       
       {/* VIDEO 2 - Na mobile na celú šírku, na PC vľavo */}
       <div className="w-full h-auto overflow-hidden">
         <video
           autoPlay loop muted playsInline
-          className="w-full md:h-full h-[50vw] object-cover"
+          className="w-full md:h-[30vw] grayscale h-[50vw] object-cover"
           style={{ maskSize: 'contain', WebkitMaskSize: 'contain' }}
-          src="/springles.mp4"
+          src="/lesvideo.mp4"
         />
       </div>
       
@@ -96,13 +96,22 @@ export default function SpringCollection() {
     </div>
   </section>
 
+<section className='w-full md:pb-20'>
+  <div className='flex justify-center aligin-center'>
+<img src="vyroba.png" alt="výroba" 
+className=' h-[40vh]'
+/>
+
+</div>
+
+</section>
 
 
 
 
        
 <section className="w-full flex justify-center justify-center
-           py-10">
+           py-20">
   {/* TENTO DIV DRŽÍ VŠETKY TRI POLOŽKY VEDĽA SEBA */}
   <div className=" md:flex-row  md:gap-80 flex flex-col md:grid md:grid-cols-3  gap-10 text-center   text-[12px]   font-normal ">
     
@@ -128,6 +137,7 @@ export default function SpringCollection() {
 
   <br />
 </section>
+
 
 
       <footer className="bg-white text-black py-16 px-6 md:px-24 border-t border-gray-200">

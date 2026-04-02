@@ -19,7 +19,7 @@
   }
 }
 
-@media screen and (orientation: landscape) and (max-height: 500px) {
+@media screen and (orientation: landscape) and (max-height:full) {
   /* Toto sa spustí len na otočenom mobile */
   section {
     /* Zmenšíme celú sekciu tak, aby sa zmestila na nízky displej */

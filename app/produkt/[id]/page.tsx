@@ -148,7 +148,7 @@ const handleAddToCart = () => {
 
           <button
           onClick={handleAddToCart}
-          className="w-full bg-black text-white md:py-6 py-3 font-bold uppercase tracking-[0.2em] hover:invert transition-all active:scale-[0.98]">
+          className="w-full bg-black text-[12px] md:text-[15px] text-white md:py-6 py-3 font-bold uppercase tracking-[0.2em] hover:invert transition-all active:scale-[0.98]">
             Pridať do košíka
           </button>
 
@@ -164,18 +164,18 @@ const handleAddToCart = () => {
          
           
           <div className="space-y-4">
-            <p className="text-black text-center md:text-left leading-relaxed text-lg">{produkt.popis}</p>
+            <p className="text-black text-center md:text-left uppercase  leading-relaxed [word-spacing:0.5rem] text-lg">{produkt.popis}</p>
             
           </div>
 
           <div className="pt-10">
             <br />
             <h3 className="text-xs font-semibold  text-black">O produkte:</h3>
-             <p className="text-black text-sm leading-relaxed">{produkt.opis}</p>
+             <p className="text-black text-sm uppercase  leading-relaxed [word-spacing:0.5rem]">{produkt.opis}</p>
           </div>
 
           <div className="pt-10 ">
-             <p className="text-black text-sm leading-relaxed">{produkt.popis2}</p>
+             <p className="text-black text-sm uppercase  leading-relaxed [word-spacing:0.5rem]">{produkt.popis2}</p>
           </div>
           
         </div>
