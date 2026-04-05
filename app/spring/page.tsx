@@ -54,7 +54,7 @@ export default function SpringCollection() {
   </section>
 
   {/* --- GRID SEKCIÁ (Video + Text vedľa seba) --- */}
-  <section className="bg-white py-12 md:py-32 px-6">
+  <section className="bg-white py-10 md:py-32 px-6">
     <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center'>
       
       {/* VIDEO 2 - Na mobile na celú šírku, na PC vľavo */}
@@ -86,9 +86,21 @@ export default function SpringCollection() {
     </div>
   </section>
 
+
+<section className='w-full md:pb-20'>
+  <div className='flex justify-center  aligin-center'>
+<img src="vyroba.png" alt="výroba" 
+className=' h-[30vh] w-auto'
+/>
+
+</div>
+
+</section>
+
+
   {/* --- ZÁVER --- */}
   <section className="bg-white pb-32 px-6">
-    <div className="max-w-4xl mx-auto  pt-20">
+    <div className="max-w-4xl mx-auto  pt-10">
       <p className="text-black text-xs uppercase  [word-spacing:0.5rem]  md:text-xl font-light leading-relaxed">
        Záver procesu patrí detailom, ktoré definujú charakter Urban Classic. Anatomicky tvarované stielky vkladáme až po finálnej kontrole kvality, nasledované ručným voskovaním šnúrok, ktoré im dodáva nielen unikátny vzhľad, ale aj odolnosť voči jarnej vlhkosti. Každý pár tak prejde desiatkami rúk predtým, než sa prvýkrát dotkne ulice. Je to poctivý proces, ktorého výsledkom
             nie je len obuv, ale hmatateľný dôkaz toho, že lokálna produkcia a moderný dizajn môžu tvoriť dokonalú jednotu.
@@ -96,15 +108,6 @@ export default function SpringCollection() {
     </div>
   </section>
 
-<section className='w-full md:pb-20'>
-  <div className='flex justify-center aligin-center'>
-<img src="vyroba.png" alt="výroba" 
-className=' h-[40vh]'
-/>
-
-</div>
-
-</section>
 
 
 

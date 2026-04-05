@@ -235,9 +235,9 @@ const removeItem = useCart((state) => state.removeItem);
 
         <div className="relative h-full container mx-auto px-12 flex items-center justify-end">
           <div className="flex flex-col items-start text-white space-y-4 md:space-y-8 pr-20 uppercase font-normal text-[32px] md:text-[32px]">
-            <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-red-600 transition-colors">DOMOV</Link>
-            <h1 className="hover:text-red-600 transition-colors cursor-pointer">ŽENY</h1>
-            <h1 className="hover:text-red-600 transition-colors cursor-pointer">MUŽI</h1>
+            <Link href="/" onClick={() => setIsMenuOpen(false)} className=" transition-colors">DOMOV</Link>
+            <Link href="/" onClick={() => setIsMenuOpen(false)} className=" transition-colors">ŽENA</Link>
+            <Link href="/" onClick={() => setIsMenuOpen(false)} className="transition-colors">MUŽ</Link>
           </div>
         </div>
       </div>

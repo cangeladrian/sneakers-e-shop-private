@@ -119,7 +119,7 @@ export default function Home() {
     playsInline
     className="absolute inset-0 w-full h-full object-cover md:hidden"
   >
-    <source src="/hvmd.mp4" type="video/mp4" />
+    <source src="/hvmd2.mp4" type="video/mp4" />
   </video>
 
   {/* 2. VIDEO PRE DESKTOP (Skryté na mobile, zobrazené od 'md' vyššie) */}
@@ -130,7 +130,7 @@ export default function Home() {
     playsInline
     className="hidden md:block absolute inset-0 w-full h-full object-cover"
   >
-    <source src="/hv.mp4" type="video/mp4" />
+    <source src="/hv2.mp4" type="video/mp4" />
   </video>
   <div className="relative w-full h-auto flex items-center justify-center">
 {/* 2. VRSTVA: TEXTY (V popredí) */}
@@ -195,7 +195,18 @@ export default function Home() {
 
       {/* 3. PRODUCT GRID (PRODUKTY POD SEBOU) */}
       <section className="max-w-7xl mx-auto mt-0 md:mt-20 px-6 pt-10 md:pt-25">
-       
+        
+        <div className='flex items-start pb-2 md:items-end justify-center'>
+            
+         <motion.h1  // VRÁTENÉ ANIMAČNÉ VLASTNOSTI (Props)
+        initial={{ opacity: 0, y: 80 }}         // Začne dole a priesvitný
+        whileInView={{ opacity: 1, y: 0 }}      // Keď k nemu prídeš, vysunie sa
+        transition={{ 
+          duration: 2.0, 
+          ease: [0.22, 1, 0.36, 1]              // Luxusný plynulý dojazd
+        }} className='font-semibold  text-[16px]  tracking-tight'>Top kúsky</motion.h1>
+          
+          </div>
 
 
         {/* Mriežka s 3 stĺpcami */}
@@ -337,19 +348,25 @@ export default function Home() {
       <section className="max-w-7xl mx-auto mt-0 md:mt-20 px-6 md:pt-10 md:mb-50">
       <div className="flex-col md:flex justify-center md:items-center items-center py-15">
       
-          <div className='flex items-start md:items-end justify-center'>
+          <div className='flex items-start pb-2 md:items-end justify-center'>
             
-         <h1 className='font-semibold  text-[16px]  tracking-tight'>Oblečenie a doplnky</h1>
+         <motion.h1  // VRÁTENÉ ANIMAČNÉ VLASTNOSTI (Props)
+        initial={{ opacity: 0, y: 80 }}         // Začne dole a priesvitný
+        whileInView={{ opacity: 1, y: 0 }}      // Keď k nemu prídeš, vysunie sa
+        transition={{ 
+          duration: 2.0, 
+          ease: [0.22, 1, 0.36, 1]              // Luxusný plynulý dojazd
+        }} className='font-semibold  text-[16px]  tracking-tight'>Oblečenie a doplnky</motion.h1>
           
           </div>
 
         {/* Mriežka s 3 stĺpcami */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-8">
           
           {/* Produkt 1 */}
          
           <div className="group cursor-pointer">
-            <div className=" aspect-[7/5] flex items-center justify-center p-12 overflow-hidden">
+            <div className=" md:aspect-[7/5] aspect-[8/6] flex items-center justify-center p-2 md:p-12 overflow-hidden">
               <img src="/ciapka.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
             </div>
             <div className="mt-6 flex justify-center items-center px-2">
@@ -365,8 +382,8 @@ export default function Home() {
 
           {/* Produkt 2 */}
           <div className="group cursor-pointer">
-            <div className=" aspect-[7/5] flex items-center justify-center p-12 overflow-hidden">
-              <img src="/tricko.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
+            <div className="  md:aspect-[7/5] aspect-[8/6] flex items-center justify-center p-2 md:p-12 overflow-hidden">
+              <img src="/tricko.png" alt="shoe" className="w-full  group-hover:scale-110 transition duration-500" />
             </div>
             <div className="mt-6 flex justify-center items-center px-2">
               <div>
@@ -389,18 +406,26 @@ export default function Home() {
 
 
         </div> 
-        <div className="group cursor-pointer">
-            <div className=" aspect-[7/5] flex items-center justify-center p-12 overflow-hidden">
-              <img src="/batoh.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
+
+
+
+<div className="flex justify-center">
+
+        <div className="group md:w-[70%] w-[100%] cursor-pointer ">
+            <div className=" aspect-[7/5] w-full h-flex items-center justify-center col-span-3 p-12 overflow-hidden">
+              <img src="/taska2.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
             </div>
             <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-semibold  text-[16px] text-sm tracking-tight">MOVES batoh</h3>
+                <h3 className="font-semibold  text-[16px] text-sm tracking-tight">MOVES taška</h3>
              
               </div>
              
             </div>
           </div>
+             </div> 
+
+          
          
         </div>
       </section>
