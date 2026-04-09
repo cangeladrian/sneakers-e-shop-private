@@ -176,7 +176,7 @@ export default function Home() {
         transition={{ 
           duration: 1.0, 
           ease: [0.22, 1, 0.36, 1]              // 
-        }} className='uppercase leading-relaxed font-bold [word-spacing:0.5rem] md:text-[32px] text-[24px]  tracking-tight'>OBJAV Top kúsky</motion.h1>
+        }} className='uppercase leading-relaxed font-bold [word-spacing:0.5rem] md:text-[32px] text-[24px]  tracking-tight'>najlepšie kúsky</motion.h1>
           
           </div>
 
