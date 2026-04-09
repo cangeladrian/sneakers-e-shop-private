@@ -171,7 +171,7 @@ export default function Home() {
         <div className='flex justify-center py-4 mt-8 md:mt-0 md:justify-start items-start'>
             
          <motion.h1  // VRÁTENÉ ANIMAČNÉ VLASTNOSTI (Props)
-        initial={{ opacity: 0, y: 40 }}         //
+        initial={{ opacity: 0, y: 10 }}         //
         whileInView={{ opacity: 1, y: 0 }}      // 
         transition={{ 
           duration: 1.0, 
@@ -291,9 +291,14 @@ export default function Home() {
     {/* 2. TEXTOVÁ ČASŤ (Nová kolekcia) */}
   
     <div className="w-full md:w-1/8 flex flex-col justify-center items-center md:items-center py-10 z-20 bg-white">
-      <h2 className="text-black text-[24px] md:text-[32px] font-bold uppercase leading-tight mb-6">
+      <motion.h2  initial={{ opacity: 0, y: 10 }}         // 
+        whileInView={{ opacity: 1, y: 0 }}      //
+        transition={{ 
+          duration: 1.0, 
+          ease: [0.22, 1, 0.36, 1]              //
+        }} className="text-black text-[24px] md:text-[32px] font-bold uppercase leading-tight mb-6">
         Nová kolekcia
-      </h2>
+      </motion.h2>
       <p className="text-zinc-900 text-[14px] text-center md:text-left md:text-[16px] font-light max-w-[280px] mb-8 leading-relaxed">
         Definuj jar výnimočnou obuvou <br className="hidden md:block" />
         z našej novej limitovanej edície.
@@ -315,10 +320,10 @@ export default function Home() {
       <section className="max-w-7xl mx-auto mt-0 md:mt-10 px-6  md:mb-50">
       <div className="flex-col  py-15">
       
-          <div className='flex flex-col  justify-center py-4 md:justify-start items-start'>
+          <div className='flex flex-col  justify-center py-4 md:justify-start items-center'>
             
          <motion.h1  // 
-        initial={{ opacity: 0, y: 40 }}         // 
+        initial={{ opacity: 0, y: 10 }}         // 
         whileInView={{ opacity: 1, y: 0 }}      //
         transition={{ 
           duration: 1.0, 
@@ -338,7 +343,7 @@ export default function Home() {
             </div>
             <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-semibold  text-[16px] text-sm tracking-tight">Structure cap</h3>
+                <h3 className="font-bold uppercase  text-[16px] text-sm tracking-tight">Structure cap</h3>
                 
               </div>
              
@@ -354,7 +359,7 @@ export default function Home() {
             </div>
             <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-semibold  text-[16px] text-sm tracking-tight">MOVES tričko</h3>
+                <h3 className="font-bold uppercase  text-[16px] text-sm tracking-tight">MOVES tričko</h3>
              
               </div>
              
@@ -384,7 +389,7 @@ export default function Home() {
             </div>
             <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-semibold  text-[16px] text-sm tracking-tight">MOVES taška</h3>
+                <h3 className="font-bold uppercase text-[16px] text-sm tracking-tight">MOVES taška</h3>
              
               </div>
              
