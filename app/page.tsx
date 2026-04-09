@@ -176,7 +176,7 @@ export default function Home() {
         transition={{ 
           duration: 1.0, 
           ease: [0.22, 1, 0.36, 1]              // 
-        }} className='uppercase leading-relaxed font-bold [word-spacing:0.5rem] md:text-[32px] text-[24px]  tracking-tight'>najlepšie kúsky</motion.h1>
+        }} className='uppercase leading-relaxed font-bold [word-spacing:0.5rem] md:text-[32px] text-[24px]  tracking-tight'>to najlepšie</motion.h1>
           
           </div>
 
@@ -454,7 +454,7 @@ export default function Home() {
 className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
 
       <Image 
-        src="/airzoom2..png" 
+        src="/airzoom.webp" 
         alt="Topánka na kocke" 
         width={1200} 
         height={800} 
