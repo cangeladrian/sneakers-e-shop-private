@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react'; // Pridané useState a useEffect
+import React, { useState, useEffect } from 'react';
 import { motion,AnimatePresence, useScroll, useTransform, useVelocity, useSpring } from 'framer-motion';
 import Image from 'next/image'
 import { Truck, RotateCcw, Gem } from 'lucide-react';
@@ -21,8 +21,6 @@ const reenieBeanie = Reenie_Beanie({
   display: 'swap',
 });
 
-
-// 1. Definícia variantov mimo komponentu (aby sa predišlo chybám pri re-renderovaní)
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: (delay: number) => ({
@@ -33,7 +31,6 @@ const containerVariants: Variants = {
     },
   }),
 };
-
 
 const letterVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -48,7 +45,6 @@ const letterVariants: Variants = {
   },
 };
 
-// 2. Samotný komponent
 const HandwrittenNote = ({ text, delay = 0, className = "" }: { text: string, delay?: number, className?: string }) => {
   const letters = Array.from(text);
 
@@ -58,15 +54,15 @@ const HandwrittenNote = ({ text, delay = 0, className = "" }: { text: string, de
       initial="hidden"
       whileInView="visible"
      
-      custom={delay} // Tu posielame delay do variantov
+      custom={delay} 
       className={`${reenieBeanie.className} flex flex-wrap ${className}`}
     >
       {letters.map((letter, index) => (
         <motion.span 
   key={index} 
 
-  // @ts-ignore
-  variants={letterVariants as any} // PRIDAJ "as any" PRIAMO SEM
+
+  variants={letterVariants as any}
 >
           {letter === " " ? "\u00A0" : letter}
         </motion.span>
@@ -87,31 +83,13 @@ export default function Home() {
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
 
   return (
     <main className="min-h-screen bg-white relative overflow-hidden">
      
-    
-
-
-
       <section className="relative w-full h-[100vh] flex items-center justify-center overflow-hidden">
         
-  
-  
-    
-   {/* 1. VIDEO PRE MOBIL (Zobrazí sa len na malých displejoch) */}
+   {/* 1. VIDEO PRE MOBIL  */}
   <video
     autoPlay
     loop
@@ -122,7 +100,7 @@ export default function Home() {
     <source src="/hvmd2.mp4" type="video/mp4" />
   </video>
 
-  {/* 2. VIDEO PRE DESKTOP (Skryté na mobile, zobrazené od 'md' vyššie) */}
+  {/* 2. VIDEO PRE DESKTOP  */}
   <video
     autoPlay
     loop
@@ -177,8 +155,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-    {/* 2. VRSTVA: NÁPIS (Hore na videu) */}
-    {/* Používame absolute inset-0 na vycentrovanie nad video */}
+
  
 
   </div>
@@ -187,24 +164,19 @@ export default function Home() {
 
 
 
-     
-
-
-
-
 
       {/* 3. PRODUCT GRID (PRODUKTY POD SEBOU) */}
       <section className="max-w-7xl mx-auto mt-0 md:mt-20 px-6 pt-10 md:pt-25">
         
-        <div className='flex items-start pb-2 md:items-end justify-center'>
+        <div className='flex justify-center py-4 mt-8 md:mt-0 md:justify-start items-start'>
             
          <motion.h1  // VRÁTENÉ ANIMAČNÉ VLASTNOSTI (Props)
-        initial={{ opacity: 0, y: 80 }}         // Začne dole a priesvitný
-        whileInView={{ opacity: 1, y: 0 }}      // Keď k nemu prídeš, vysunie sa
+        initial={{ opacity: 0, y: 40 }}         //
+        whileInView={{ opacity: 1, y: 0 }}      // 
         transition={{ 
-          duration: 2.0, 
-          ease: [0.22, 1, 0.36, 1]              // Luxusný plynulý dojazd
-        }} className='font-semibold  text-[16px]  tracking-tight'>Top kúsky</motion.h1>
+          duration: 1.0, 
+          ease: [0.22, 1, 0.36, 1]              // 
+        }} className='uppercase leading-relaxed font-bold [word-spacing:0.5rem] md:text-[32px] text-[24px]  tracking-tight'>OBJAV Top kúsky</motion.h1>
           
           </div>
 
@@ -216,11 +188,11 @@ export default function Home() {
           <Link href="/produkt/dinamic">
           <div className="group cursor-pointer">
             <div className=" aspect-[7/5] flex items-center justify-center p-12 overflow-hidden">
-              <img src="/dinamic1.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
+              <img src="/dinamic1.webp" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
             </div>
             <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-semibold uppercase text-[16px] text-sm tracking-tight">Urban Dinamic</h3>
+                <h3 className="font-bold uppercase text-[16px] text-sm tracking-tight">Urban Dinamic</h3>
                 
               </div>
              
@@ -232,11 +204,11 @@ export default function Home() {
           {/* Produkt 2 */}
           <div className="group cursor-pointer">
             <div className=" aspect-[7/5] flex items-center justify-center p-12 overflow-hidden">
-              <img src="/u3.1.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
+              <img src="/u3.1.1.webp" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
             </div>
             <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-semibold uppercase text-[16px] text-sm tracking-tight">U-3</h3>
+                <h3 className="font-bold uppercase text-[16px] text-sm tracking-tight">U-3</h3>
              
               </div>
              
@@ -246,11 +218,11 @@ export default function Home() {
           {/* Produkt 3 */}
           <div className="group cursor-pointer">
             <div className=" aspect-[7/5] flex items-center justify-center p-12 overflow-hidden">
-              <img src="/retrolow1.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
+              <img src="/retrolow1.webp" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
             </div>
             <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-semibold uppercase text-[16px] text-sm tracking-tight">Retro Low</h3>
+                <h3 className="font-bold uppercase text-[16px] text-sm tracking-tight">Retro Low</h3>
          
               </div>
  
@@ -260,11 +232,11 @@ export default function Home() {
 
           <div className="group cursor-pointer">
             <div className=" aspect-[7/5] flex items-center justify-center p-12 overflow-hidden">
-              <img src="/retrohigh1.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
+              <img src="/retrohigh1.webp" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
             </div>
             <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-semibold uppercase text-[16px] text-sm tracking-tight">Retro Low</h3>
+                <h3 className="font-bold uppercase text-[16px] text-sm tracking-tight">Retro Low</h3>
              
               </div>
  
@@ -289,10 +261,7 @@ export default function Home() {
       </section>
 
 
-
-
 <br />
-
 
 
 
@@ -301,8 +270,7 @@ export default function Home() {
   <div className="relative w-full min-h-[400px] md:min-h-[600px]  flex flex-col md:flex-row items-center justify-center  overflow-hidden">
     
     {/* 1. OBRÁZKOVÁ ČASŤ (Pohľadnica s nápisom Spring) */}
-    {/* Na mobile (flex-col) bude prvá vďaka 'order-first' */}
-    {/* Na PC (md:flex-row) bude vpravo vďaka 'md:order-last' a šírke 'md:w-2/3' */}
+
     <div className="relative w-full md:w-2/3 h-[200px] landscape:h-[600px] md:h-[600px] overflow-hidden flex items-center justify-center p-6 md:p-12  order-first md:order-last">
       <Image
         src="/urbanspring1.png"
@@ -321,10 +289,9 @@ export default function Home() {
     </div>
 
     {/* 2. TEXTOVÁ ČASŤ (Nová kolekcia) */}
-    {/* Na mobile bude druhá v poradí */}
-    {/* Na PC bude vľavo vďaka šírke 'md:w-1/3' */}
+  
     <div className="w-full md:w-1/8 flex flex-col justify-center items-center md:items-center py-10 z-20 bg-white">
-      <h2 className="text-black text-[24px] md:text-[32px] font-semibold uppercase leading-tight mb-6">
+      <h2 className="text-black text-[24px] md:text-[32px] font-bold uppercase leading-tight mb-6">
         Nová kolekcia
       </h2>
       <p className="text-zinc-900 text-[14px] text-center md:text-left md:text-[16px] font-light max-w-[280px] mb-8 leading-relaxed">
@@ -345,19 +312,19 @@ export default function Home() {
 <br />
 
     {/* 3. PRODUCT GRID (PRODUKTY POD SEBOU) */}
-      <section className="max-w-7xl mx-auto mt-0 md:mt-20 px-6 md:pt-10 md:mb-50">
-      <div className="flex-col md:flex justify-center md:items-center items-center py-15">
+      <section className="max-w-7xl mx-auto mt-0 md:mt-10 px-6  md:mb-50">
+      <div className="flex-col  py-15">
       
-          <div className='flex items-start pb-2 md:items-end justify-center'>
+          <div className='flex flex-col  justify-center py-4 md:justify-start items-start'>
             
-         <motion.h1  // VRÁTENÉ ANIMAČNÉ VLASTNOSTI (Props)
-        initial={{ opacity: 0, y: 80 }}         // Začne dole a priesvitný
-        whileInView={{ opacity: 1, y: 0 }}      // Keď k nemu prídeš, vysunie sa
+         <motion.h1  // 
+        initial={{ opacity: 0, y: 40 }}         // 
+        whileInView={{ opacity: 1, y: 0 }}      //
         transition={{ 
-          duration: 2.0, 
-          ease: [0.22, 1, 0.36, 1]              // Luxusný plynulý dojazd
-        }} className='font-semibold  text-[16px]  tracking-tight'>Oblečenie a doplnky</motion.h1>
-          
+          duration: 1.0, 
+          ease: [0.22, 1, 0.36, 1]              //
+        }} className='uppercase leading-relaxed font-bold [word-spacing:0.5rem] md:text-[32px] text-[24px]  tracking-tight'>Oblečenie a doplnky</motion.h1>
+          <p className='flex  py-2 text-zinc-900 text-[14px] text-center md:text-left md:text-[16px] font-light leading-relaxed'>Limitované dropy oblečenia, ktoré definujú tvoju súčastnú mestskú uniformu</p>
           </div>
 
         {/* Mriežka s 3 stĺpcami */}
@@ -413,7 +380,7 @@ export default function Home() {
 
         <div className="group md:w-[70%] w-[100%] cursor-pointer ">
             <div className=" aspect-[7/5] w-full h-flex items-center justify-center col-span-3 p-12 overflow-hidden">
-              <img src="/taska2.png" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
+              <img src="/taska2.webp" alt="shoe" className="w-full group-hover:scale-110 transition duration-500" />
             </div>
             <div className="mt-6 flex justify-center items-center px-2">
               <div>
@@ -439,7 +406,7 @@ export default function Home() {
   {/* ========================================================= */}
   {/* 1. HORNÁ ČASŤ (Nápis PRO2 za Topánkou) */}
   {/* ========================================================= */}
-  {/* Používame aspect-ratio na mobile, aby sa výška prispôsobila šírke */}
+
   <div className="relative w-full aspect-[3.5/5]  bg-black md:aspect-video flex items-center justify-center   overflow-hidden z-10  ">
     
     {/* POZADIE (Zostáva absolute) */}
@@ -456,28 +423,28 @@ export default function Home() {
     {/* NÁPIS PRO2 (S VRÁTENOU ANIMÁCIOU) */}
     <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
       <motion.h1 
-        // VRÁTENÉ ANIMAČNÉ VLASTNOSTI (Props)
-        initial={{ opacity: 0, y: 120 }}         // Začne dole a priesvitný
-        whileInView={{ opacity: 1, y: 0 }}      // Keď k nemu prídeš, vysunie sa
+        // 
+        initial={{ opacity: 0, y: 120 }}         // 
+        whileInView={{ opacity: 1, y: 0 }}      // 
         transition={{ 
           duration: 3.0, 
-          ease: [0.22, 1, 0.36, 1]              // Luxusný plynulý dojazd
+          ease: [0.22, 1, 0.36, 1]              // 
         }}
         
-        // STYLOVANIE (Triedy)
+        
         className="text-[35vw] md:text-[8vw] mb-[28%] font-NORMAL text-red-900 "
       >
        NEXT 3
       </motion.h1>
     </div>
 
-    {/* TOPÁNKA NA KOCKE (V popredí, relative) */}
+    {/* TOPÁNKA NA KOCKE  */}
     <motion.div 
-       initial={{ opacity: 0, x: -120 }}         // Začne dole a priesvitný
-        whileInView={{ opacity: 1, x: 0 }}      // Keď k nemu prídeš, vysunie sa
+       initial={{ opacity: 0, x: -120 }}         // 
+        whileInView={{ opacity: 1, x: 0 }}      // 
         transition={{ 
           duration: 0.8, 
-          ease: [0.22, 1, 0.36, 1]              // Luxusný plynulý dojazd
+          ease: [0.22, 1, 0.36, 1]              // 
         }}
 className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
 
@@ -496,7 +463,7 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
   {/* ========================================================= */}
   {/* 2. SPODNÁ ČASŤ (Texty pod topánkou) */}
   {/* ========================================================= */}
-  {/* Odstránili sme -mt-16! Teraz texty začínajú prirodzene pod kockou */}
+
 <div className="absolute bottom-10 md:bottom-20  z-30 w-full flex flex-col items-center justify-center px-6">
     
     <div className="mb-1 md:mb-10">
@@ -515,31 +482,21 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
 
 </section>
 
-      
-
-
-        {/* Popisy vpravo */}
-       {/* Kontajner, ktorý pokryje celú plochu a vycentruje obsah */}
-
-      
-
-   
-
-
+    
 
   
 
 
 <section className='w-full h-[100vw] md:h-[50vw] bg-black flex flex-col items-center justify-center py-20 md:py-80 overflow-hidden'>
   
-  {/* Nadpisy pod sebou v strede */}
+
   <div className="flex flex-col items-center text-center">
   
-    <h1 className='font-semibold text-[24px] md:text-[5vw] opacity-100 text-white uppercase leading-relaxed tracking-[0.2em] '> UNDERMOVES</h1>
+    <h1 className='font-bold text-[36px] md:text-[10vw] opacity-100 text-red-700 uppercase leading-relaxed tracking-[-0.1em] '> UNDERMOVES</h1>
     
   </div>
 
-  {/* Odsek v strede */}
+ 
   <div className='mt-5 max-w-2xl px-6'>
     
     <p className='text-white text-[16px] md:text-[20px] opacity-100 text-center font-light opacity-100'>
@@ -569,17 +526,17 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
     <div className="relative aspect-[16/12] md:aspect-[16/8] w-full mb-10 md:mb-20">
       
       {/* Fotka vľavo - šírka v % zabezpečí, že sa nezrazí */}
-      <div className="absolute left-0 top-[10%] w-[35%] md:w-[35%] z-230 hover:scale-125 duration-500 rotate-[-8deg]">
+      <div className="absolute left-0 top-[10%] w-[35%] md:w-[35%] z-230  rotate-[-8deg]">
         <Image src="/urbancity3..png" width={550} height={450} alt="Lifestyle" className="w-full h-auto" />
       </div>
 
       {/* Fotka v strede - hlavný vizuál */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[45%] md:w-[45%] hover:scale-125 duration-500 rotate-[2deg] z-10 ">
+      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[45%] md:w-[45%]  rotate-[2deg] z-10 ">
         <Image src="/urbancity..png" width={450} height={350} alt="City walk" className="w-full h-auto" />
       </div>
 
       {/* Fotka vpravo */}
-      <div className="absolute right-0 top-[15%] w-[30%] md:w-[38%] hover:scale-125 duration-500 rotate-[3deg] z-220 ">
+      <div className="absolute right-0 top-[15%] w-[30%] md:w-[38%]  rotate-[3deg] z-220 ">
         <Image src="/urbancity2.png" width={500} height={450} alt="Models" className="w-full h-auto" />
       </div>
 
@@ -631,7 +588,7 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
   
 
 
-    {/* 2. DOLNÁ ČASŤ - PRODUKTY (Teraz vnútri mx-auto kontajnera) */}
+    {/* 2. DOLNÁ ČASŤ - PRODUKTY  */}
     <div className="w-full py-10 md:py-20">
       
 
@@ -685,16 +642,14 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
 
 
 
-<section className='flex items-center justify-center'>
-  <div className='relative w-250 opacity-70 col-start-3 col-span-8'>
-    <img src="odber.png" alt="" />
-  </div>
+<section className='flex items-center w-full h-[80vw] md:h-[15vw] bg-black justify-center'>
+  
 
-  <div className='absolute'>
-    <h2 className='font-normal text-center text-black lg:text-[30px]'>Prihlás sa na odber noviniek a získaj 
+  <div className='relative'>
+    <h2 className='font-normal text-center text-white lg:text-[30px]'>Prihlás sa na odber noviniek a získaj 
       <br />10% zľavu na tvoj prvý nákup.</h2></div>
   <div className='absolute mt-50'>
-  <button className="bg-black text-[13px] text-white px-6 py-3 font-bold  hover:invert transition-all">
+  <button className="bg-white text-[13px] text-black px-6 py-3 font-bold  hover:invert transition-all">
             Prihlásiť sa
           </button>
   </div>
@@ -740,7 +695,7 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
       <div className="text-center">
         <p className="text-black uppercase tracking-widest text-[10px] mb-4">Spôsoby platby</p>
         <div className="flex flex-wrap justify-center gap-6 grayscale opacity-100">
-          <img src="/platba1.png" className="h-6" alt="Platba" />
+          <img src="/platba1.png" className="h-auto md:h-8" alt="Platba" />
         </div>
       </div>
       
@@ -753,7 +708,7 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
       </div>
     </div>
 
-    {/* 3. SEKČIA: HLAVNÉ MENU (Grid 4 stĺpce) */}
+    {/* 3. SEKČIA: HLAVNÉ MENU  */}
     <div className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-12">
       <div className="space-y-4">
         <h4 className="font-bold uppercase tracking-widest text-xs">Pomoc</h4>

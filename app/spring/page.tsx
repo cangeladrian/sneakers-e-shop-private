@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from 'next/navigation';
-import React, { useState, useEffect } from 'react'; // Pridané useState a useEffect
+import React, { useState, useEffect } from 'react'; 
 import { motion,AnimatePresence, useScroll, useTransform, useVelocity, useSpring } from 'framer-motion';
 import Image from 'next/image'
 import { Truck, RotateCcw, Gem } from 'lucide-react';
@@ -10,7 +10,7 @@ import { Variants } from 'framer-motion';
 import Link from 'next/link';
 import { Analytics } from "@vercel/analytics/next"
 
-// Komponent pre tvoje ručné poznámky (aby si ich nemusel stále kódovať)
+
 const HandwrittenNote = ({ text, className = "" }: { text: string, className?: string }) => (
   <motion.span 
     initial={{ opacity: 0, rotate: -5 }}
@@ -29,12 +29,12 @@ export default function SpringCollection() {
 <section className="bg-white pt-30 md:py-20">
     <div className='flex flex-col items-center justify-center max-w-7xl mx-auto px-6'>
       
-      {/* VIDEO 1 - Vycentrované a prispôsobivé */}
+   
       <div className="relative z-10 w-full md:w-[40vw] max-w-[800px] aspect-video mb-12">
         <video
           autoPlay loop muted playsInline
           className="w-full h-full object-contain"
-          src="/jarvideo.mp4"
+          src="/jarvideo2.mp4"
         />
       </div>
       
@@ -53,22 +53,22 @@ export default function SpringCollection() {
     </div>
   </section>
 
-  {/* --- GRID SEKCIÁ (Video + Text vedľa seba) --- */}
+  {/* --- GRID SEKCIÁ --- */}
   <section className="bg-white py-10 md:py-32 px-6">
     <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center'>
       
-      {/* VIDEO 2 - Na mobile na celú šírku, na PC vľavo */}
+      {/* VIDEO 2  */}
       <div className="w-full h-auto overflow-hidden">
         <video
           autoPlay loop muted playsInline
           className="w-full md:h-[30vw] grayscale h-[50vw] object-cover"
           style={{ maskSize: 'contain', WebkitMaskSize: 'contain' }}
-          src="/lesvideo.mp4"
+          src="/lesvideo2.mp4"
         />
       </div>
       
       <div className="flex flex-col justify-center">
-        <p className="text-black text-center text-xl uppercase  leading-relaxed  md:text-xl font-semibold  mb-6">
+        <p className="text-black  text-xl uppercase  leading-relaxed  md:text-xl font-semibold  mb-6">
           Objav miesta z obuvou navrhnutou pre ľahkosť.
         </p>
         <p className="text-black  md:text-xl text-xs uppercase leading-relaxed font-light [word-spacing:0.5rem] ">
@@ -98,7 +98,6 @@ className=' h-[30vh] w-auto'
 </section>
 
 
-  {/* --- ZÁVER --- */}
   <section className="bg-white pb-32 px-6">
     <div className="max-w-4xl mx-auto  pt-10">
       <p className="text-black text-xs uppercase  [word-spacing:0.5rem]  md:text-xl font-light leading-relaxed">
@@ -115,7 +114,7 @@ className=' h-[30vh] w-auto'
        
 <section className="w-full flex justify-center justify-center
            py-20">
-  {/* TENTO DIV DRŽÍ VŠETKY TRI POLOŽKY VEDĽA SEBA */}
+ 
   <div className=" md:flex-row  md:gap-80 flex flex-col md:grid md:grid-cols-3  gap-10 text-center   text-[12px]   font-normal ">
     
     {/* 1. POLOŽKA */}
