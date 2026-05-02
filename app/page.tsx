@@ -236,7 +236,7 @@ export default function Home() {
             </div>
             <div className="mt-6 flex justify-center items-center px-2">
               <div>
-                <h3 className="font-bold uppercase text-[16px] text-sm tracking-tight">Retro Low</h3>
+                <h3 className="font-bold uppercase text-[16px] text-sm tracking-tight">Retro High</h3>
              
               </div>
  
@@ -425,15 +425,15 @@ export default function Home() {
       />
     </div>
 
-    {/* NÁPIS PRO2 (S VRÁTENOU ANIMÁCIOU) */}
+    {/* NÁPIS PRO2 */}
     <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
       <motion.h1 
         // 
-        initial={{ opacity: 0, y: 120 }}         // 
-        whileInView={{ opacity: 1, y: 0 }}      // 
+        initial={{ opacity: 0, y: 120 }} 
+        whileInView={{ opacity: 1, y: 0 }}  
         transition={{ 
           duration: 3.0, 
-          ease: [0.22, 1, 0.36, 1]              // 
+          ease: [0.22, 1, 0.36, 1] 
         }}
         
         
@@ -465,9 +465,6 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
     
   </div>
 
-  {/* ========================================================= */}
-  {/* 2. SPODNÁ ČASŤ (Texty pod topánkou) */}
-  {/* ========================================================= */}
 
 <div className="absolute bottom-10 md:bottom-20  z-30 w-full flex flex-col items-center justify-center px-6">
     
@@ -525,28 +522,41 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
     <Image src="/pozadie2.jpg" alt="background" fill className="object-cover" />
   </div>
 
-  <div className="max-w-[1400px] mx-auto relative z-10 px-4">
+  <div  className="max-w-[1400px] mx-auto relative z-10 px-4">
     
-    {/* 1. HORNÁ ČASŤ - KOLÁŽ (Používame relatívnu výšku k šírke) */}
+    
     <div className="relative aspect-[16/12] md:aspect-[16/8] w-full mb-10 md:mb-20">
       
       {/* Fotka vľavo - šírka v % zabezpečí, že sa nezrazí */}
-      <div className="absolute left-0 top-[10%] w-[35%] md:w-[35%] z-230  rotate-[-8deg]">
+      <motion.div initial={{ opacity: 1, y: 120 }} 
+        whileInView={{ opacity: 1, y: 0 }}  
+        transition={{ 
+          duration: 2.0, 
+          ease: [0.22, 1, 0.36, 1] 
+        }} className="absolute left-0 top-[10%] w-[35%] md:w-[35%] z-230  rotate-[-8deg]">
         <Image src="/urbancity3..png" width={550} height={450} alt="Lifestyle" className="w-full h-auto" />
-      </div>
+      </motion.div>
 
-      {/* Fotka v strede - hlavný vizuál */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[45%] md:w-[45%]  rotate-[2deg] z-10 ">
+      <motion.div initial={{ opacity: 1, y: 0 }} 
+        whileInView={{ opacity: 1, y: -30 }}  
+        transition={{ 
+          duration: 3.5, 
+          ease: [0.32, 1, 0.36, 1] 
+        }} className="absolute left-1/2 -translate-x-1/2 top-0 w-[45%] md:w-[45%]  rotate-[2deg] z-10 ">
         <Image src="/urbancity..png" width={450} height={350} alt="City walk" className="w-full h-auto" />
-      </div>
+      </motion.div>
 
       {/* Fotka vpravo */}
-      <div className="absolute right-0 top-[15%] w-[30%] md:w-[38%]  rotate-[3deg] z-220 ">
+      <motion.div initial={{ opacity: 1, y: 120 }} 
+        whileInView={{ opacity: 1, y: 0 }}  
+        transition={{ 
+          duration: 2.0, 
+          ease: [0.22, 1, 0.36, 1] 
+        }} className="absolute right-0 top-[15%] w-[30%] md:w-[38%]  rotate-[3deg] z-220 ">
         <Image src="/urbancity2.png" width={500} height={450} alt="Models" className="w-full h-auto" />
-      </div>
+      </motion.div>
 
-      {/* KRÚŽOK A TOPÁNKA (Plávajúci element) */}
-      {/* Používame bottom namiesto top, aby to držalo spodok koláže */}
+    
       <div className={`
   absolute left-1/2 -translate-x-1/2 md:z-30 z-600 flex flex-col items-center
   /* 1. DESKTOP (Základ pre veľké obrazovky) */
@@ -570,7 +580,7 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
   max-md:landscape:bottom-[-5%] max-md:landscape:scale-50
 `}>
         
-        <div className="relative  group transition-transform hover:scale-105 duration-500 w-full flex flex-col items-center">
+        <div className="relative  group transition-transform  w-full flex flex-col items-center">
           {/* Topánka */}
           <div className="w-[70%] mb-[-3.1%] ml-[-18%] z-10">
              <Image src="/skatepro..png" width={400} height={200} alt="Retro Dinamic" className="w-full  h-auto" />
@@ -613,7 +623,7 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
           <div className=" p-6 mb-4">
             <Image src="/ecostreet.png" width={400} height={300} alt="Retro Dinamic" className='group-hover:scale-110 transition duration-500' />
           </div>
-          <h3 className="font-semibold uppercase text-[16px]  text-sm tracking-tight">Retro Dinamic</h3>
+          <h3 className="font-semibold uppercase text-[16px]  text-sm tracking-tight">Urban Low</h3>
        
         </div>
 
@@ -622,7 +632,7 @@ className="relative z-20 w-[140%] md:w-[40%]  hover:scale-110  duration-1200">
           <div className=" p-6 mb-4">
             <Image src="/skatepro..png" width={400} height={300} alt="Retro Dinamic" className='group-hover:scale-110 transition duration-500' />
           </div>
-          <h3 className="font-semibold uppercase text-[16px] text-sm tracking-tight">Retro Dinamic</h3>
+          <h3 className="font-semibold uppercase text-[16px] text-sm tracking-tight">Skate Pro</h3>
 
         </div>
       </div>
