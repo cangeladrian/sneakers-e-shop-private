@@ -592,11 +592,12 @@ export default function Home() {
 
 
 
-          {/* 2. DOLNÁ ČASŤ - PRODUKTY  */}
+         
+         
           <div className="w-full py-10 md:py-20">
 
 
-            {/* PRODUKTOVÝ GRID / SCROLL */}
+        
             <div className="flex md:grid md:grid-cols-3 md:gap-12 gap-4 ml-5 md:ml-0 overflow-x-auto text-center md:overflow-visible snap-x snap-mandatory no-scrollbar pb-10">
               {/* Prvá topánka */}
               <div className="flex-shrink-0 w-[75%] md:w-full snap-center group cursor-pointer">
@@ -635,12 +636,6 @@ export default function Home() {
       </section>
       <br />
       <br />
-
-
-
-
-
-
 
 
 
