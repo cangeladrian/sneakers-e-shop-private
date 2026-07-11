@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
- 
+  --background: #050505;
+  --foreground: #f7f3ee;
 }
 
 @theme inline {
@@ -12,28 +12,28 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-  
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
-@media screen and (orientation: landscape) and (max-height:full) {
-  /* Toto sa spustí len na otočenom mobile */
-  section {
-    /* Zmenšíme celú sekciu tak, aby sa zmestila na nízky displej */
-    transform: scale(0.8); 
-    transform-origin: top center;
-  }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: #ffffff;
+  color: #050505;
 }
 
 @media (min-width: 768px) {
   html, body {
     cursor: none !important;
   }
-  
-  a, button, input, input, select, textarea, span, div {
+
+  a, button, input, select, textarea, span, div {
     cursor: none !important;
   }
 }
@@ -48,14 +48,9 @@
   }
 }
 
-body {
- 
-  font-family: syne;
-}
-
 .grainy {
   filter: contrast(150%) brightness(1000%);
   background: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.05; /* Jemný šum */
+  opacity: 0.05;
   pointer-events: none;
 }
