@@ -104,7 +104,7 @@ export default function Home() {
         
         {/* Obrázok kampane roztiahnutý na úplné kraje monitora */}
          <video
-              src="/header10.mp4" 
+              src="/header-nova-kolekcia.mp4" 
      width={450} 
     height={350} 
     className="w-full h-auto"
@@ -118,11 +118,11 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/50 " />
 
         {/* 3. OBSAH: Zostáva zarovnaný v rovnakej mriežke ako zvyšok webu (max-w-7xl), aby nápisy neutekali úplne do rohu monitora */}
-        <div className="absolute inset-0 z-20 max-w-8xl mx-auto px-6 text-center md:px-12 flex items-end justify-center text-white">
+        <div className="absolute inset-0 z-20 max-w-8xl mb-20 mx-auto px-6 text-center md:px-12 flex items-end justify-center text-white">
           <div className="max-w-8xl">
             
             {/* Podnadpis */}
-            <span className="text-[98px]  px-4  text-center mix-blend-difference font-black uppercase  text-yellow-500 mb-2 block">
+            <span className="text-[98px]  px-4  text-center mix-blend-difference font-black uppercase  text-blue-600 mb-2 block">
               NOVÉ KÚSKY
             </span>
 
@@ -137,7 +137,7 @@ export default function Home() {
             {/* Tlačidlo */}
             <div className="flex flex-row items-center py-8 justify-center gap-4">
               <Link href="/spring">
-                <button className="bg-white text-black px-6 py-3 font-bold text-[12px] uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300 ">
+                <button className=" text-white border-b border-white px-6 py-3 font-bold text-[12px] uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300 ">
                   Nakupovať
                 </button>
               </Link>
@@ -209,7 +209,7 @@ export default function Home() {
       </section>
 
 
-  <section className="w-full my-8  bg-gray-100 ">
+  <section className="w-full my- ">
 
     <div className="w-full max-w-8xl mx-auto  mt-0  px-6 md:px-12 ">
       {/* NADPIS SEKCE */}
@@ -241,17 +241,17 @@ export default function Home() {
       </div>
 
       {/* OBRIE 3 STĹPCE BEZ OMEDZENIA PADDINGOM */}
-      <div className=' font-bold grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-6 text-black  md:gap-x-32 md:gap-y-80 gap-x-8 w-full'>
+      <div className=' font-bold grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-6 text-black  md:gap-x-1 md:gap-y-8 gap-x-8 w-full'>
 
         {/* Produkt 1 */}
-        <Link href="/produkt/dinamic" className="block group cursor-pointer">
+        <Link href="/produkt/dinamic" className="block  bg-gray-100  group cursor-pointer">
           <div className="flex flex-col w-full">
-            {/* ZMENA: aspect-[16/9] a p-0 – topánka vystrelí do šírky na maximum stĺpca */}
-            <div className="aspect-[16/9] bg-transparent flex items-center justify-center p-0 overflow-hidden">
+            {/* ZMENA: aspect-[16/19] a p-0 – topánka vystrelí do šírky na maximum stĺpca */}
+            <div className="aspect-[16/19] bg-transparent flex items-center justify-center px-12 overflow-hidden">
               <img 
                 src="/dinamic1.webp" 
                 alt="Urban Dinamic" 
-                className="w-full h-full object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
               />
             </div>
             
@@ -269,13 +269,13 @@ export default function Home() {
         </Link>
 
         {/* Produkt 2 */}
-        <div className="group cursor-pointer">
+        <div className="group  bg-gray-100  cursor-pointer">
           <div className="flex flex-col w-full">
-            <div className="aspect-[16/9] bg-transparent flex items-center justify-center p-0 overflow-hidden">
+            <div className="aspect-[16/19] bg-transparent flex items-center justify-center px-12 overflow-hidden">
               <img 
-                src="/u3.1.png" 
+                src="/u3.1.1.webp" 
                 alt="U-3" 
-                className="w-full h-full object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
               />
             </div>
             <div className="mt-8 flex flex-col items-left justify-center">
@@ -290,13 +290,13 @@ export default function Home() {
         </div>
 
         {/* Produkt 3 */}
-        <div className="group   cursor-pointer">
+        <div className="group   bg-gray-100  cursor-pointer">
           <div className="flex flex-col w-full">
-            <div className=" flex items-center justify-center p-0 overflow-hidden">
+            <div className=" flex items-center aspect-[16/19]  justify-center px-12 overflow-hidden">
               <img 
-                src="/23.png" 
+                src="/23.webp" 
                 alt="Retro Low" 
-                className="w-full h-full object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
               />
             </div>
             <div className="mt-8 flex flex-col items-left justify-center">
@@ -311,13 +311,13 @@ export default function Home() {
         </div>
 
                 {/* Produkt 3 */}
-        <div className="group   cursor-pointer">
+        <div className="group   bg-gray-100  cursor-pointer">
           <div className="flex flex-col w-full">
-            <div className=" flex items-center justify-center p-0 overflow-hidden">
+            <div className=" flex items-center aspect-[16/19]  justify-center px-12 overflow-hidden">
               <img 
-                src="/retrohigh1.png" 
+                src="/retrohigh1.webp" 
                 alt="Retro Low" 
-                className="w-full h-full object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
               />
             </div>
             <div className="mt-8 flex flex-col items-left justify-center">
@@ -332,13 +332,13 @@ export default function Home() {
         </div>
 
                 {/* Produkt 3 */}
-        <div className="group   cursor-pointer">
+        <div className="group   bg-gray-100  cursor-pointer">
           <div className="flex flex-col w-full">
-            <div className=" flex items-center justify-center p-0 overflow-hidden">
+            <div className=" flex items-center aspect-[16/19]  justify-center px-12 overflow-hidden">
               <img 
                 src="/343.png" 
                 alt="Retro Low" 
-                className="w-full h-full object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
               />
             </div>
             <div className="mt-8 flex flex-col items-left justify-center">
@@ -353,13 +353,13 @@ export default function Home() {
         </div>
 
                 {/* Produkt 3 */}
-        <div className="group   cursor-pointer">
+        <div className="group   bg-gray-100  cursor-pointer">
           <div className="flex flex-col w-full">
-            <div className=" flex items-center justify-center p-0 overflow-hidden">
+            <div className=" flex items-center aspect-[16/19]  justify-center px-12 overflow-hidden">
               <img 
                 src="/retrolow..png" 
                 alt="Retro Low" 
-                className="w-full h-full object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
               />
             </div>
             <div className="mt-8 flex flex-col items-left justify-center">
@@ -398,8 +398,8 @@ export default function Home() {
 
 
     
-      <section className="max-w-8xl mx-auto w-full bg-[#222222] px- py- md:pb- ">
-        <div className='flex  justify-left py-4 mb-16 px-6 md:px-12 items-start'>
+      <section className="max-w-8xl mx-auto w-full bg-black px- py- md:pb- ">
+        <div className='flex  justify-left py-4  px-6 md:px-12 items-start'>
         <motion.h1  
           initial={{ opacity: 0, y: 15 }}        
           whileInView={{ opacity: 1, y: 0 }}      
@@ -407,9 +407,9 @@ export default function Home() {
             duration: 1.0,
             ease: [0.22, 1, 0.36, 1]              
           }} 
-          className='text-[36px] md:text-[48px] py-4 text-left uppercase font-black   tracking-normal text-white leading-[0.95]'
+          className='text-[36px] md:text-[32px] py-2 text-left uppercase font-normal   tracking-normal text-white leading-[0.95]'
         >
-          LIMITOVANÉ KÚSKY OBLEČENIA
+          LIMITOVANÉ KÚSKY OBLEČENIA 
         </motion.h1>
       </div>
       
@@ -419,7 +419,7 @@ export default function Home() {
         {/* --- 1. ĽAVÝ STĹPEC: Veľká kampaňová / editorial fotka --- */}
         <div className="w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden  bg-zinc-100 relative group">
           <img 
-            src="/urban.jpg" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
+            src="/urban.webp" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
             alt="Summer Campaign" 
             className="w-full h-full object-cover group-hover:scale-102 transition duration-700   ease-out"
           />
@@ -429,7 +429,7 @@ export default function Home() {
                 duration: 2.0,
                 ease: [0.22, 1, 0.36, 1]
               }} className="absolute left-0 top-[10%] w-[35%] md:w-[45%] z-230  rotate-[-8deg]">
-              <Image src="/nohavicecierne.png" width={550} height={450} alt="Lifestyle" className="w-full shadow-lg  h-auto" />
+              <Image src="/nohavicecierne.webp" width={550} height={450} alt="Lifestyle" className="w-full shadow-lg  h-auto" />
             </motion.div>
           {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
           <div className="absolute bottom-6 left-6 bg-white text-black font-mono text-[18px] uppercase tracking-widest ">
@@ -438,7 +438,7 @@ export default function Home() {
         </div>
     <div className="w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden  bg-zinc-100 relative group">
           <img 
-            src="/oblecenie.jpg" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
+            src="/oblecenie.webp" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
             alt="Summer Campaign" 
             className="w-full h-full object-cover group-hover:scale-102 transition  opacity-90 duration-700 ease-out"
           />
@@ -448,7 +448,7 @@ export default function Home() {
                 duration: 2.0,
                 ease: [0.22, 1, 0.36, 1]
               }} className="absolute right-0 top-[30%] w-[35%] md:w-[40%] z-230   rotate-[6deg]">
-              <Image src="/koselabiela.png" width={550} height={450} alt="Lifestyle" className="w-full shadow-lg   h-auto" />
+              <Image src="/koselabiela.webp" width={550} height={450} alt="Lifestyle" className="w-full shadow-lg   h-auto" />
             </motion.div>
           {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
           <div className="absolute bottom-6 left-6 bg-white text-black font-mono text-[18px] uppercase tracking-widest opacity-80">
@@ -467,15 +467,7 @@ export default function Home() {
 
   <section hidden className="relative w-ful  h-auto py-12 md:py-24 overflow-hidden ">
        
-      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-    <Image 
-      src="/pozadie2.jpg" // Sem hoď názov tvojho nového vygenerovaného pozadia
-      alt="Concrete shadow background"
-      fill // Zabezpečí, že obrázok sa roztiahne na 100% celej sekcie
-      priority // Načíta pozadie okamžite bez blikania
-      className="object-cover object-center w-full h-full"
-    />
-  </div>
+
 
         <div className="max-w-[1400px] mx-auto relative z-10 px-4">
 
@@ -566,14 +558,14 @@ export default function Home() {
       </section>
  
 
-  <section className="max-w-8xl mx-auto w-full bg-[#222222] px- pb-24    ">
+  <section className="max-w-8xl mx-auto w-full bg-black px- pb-8   ">
    
       
       {/* 2-STĹPCOVÁ MRIEŽKA: Na mobile pod sebou (grid-cols-1), od desktopu vedľa seba (md:grid-cols-2) */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap- md:gap-  items-center w-full">
         
         {/* --- 1. ĽAVÝ STĹPEC: Veľká kampaňová / editorial fotka --- */}
-        <div className="w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden  bg-orange-700/88 relative group">
+        <div className="w-full aspect-[4/5] md:aspect-[4/4] overflow-hidden  bg-orange-700/88 relative group">
           <img 
             src="/mikina2.png" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
             alt="Summer Campaign" 
@@ -592,7 +584,7 @@ export default function Home() {
             Drop 02 / Local Scenery
           </div>
         </div>
-    <div className="w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden  bg-gray-600/70 relative group">
+    <div className="w-full aspect-[4/5] md:aspect-[4/4] overflow-hidden  bg-blue-600/90 relative group">
           <img 
             src="/tricko.png" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
             alt="Summer Campaign" 
@@ -612,7 +604,7 @@ export default function Home() {
           </div>
         </div>
 
-            <div className="w-full col-span-2 md:col-span-1 aspect-[4/5] md:aspect-[3/4] overflow-hidden  bg-yellow-300/70 relative group">
+            <div className="w-full col-span-2 md:col-span-1 aspect-[4/5] md:aspect-[4/4] overflow-hidden  bg-red-800/70 relative group">
           <img 
             src="/trickologo2.png" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
             alt="Summer Campaign" 
@@ -668,7 +660,7 @@ export default function Home() {
         
         {/* Obrázok kampane roztiahnutý na úplné kraje monitora */}
          <video
-              src="/video4.mp4" 
+              src="/leto-kolekcia.mp4" 
      width={450} 
     height={350} 
     className="w-full h-auto"
@@ -685,15 +677,14 @@ export default function Home() {
         <div className="absolute inset-0 z-20 max-w-7xl mx-auto px-6 text-center md:px-12 py-16 flex items-center justify-center text-white">
           <div className="max-w-xl">
             
+            <div className=" text-center  flex items-center justify-center ">
             {/* Podnadpis */}
-            <span className=" text-[74px]  text-center mix-blend-difference font-black  text-white mb-2 block">
-              SUMMER AURA
-              <br />
-              2026
+            <span className=" text-[18px] py-4 px-4 text-center mix-blend-difference font-normal bg-orange-500/70 text-white mb-2 block">
+              SUMMER AURA 2026
             </span>
-
+</div>
             {/* Nadpis */}
-            <h1 hidden className="text-3xl py-30 md:text-5xl lg:text-8xl text-center font-black uppercase tracking-normal leading-[0.95] mb-4 text-orange-300 ">
+            <h1  className="text-[74px] py-30 md:text-5xl lg:text-8xl text-center font-black uppercase tracking-normal leading-[0.95] mb-4 text-white ">
               Urban SUMMER.
             </h1>
 
@@ -718,173 +709,187 @@ export default function Home() {
 
     </section>
 
-  <section className="w-full my-8 bg-gray-100 ">
-   
-       <div className="w-full max-w-8xl mx-auto  mt-0  px-6 md:px-12 pt-10">
- 
-           <div className='flex  justify-left py-4 mb-16 items-start'>
-           <motion.h1  
-             initial={{ opacity: 0, y: 15 }}        
-             whileInView={{ opacity: 1, y: 0 }}      
-             transition={{
-               duration: 1.0,
-               ease: [0.22, 1, 0.36, 1]              
-             }} 
-             className=' text-[36px] md:text-[18px] text-left uppercase font-normal  tracking-normal text-black leading-[0.95]'
-           >
-             Odporúčané produkty
-           </motion.h1>
-         </div>
-   
-         {/* OBRIE 3 STĹPCE BEZ OMEDZENIA PADDINGOM */}
-         <div className=' grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-6 text-black  md:gap-x-32 md:gap-y-80 gap-x-8 w-full'>
-   
-           {/* Produkt 1 */}
-           <Link href="/produkt/dinamic" className="block group cursor-pointer">
-             <div className="flex flex-col w-full">
-               {/* ZMENA: aspect-[16/9] a p-0 – topánka vystrelí do šírky na maximum stĺpca */}
-               <div className="aspect-[16/9] bg-transparent flex items-center justify-center p-0 overflow-hidden">
-                 <img 
-                   src="/ciapka.png" 
-                   alt="Urban Dinamic" 
-                   className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-                 />
-               </div>
-               
-               {/* Label pod topánkou */}
-               <div className="mt-8 flex flex-col items-left justify-center">
-                 <h3 className=" text-black text-[14px] text-left font-normal uppercase  px-8 rounded-full  ">
-                   Šiltovka s logom
-                 </h3>
-                        <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
-                   29,99 €
-                 </h3>
-               </div>
-             </div>
-           </Link>
-   
-           {/* Produkt 2 */}
-           <div className="group cursor-pointer">
-             <div className="flex flex-col w-full">
-               <div className="aspect-[16/9] bg-transparent flex items-center justify-center p-0 overflow-hidden">
-                 <img 
-                   src="/batoh.png" 
-                   alt="U-3" 
-                   className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-                 />
-               </div>
-               <div className="mt-8 flex flex-col items-left justify-center">
-                 <h3 className="text-black text-[14px] font-normal uppercase  px-8 py-3 rounded-full  ">
-                   Batoh
-                 </h3>
-                        <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
-                   52,99 €
-                 </h3>
-               </div>
-             </div>
-           </div>
-   
-           {/* Produkt 3 */}
-           <div className="group   cursor-pointer">
-             <div className="flex flex-col w-full">
-               <div className=" flex items-center justify-center p-0 overflow-hidden">
-                 <img 
-                   src="/taska2.png" 
-                   alt="Retro Low" 
-                   className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-                 />
-               </div>
-               <div className="mt-8 flex flex-col items-left justify-center">
-                 <h3 className="text-black text-[14px] font-normal uppercase  px-8 py-3 rounded-full">
-                   MOVES Taška
-                 </h3>
-                      <h3 className="text-black text-[14px] font-normal uppercase  px-8 py-3 rounded-full">
-                   66,99 €
-                 </h3>
-               </div>
-             </div>
-           </div>
-   
-                   {/* Produkt 3 */}
-           <div className="group   cursor-pointer">
-             <div className="flex flex-col w-full">
-               <div className=" flex items-center justify-center p-0 overflow-hidden">
-                 <img 
-                   src="/tricko.png" 
-                   alt="Retro Low" 
-                   className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-                 />
-               </div>
-               <div className="mt-8 flex flex-col items-left justify-center">
-                 <h3 className="text-black text-[14px] font-normal uppercase  px-8 py-3 rounded-full">
-                   Retro Low
-                 </h3>
-                      <h3 className="text-black text-[14px] font-normal uppercase  px-8 py-3 rounded-full">
-                   180,00 €
-                 </h3>
-               </div>
-             </div>
-           </div>
-   
-                   {/* Produkt 3 */}
-           <div className="group   cursor-pointer">
-             <div className="flex flex-col w-full">
-               <div className=" flex items-center justify-center p-0 overflow-hidden">
-                 <img 
-                   src="/343.png" 
-                   alt="Retro Low" 
-                   className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-                 />
-               </div>
-               <div className="mt-8 flex flex-col items-left justify-center">
-                 <h3 className="text-black text-[14px] font-normal uppercase  px-8 py-3 rounded-full">
-                   Retro Low
-                 </h3>
-                      <h3 className="text-black text-[14px] font-normal uppercase  px-8 py-3 rounded-full">
-                   180,00 €
-                 </h3>
-               </div>
-             </div>
-           </div>
-   
-                   {/* Produkt 3 */}
-           <div className="group   cursor-pointer">
-             <div className="flex flex-col w-full">
-               <div className=" flex items-center justify-center p-0 overflow-hidden">
-                 <img 
-                   src="/trickologo2.png" 
-                   alt="Retro Low" 
-                   className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-                 />
-               </div>
-               <div className="mt-8 flex flex-col items-left justify-center">
-                 <h3 className="text-black text-[14px] font-normal uppercase  px-8 py-3 rounded-full">
-                   Retro Low
-                 </h3>
-                      <h3 className="text-black text-[14px] font-normal uppercase  px-8 py-3 rounded-full">
-                   180,00 €
-                 </h3>
-               </div>
-             </div>
-           </div>
-              
-   
-      
+  <section className="w-full my- ">
+
+    <div className="w-full max-w-8xl mx-auto  mt-0  px-6 md:px-12 ">
+      {/* NADPIS SEKCE */}
+      <div className='flex  justify-center  mb-16 items-start'>
+        <motion.h1  
+          initial={{ opacity: 0, y: 15 }}        
+          whileInView={{ opacity: 1, y: 0 }}      
+          transition={{
+            duration: 1.0,
+            ease: [0.22, 1, 0.36, 1]              
+          }} 
+          className='text-[36px] md:text-[44px] text-left uppercase font-black   tracking-normal text-black leading-[0.95]'
+        >
+       
+        </motion.h1>
+      </div>
+        <div className='flex  justify-left py-8  items-start'>
+        <motion.h1  
+          initial={{ opacity: 0, y: 15 }}        
+          whileInView={{ opacity: 1, y: 0 }}      
+          transition={{
+            duration: 1.0,
+            ease: [0.22, 1, 0.36, 1]              
+          }} 
+          className='text-[36px] md:text-[18px] text-left  font-normal  uppercase tracking-normal text-black'
+        >
+          Odporúčané produkty
+        </motion.h1>
+      </div>
+
+      {/* OBRIE 3 STĹPCE BEZ OMEDZENIA PADDINGOM */}
+      <div className=' font-bold grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-6 text-black  md:gap-x-1 md:gap-y-8 gap-x-8 w-full'>
+
+        {/* Produkt 1 */}
+        <Link href="/produkt/dinamic" className="block  bg-gray-100  group cursor-pointer">
+          <div className="flex flex-col w-full">
+            {/* ZMENA: aspect-[16/19] a p-0 – topánka vystrelí do šírky na maximum stĺpca */}
+            <div className="aspect-[16/19] bg-transparent flex items-center justify-center px-12 overflow-hidden">
+              <img 
+                src="/dinamic1.webp" 
+                alt="Urban Dinamic" 
+                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+              />
+            </div>
             
+            {/* Label pod topánkou */}
+            <div className="mt-8 flex flex-col items-left justify-center">
+              <h3 className=" text-black text-[14px] text-left font-normal uppercase  px-8 py- rounded-full  ">
+                Urban Dinamic
+              </h3>
+                        <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
+                180,00 €
+              </h3>
               
+            </div>
+          </div>
+        </Link>
+
+        {/* Produkt 2 */}
+        <div className="group  bg-gray-100  cursor-pointer">
+          <div className="flex flex-col w-full">
+            <div className="aspect-[16/19] bg-transparent flex items-center justify-center px-12 overflow-hidden">
+              <img 
+                src="/ciapka.png" 
+                alt="U-3" 
+                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+              />
+            </div>
+            <div className="mt-8 flex flex-col items-left justify-center">
+              <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full  ">
+                U-3
+              </h3>
+                     <h3 className="text-black text-[14px] font-normal uppercase px-8 py- rounded-full">
+                169,99 €
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        {/* Produkt 3 */}
+        <div className="group   bg-gray-100  cursor-pointer">
+          <div className="flex flex-col w-full">
+            <div className=" flex items-center aspect-[16/19]  justify-center px-12 overflow-hidden">
+              <img 
+                src="/trickologo2.png" 
+                alt="Retro Low" 
+                className="w-full h-[18vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+              />
+            </div>
+            <div className="mt-8 flex flex-col items-left justify-center">
+              <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
+                M-A2
+              </h3>
+                   <h3 className="text-black text-[14px] font-normal uppercase px-8 py- rounded-full">
+                230,00 €
+              </h3>
+            </div>
+          </div>
+        </div>
+
+                {/* Produkt 3 */}
+        <div className="group   bg-gray-100  cursor-pointer">
+          <div className="flex flex-col w-full">
+            <div className=" flex items-center aspect-[16/19]  justify-center px-12 overflow-hidden">
+              <img 
+                src="/taska.png" 
+                alt="Retro Low" 
+                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+              />
+            </div>
+            <div className="mt-8 flex flex-col items-left justify-center">
+              <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
+                Retro High
+              </h3>
+                   <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
+                145,00 €
+              </h3>
+            </div>
+          </div>
+        </div>
+
+                {/* Produkt 3 */}
+        <div className="group   bg-gray-100  cursor-pointer">
+          <div className="flex flex-col w-full">
+            <div className=" flex items-center aspect-[16/19]  justify-center px-12 overflow-hidden">
+              <img 
+                src="/batoh.png" 
+                alt="Retro Low" 
+                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+              />
+            </div>
+            <div className="mt-8 flex flex-col items-left justify-center">
+              <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
+                Retro Low
+              </h3>
+                   <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
+                159,99 €
+              </h3>
+            </div>
+          </div>
+        </div>
+
+                {/* Produkt 3 */}
+        <div className="group   bg-gray-100  cursor-pointer">
+          <div className="flex flex-col w-full">
+            <div className=" flex items-center aspect-[16/19]  justify-center px-12 overflow-hidden">
+              <img 
+                src="/retrolow..png" 
+                alt="Retro Low" 
+                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+              />
+            </div>
+            <div className="mt-8 flex flex-col items-left justify-center">
+              <h3 className="text-black text-[14px] font-normal uppercase t px-8 py- rounded-full">
+                Retro Low
+              </h3>
+                   <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
+                130,00 €
+              </h3>
+            </div>
+          </div>
+        </div>
+           
+
    
-         </div>
-   
-         {/* Tlačidlo Zobraziť všetko */}
-         <div className="flex flex-col justify-center items-center py-8">
-           <Link href="/">
-             <button className="text-black border-b border-black text-[18px] font-normal uppercase tracking-widest px-8 py-1 ">
-               Zobraziť všetko
-             </button>
-           </Link>
-         </div>
-         </div>
-       </section>
+         
+           
+
+      </div>
+
+      {/* Tlačidlo Zobraziť všetko */}
+      <div className="flex flex-col justify-center items-center py-8">
+        <Link href="/">
+          <button className=" text-black border-b border-black text-[18x] font-normal uppercase tracking-widest px-8 py-1 ">
+            Zobraziť všetko
+          </button>
+        </Link>
+      </div>
+      </div>
+    </section>
 
                            
      
@@ -909,15 +914,7 @@ export default function Home() {
 
       <section hidden className="relative bg-gradient-to-b from-white to-gray-200  w-full flex flex-col items-center">
 
-             <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-    <Image 
-      src="/pozadie4.png" // Sem hoď názov tvojho nového vygenerovaného pozadia
-      alt="Concrete shadow background"
-      fill // Zabezpečí, že obrázok sa roztiahne na 100% celej sekcie
-      priority // Načíta pozadie okamžite bez blikania
-      className="object-cover object-center opacity-80 w-full h-full"
-    />
-  </div>
+
 
         <div className="relative w-full aspect-[3.5/5]   md:aspect-video flex items-center justify-center   overflow-hidden z-10  ">
 
@@ -1011,15 +1008,6 @@ export default function Home() {
 
       <section className='flex flex-col items-center bg-black   w-full h-[80vw] md:h-[12vw]  justify-center'>
 
-             <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-    <Image 
-      src="/poe4.png" // Sem hoď názov tvojho nového vygenerovaného pozadia
-      alt="Concrete shadow background"
-      fill // Zabezpečí, že obrázok sa roztiahne na 100% celej sekcie
-      priority // Načíta pozadie okamžite bez blikania
-      className="object-cover object-center opacity-80 w-full h-full"
-    />
-  </div>
         <div className='relative '>
           <h2 className=' font-bold uppercase  mt-2 text-center text-white lg:text-[42px]'>
             Získaj 10% zľavu.</h2></div>
@@ -1166,7 +1154,7 @@ export default function Home() {
           </div>
 
           {/* SPODNÁ LIŠTA: COPYRIGHT */}
-          <div className="border-t border-gray-200 pt-8 flex flex-col w-full  md:flex-row justify-between items-center text-[10px] text-black-400 uppercase tracking-widest">
+          <div className="border-t border-gray-400 pt-8 flex flex-col w-full  md:flex-row justify-between items-center text-[10px] text-black font-normal uppercase tracking-widest">
             <p>© 2026 MOVES Všetky práva vyhradené.</p>
             <div className="flex gap-4 mt-4 md:mt-0">
               <span className="hover:text-black cursor-pointer">Obchodné podmienky</span>

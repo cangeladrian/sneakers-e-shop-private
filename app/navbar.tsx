@@ -46,14 +46,20 @@ export default function Navbar() {
 
   return (
     <>
-      {/* --- 1. NAVIGÁCIA (VRCH) --- */}
+      <div className=" flex bg-gradient-to-r from-blue-600 to-blue-500 py-2  relative w-full" />
+    
       <nav className={`
-        fixed top-0 left-0 w-full z-[830] transition-all duration-0 px-6
+        fixed top-0 left-0 w-full z-[830] transition-all duration-100 px-8
         ${isScrolled || isMenuOpen 
-          ? 'bg-white py-2  md:py-3 text-black shadow-sm ' 
-          : 'bg-transparent text-white py-2 md:py-10  '
+          ? 'bg-white py-2 md:py- text-black ' 
+          : 'bg-transparent text-white py-2 md:py-6'
         }
       `}>
+        <div className="max-w-8xl mx-auto flex bg-gradient-to-r from-orange-600 to-yellow-600 mb-2 justify-between uppercase items-center justify-center relative w-full">
+          <h1 className="text-[10px] md:text-[12px] font-normal text-white">
+            NOVÁ KOLEKCIA V PREDAJI
+          </h1>
+        </div>
         {/* DOSTREDENÝ KONTAJNER: max-w-6xl zaručí, že menu drží kompaktnú, modernú šírku */}
         <div className="max-w-8xl mx-auto flex justify-between uppercase items-center relative w-full">
           
@@ -93,21 +99,31 @@ export default function Navbar() {
             {/* Mobilné hamburger tlačidlo */}
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden flex flex-col gap-1.5 w-6 text-black"
+              className="md:hidden flex flex-row gap-1.5 w-6 text-black"
             >
               <div className={`h-[2px] w-full bg-black transition-transform ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></div>
               <div className={`h-[2px] w-full bg-black ${isMenuOpen ? 'opacity-0' : ''}`}></div>
               <div className={`h-[2px] w-full bg-black transition-transform ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></div>
             </button>
 
+      <div className="flex justify-start flex-none">
+            <Link href="/">
+              <img 
+                src="/206.png" 
+                alt="logo" 
+                className={`h-auto transition-all bg-white px-2 rounded-full duration-500 ${isScrolled ? 'w-24' : 'w-28'}`}
+              />
+            </Link>
+          </div>
+
             {/* Desktopové moderné inline menu */}
-            <div className="hidden md:flex flex-col items-center gap-6 text-[14px] font-light tracking-widest  ">
+            <div className="hidden md:flex flex-row items-center gap-6 text-[14px] font-light tracking-widest  ">
             
               <Link href="/kolekcie" className="hover:opacity-60 transition">Dámske</Link>
               <Link href="/obuv" className="hover:opacity-60 border-b border-black transition">Pánske</Link>
            
             </div>
-   <div className="hidden md:flex flex-col items-center gap-6 text-[14px] font-light tracking-widest  ">
+   <div className="hidden md:flex flex-row items-center gap-6 text-[14px] font-light tracking-widest  ">
             
               <Link href="/kolekcie" className="hover:opacity-60 transition">Novinky</Link>
               <Link href="/obuv" className="hover:opacity-60  transition">Kolekcie</Link>
@@ -123,16 +139,7 @@ export default function Navbar() {
           </div>
 
           {/* CENTER: LOGO */}
-          <div className="flex justify-center flex-none">
-            <Link href="/">
-              <img 
-                src="/206.png" 
-                alt="logo" 
-                className={`h-auto transition-all bg-white px-2 rounded-full duration-500 ${isScrolled ? 'w-24' : 'w-28'}`}
-              />
-            </Link>
-          </div>
-
+    
           {/* RIGHT: ICONS */}
           <div className="flex-1 flex justify-end gap-5 md:gap-12  items-center">
             {/* SEARCH LUPA */}
@@ -255,19 +262,7 @@ export default function Navbar() {
           isMenuOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className="absolute inset-0 bg-[#09090b] overflow-hidden">
-          <motion.div 
-            animate={isMenuOpen ? { x: mousePos.x * 60, y: mousePos.y * 40 } : { x: 0, y: 0 }}
-            transition={{ type: 'tween', ease: 'linear', duration: 0.2 }}
-            className="absolute inset-0 opacity-20 pointer-events-none"
-            style={{
-              backgroundImage: "url('/tvary.png')",
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-            }}
-          />
-        </div>
+        <div className="absolute inset-0 bg-[#09090b] overflow-hidden" />
 
         {/* Responzívny Fullscreen Layout menu */}
         <div className="relative h-full max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-center md:justify-between items-center gap-12 text-white">

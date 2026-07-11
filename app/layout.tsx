@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="sk" className={`${syne.variable}`}>
       <body className="font-sans text-black antialiased shadow-none">
         {/* 1. VRSTVA: ŠÍPKA */}
-        <CustomCursor />
+      
         
         {/* 2. VRSTVA: MENU (Vložené raz a správne) */}
         <Navbar />
