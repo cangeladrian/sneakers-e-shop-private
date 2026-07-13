@@ -3,11 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useVelocity, useSpring } from 'framer-motion';
 import Image from 'next/image'
 import { Truck, RotateCcw, Gem, Video, Facebook, Instagram, Youtube, Music4 } from 'lucide-react';
-import { Reenie_Beanie } from 'next/font/google';
-import { Montserrat } from 'next/font/google';
+
 import { Variants } from 'framer-motion';
 import Link from 'next/link';
-import { Arimo } from 'next/font/google';
 
 import { Analytics } from "@vercel/analytics/next"
 
@@ -17,17 +15,7 @@ import { Analytics } from "@vercel/analytics/next"
 
 
 
-const reenieBeanie = Reenie_Beanie({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-});
 
-const montserrat = Arimo({
-  weight: '700',
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -93,303 +81,245 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen bg-white relative overflow-hidden">
+    <main className="min-h-screen font-sans bg-white relative overflow-hidden">
 
    
 
-    <section className="relative  w-full min-h-screen top-0 overflow-hidden bg-transparent">
-      
-      {/* 2. PANORAMATICKÝ BOX: Šírka w-full, výška fixná a tenšia (na mobile 350px, na desktope 450px) */}
-      <div className="relative w-full min-h-screen bg-gray-950">
-        
-        {/* Obrázok kampane roztiahnutý na úplné kraje monitora */}
-         <video
-              src="/header-nova-kolekcia.mp4" 
-     width={450} 
-    height={350} 
-    className="w-full h-auto"
-    autoPlay      
-    muted      
-    loop         
-    playsInline  
-            />
-
-        {/* GRADIENT OVERLAY: Pre skvelú čitateľnosť textu */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/50 " />
-
-        {/* 3. OBSAH: Zostáva zarovnaný v rovnakej mriežke ako zvyšok webu (max-w-7xl), aby nápisy neutekali úplne do rohu monitora */}
-        <div className="absolute inset-0 z-20 max-w-8xl mb-20 mx-auto px-6 text-center md:px-12 flex items-end justify-center text-white">
-          <div className="max-w-8xl">
-            
-            {/* Podnadpis */}
-            <span className="text-[98px]  px-4  text-center mix-blend-difference font-black uppercase  text-blue-600 mb-2 block">
-              NOVÉ KÚSKY
-            </span>
-
-            {/* Nadpis */}
-            <h1 hidden className="text-3xl py-30 md:text-5xl lg:text-8xl text-center font-black uppercase tracking-tight leading-[0.95] mb-4 text-orange-300 ">
-              Urban SUMMER.
-            </h1>
-
-          
-          
-
-            {/* Tlačidlo */}
-            <div className="flex flex-row items-center py-8 justify-center gap-4">
-              <Link href="/spring">
-                <button className=" text-white border-b border-white px-6 py-3 font-bold text-[12px] uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300 ">
-                  Nakupovať
-                </button>
-              </Link>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-
-
-    </section>
-
-  <section hidden className="w-auto mx-auto  mt   ">
+    <section className="relative w-full top-0 overflow-hidden bg-black">
   
-        <div className="relative w-full h-auto md:h-auto flex flex-col md:flex-row items-center justify-center  overflow-hidden">
+  {/* 2. PANORAMATICKÝ BOX: Zjednotená výška. Na mobile 450px, na desktope 75-80% obrazovky */}
+  <div className="relative w-full h-[450px] md:h-full bg-gray-950 overflow-hidden">
+    
+    {/* Video využíva object-cover, takže sa na mobile pekne oreže bez deformácie */}
+    <video
+      src="/header-nova-kolekcia.mp4" 
+      className="w-full h-full object-cover"
+      autoPlay      
+      muted      
+      loop         
+      playsInline  
+    />
 
+    {/* GRADIENT OVERLAY: Vylepšený, aby tmavol od spodku a držal kontrast */}
+    <div className="absolute inset-0 bg-gradient-to-b from-yellow-600/30 via-transparent to-white/20 z-10" />
+
+    {/* 3. OBSAH: Odstránený mb-20, ktorý to na mobile kazil. Použitý padding pre flexibilitu */}
+    <div className="absolute inset-0 z-20 max-w-8xl mx-auto px-6 md:pb-12 pb-6 flex items-end justify-center text-white">
+      <div className="w-full max-w-4xl flex flex-col items-center">
         
-   
+        {/* Podnadpis: Na mobile text-5xl až 6xl (aby sa zmestil), na PC obrovský text-[92px] */}
+        <span className="text-[44px] sm:text-[60px] md:text-[92px] text-center mix-blend-difference font-black uppercase tracking-tighter text-blue-600 leading-none mb-4 block">
+          NOVÉ KÚSKY
+        </span>
 
-          <div className="relative w-full  md:h-full overflow-hidden flex items-center justify-center p-6 md:p-12  order-first md:order-last">
-            <Image hidden
-              src="/header6.png"
-              alt="Urban Spring Collection"
-              fill
-              className="object-cover h-full object-center "
-              priority
-            />
+        {/* Tlačidlo: Jemne posunuté vyššie pomocou pt-2 */}
+        <div className="flex flex-row items-center pt-2 justify-center">
+          <Link href="/spring">
+            <button className="text-white border-b border-white px-8 py-3 font-bold text-[12px] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
+              Nakupovať
+            </button>
+          </Link>
+        </div>
 
-<video
-              src="/header9.mp4" 
-     width={450} 
-    height={350} 
-    className="w-full h-full "
-    autoPlay      
-    muted      
-    loop         
-    playsInline  
-            />
+      </div>
+    </div>
 
-        <div className="flex flex-col absolute items-end py-8 pt-182 justify-center gap-4">
-              <Link href="/spring">
-                <button className="bg-red-500 text-white px-6 py-3 font-bold text-[24px] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 ">
-                  Nakupovať
-                </button>
-              </Link>
-            </div>
+  </div>
+</section>
 
-      {/* Tlačidlo Zobraziť všetko */}
-   
-       
-          <h1 className="text-white border-b border-black md:text-[48px] font-light uppercase tracking-widest px-8 py-1 ">
-            Nová kolekcia
-          </h1>
-       
+
+  <section className="w-full   ">
+  <div className="w-full max-w-8xl mx-auto  px-2 md:px-12 ">
     
 
+
+    <div className='flex justify-left md:py-8 py-4 items-start'>
+      <motion.h1  
+        initial={{ opacity: 0, y: 15 }}        
+        whileInView={{ opacity: 1, y: 0 }}      
+        transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }} 
+        className='font-sans text-[28px] md:text-[18px] text-left font-medium  tracking-tighter text-black'
+      >
+        Odporúčané Produkty
+      </motion.h1>
+    </div>
+
+    {/* 🛠️ UPRAVENÝ OBAL: Na mobile flex s povoleným scrollom do boku, bez viditeľného scrollbaru, na desktopoch čistý grid */}
+    <div id="product-slider" className='font-bold flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-2 lg:grid-cols-6 text-black md:gap-x-0.5 md:gap-y-8 gap-x-0.5 md:w-full pb-2'>
+
+      {/* Produkt 1 */}
+      <Link href="/produkt/dinamic" className="block bg-gray-100 group  cursor-pointer w-[45vw] sm:w-[45vw] md:w-full flex-shrink-0 snap-start">
+        <div className="flex flex-col w-full">
+          <div className="md:aspect-[16/19] aspect-square bg-transparent flex items-center justify-center p-6 overflow-hidden">
+            <img 
+              src="/dinamic1.webp" 
+              alt="Urban Dinamic" 
+              className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+            />
           </div>
+          <div className="mt-4  flex flex-col items-left justify-center">
+            <h3 className="text-black text-[12px] text-left font-medium uppercase px-6">
+              Urban Dinamic
+            </h3>
+            <h3 className="text-black text-[14px] font-medium uppercase px-6 ">
+              180,00 €
+            </h3>
+          </div>
+        </div>
+      </Link>
 
-       
+      {/* Produkt 2 */}
+      <div className="group bg-gray-100 cursor-pointer w-[45vw] sm:w-[45vw] md:w-full flex-shrink-0 snap-start">
+        <div className="flex flex-col w-full">
+          <div className="md:aspect-[16/19] aspect-square bg-transparent flex items-center justify-center p-6 overflow-hidden">
+            <img 
+              src="/u3.1.1.webp" 
+              alt="U-3" 
+              className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+            />
+          </div>
+          <div className="mt-4 mb-6 flex flex-col items-left justify-center">
+            <h3 className="text-black text-[14px] font-medium uppercase px-6">
+              U-3
+            </h3>
+            <h3 className="text-black text-[14px] font-medium uppercase px-6 mt-1">
+              169,99 €
+            </h3>
+          </div>
+        </div>
+      </div>
 
+      {/* Produkt 3 */}
+      <div className="group bg-gray-100 cursor-pointer w-[45vw] sm:w-[45vw] md:w-full flex-shrink-0 snap-start">
+        <div className="flex flex-col w-full">
+          <div className="flex items-center md:aspect-[16/19] aspect-square justify-center p-6 overflow-hidden">
+            <img 
+              src="/23.webp" 
+              alt="Retro Low" 
+              className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+            />
+          </div>
+          <div className="mt-4 mb-6 flex flex-col items-left justify-center">
+            <h3 className="text-black text-[14px] font-medium uppercase px-6">
+              M-A2
+            </h3>
+            <h3 className="text-black text-[14px] font-medium uppercase px-6 mt-1">
+              230,00 €
+            </h3>
+          </div>
+        </div>
+      </div>
 
+      {/* Produkt 4 */}
+      <div className="group bg-gray-100 cursor-pointer w-[45vw] sm:w-[45vw] md:w-full flex-shrink-0 snap-start">
+        <div className="flex flex-col w-full">
+          <div className="flex items-center md:aspect-[16/19] aspect-square justify-center p-6 overflow-hidden">
+            <img 
+              src="/retrohigh1.webp" 
+              alt="Retro High" 
+              className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+            />
+          </div>
+          <div className="mt-4 mb-6 flex flex-col items-left justify-center">
+            <h3 className="text-black text-[14px] font-medium uppercase px-6">
+              Retro High
+            </h3>
+            <h3 className="text-black text-[14px] font-medium uppercase px-6 mt-1">
+              145,00 €
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      {/* Produkt 5 */}
+      <div className="group bg-gray-100 cursor-pointer w-[45vw] sm:w-[45vw] md:w-full flex-shrink-0 snap-start">
+        <div className="flex flex-col w-full">
+          <div className="flex items-center md:aspect-[16/19] aspect-square justify-center p-6 overflow-hidden">
+            <img 
+              src="/343.png" 
+              alt="Retro Low" 
+              className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+            />
+          </div>
+          <div className="mt-4 mb-6 flex flex-col items-left justify-center">
+            <h3 className="text-black text-[14px] font-medium uppercase px-6">
+              Retro Low
+            </h3>
+            <h3 className="text-black text-[14px] font-medium uppercase px-6 mt-1">
+              159,99 €
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      {/* Produkt 6 */}
+      <div className="group bg-gray-100 cursor-pointer w-[45vw] sm:w-[45vw] md:w-full flex-shrink-0 snap-start">
+        <div className="flex flex-col w-full">
+          <div className="flex items-center md:aspect-[16/19] aspect-square justify-center p-6 overflow-hidden">
+            <img 
+              src="/retrolow..png" 
+              alt="Retro Low" 
+              className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+            />
+          </div>
+          <div className="mt-4 mb-6 flex flex-col items-left justify-center">
+            <h3 className="text-black text-[14px] font-medium uppercase px-6">
+              Retro Low
+            </h3>
+            <h3 className="text-black text-[14px] font-medium uppercase px-6 mt-1">
+              130,00 €
+            </h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div className="flex flex-row items-center justify-center gap-8 md:hidden">
         
-    
-
-      </div>
-
-      </section>
-
-
-  <section className="w-full my- ">
-
-    <div className="w-full max-w-8xl mx-auto  mt-0  px-6 md:px-12 ">
-      {/* NADPIS SEKCE */}
-      <div className='flex  justify-center  mb-16 items-start'>
-        <motion.h1  
-          initial={{ opacity: 0, y: 15 }}        
-          whileInView={{ opacity: 1, y: 0 }}      
-          transition={{
-            duration: 1.0,
-            ease: [0.22, 1, 0.36, 1]              
-          }} 
-          className='text-[36px] md:text-[44px] text-left uppercase font-black   tracking-normal text-black leading-[0.95]'
+        {/* Šípka DOĽAVA */}
+        <button 
+          onClick={() => {
+            const slider = document.getElementById('product-slider');
+            if (slider) slider.scrollBy({ left: -200, behavior: 'smooth' });
+          }}
+          className="p-3 text-black active:scale-90 transition-transform"
+          aria-label="Posunúť doľava"
         >
-       
-        </motion.h1>
-      </div>
-        <div className='flex  justify-left py-8  items-start'>
-        <motion.h1  
-          initial={{ opacity: 0, y: 15 }}        
-          whileInView={{ opacity: 1, y: 0 }}      
-          transition={{
-            duration: 1.0,
-            ease: [0.22, 1, 0.36, 1]              
-          }} 
-          className='text-[36px] md:text-[18px] text-left  font-normal  uppercase tracking-normal text-black'
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+
+        {/* Šípka DOPRAVA */}
+        <button 
+          onClick={() => {
+            const slider = document.getElementById('product-slider');
+            if (slider) slider.scrollBy({ left: 200, behavior: 'smooth' });
+          }}
+          className="p-3 text-black active:scale-90 transition-transform"
+          aria-label="Posunúť doprava"
         >
-          Odporúčané produkty
-        </motion.h1>
-      </div>
-
-      {/* OBRIE 3 STĹPCE BEZ OMEDZENIA PADDINGOM */}
-      <div className=' font-bold grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-6 text-black  md:gap-x-1 md:gap-y-8 gap-x-8 w-full'>
-
-        {/* Produkt 1 */}
-        <Link href="/produkt/dinamic" className="block  bg-gray-100  group cursor-pointer">
-          <div className="flex flex-col w-full">
-            {/* ZMENA: aspect-[16/19] a p-0 – topánka vystrelí do šírky na maximum stĺpca */}
-            <div className="aspect-[16/19] bg-transparent flex items-center justify-center px-12 overflow-hidden">
-              <img 
-                src="/dinamic1.webp" 
-                alt="Urban Dinamic" 
-                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-              />
-            </div>
-            
-            {/* Label pod topánkou */}
-            <div className="mt-8 flex flex-col items-left justify-center">
-              <h3 className=" text-black text-[14px] text-left font-normal uppercase  px-8 py- rounded-full  ">
-                Urban Dinamic
-              </h3>
-                        <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
-                180,00 €
-              </h3>
-              
-            </div>
-          </div>
-        </Link>
-
-        {/* Produkt 2 */}
-        <div className="group  bg-gray-100  cursor-pointer">
-          <div className="flex flex-col w-full">
-            <div className="aspect-[16/19] bg-transparent flex items-center justify-center px-12 overflow-hidden">
-              <img 
-                src="/u3.1.1.webp" 
-                alt="U-3" 
-                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-              />
-            </div>
-            <div className="mt-8 flex flex-col items-left justify-center">
-              <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full  ">
-                U-3
-              </h3>
-                     <h3 className="text-black text-[14px] font-normal uppercase px-8 py- rounded-full">
-                169,99 €
-              </h3>
-            </div>
-          </div>
-        </div>
-
-        {/* Produkt 3 */}
-        <div className="group   bg-gray-100  cursor-pointer">
-          <div className="flex flex-col w-full">
-            <div className=" flex items-center aspect-[16/19]  justify-center px-12 overflow-hidden">
-              <img 
-                src="/23.webp" 
-                alt="Retro Low" 
-                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-              />
-            </div>
-            <div className="mt-8 flex flex-col items-left justify-center">
-              <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
-                M-A2
-              </h3>
-                   <h3 className="text-black text-[14px] font-normal uppercase px-8 py- rounded-full">
-                230,00 €
-              </h3>
-            </div>
-          </div>
-        </div>
-
-                {/* Produkt 3 */}
-        <div className="group   bg-gray-100  cursor-pointer">
-          <div className="flex flex-col w-full">
-            <div className=" flex items-center aspect-[16/19]  justify-center px-12 overflow-hidden">
-              <img 
-                src="/retrohigh1.webp" 
-                alt="Retro Low" 
-                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-              />
-            </div>
-            <div className="mt-8 flex flex-col items-left justify-center">
-              <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
-                Retro High
-              </h3>
-                   <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
-                145,00 €
-              </h3>
-            </div>
-          </div>
-        </div>
-
-                {/* Produkt 3 */}
-        <div className="group   bg-gray-100  cursor-pointer">
-          <div className="flex flex-col w-full">
-            <div className=" flex items-center aspect-[16/19]  justify-center px-12 overflow-hidden">
-              <img 
-                src="/343.png" 
-                alt="Retro Low" 
-                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-              />
-            </div>
-            <div className="mt-8 flex flex-col items-left justify-center">
-              <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
-                Retro Low
-              </h3>
-                   <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
-                159,99 €
-              </h3>
-            </div>
-          </div>
-        </div>
-
-                {/* Produkt 3 */}
-        <div className="group   bg-gray-100  cursor-pointer">
-          <div className="flex flex-col w-full">
-            <div className=" flex items-center aspect-[16/19]  justify-center px-12 overflow-hidden">
-              <img 
-                src="/retrolow..png" 
-                alt="Retro Low" 
-                className="w-full h-[11vh] object-contain group-hover:scale-80 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-              />
-            </div>
-            <div className="mt-8 flex flex-col items-left justify-center">
-              <h3 className="text-black text-[14px] font-normal uppercase t px-8 py- rounded-full">
-                Retro Low
-              </h3>
-                   <h3 className="text-black text-[14px] font-normal uppercase  px-8 py- rounded-full">
-                130,00 €
-              </h3>
-            </div>
-          </div>
-        </div>
-           
-
-   
-         
-           
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
 
       </div>
 
-      {/* Tlačidlo Zobraziť všetko */}
-      <div className="flex flex-col justify-center items-center py-8">
-        <Link href="/">
-          <button className=" text-black border-b border-black text-[18x] font-normal uppercase tracking-widest px-8 py-1 ">
-            Zobraziť všetko
-          </button>
-        </Link>
-      </div>
-      </div>
-    </section>
+    {/* Tlačidlo Zobraziť všetko */}
+    <div className="flex flex-col justify-center items-center py-8">
+      <Link href="/">
+        <button className="text-black border-b border-black md:text-[18px] text-[12px] font-normal uppercase tracking-widest md:px-8 px-4 py-1">
+          Zobraziť všetko
+        </button>
+      </Link>
+    </div>
+
+  </div>
+</section>
 
 
 
@@ -407,14 +337,14 @@ export default function Home() {
             duration: 1.0,
             ease: [0.22, 1, 0.36, 1]              
           }} 
-          className='text-[36px] md:text-[32px] py-2 text-left uppercase font-normal   tracking-normal text-white leading-[0.95]'
+          className='text-[28px] md:text-[32px]  text-left uppercase font-normal   tracking-tighter text-white leading-[0.95]'
         >
           LIMITOVANÉ KÚSKY OBLEČENIA 
         </motion.h1>
       </div>
       
       {/* 2-STĹPCOVÁ MRIEŽKA: Na mobile pod sebou (grid-cols-1), od desktopu vedľa seba (md:grid-cols-2) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap- md:gap- items-center w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0.5 md:gap-0.5  items-center w-full">
         
         {/* --- 1. ĽAVÝ STĹPEC: Veľká kampaňová / editorial fotka --- */}
         <div className="w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden  bg-zinc-100 relative group">
@@ -428,12 +358,12 @@ export default function Home() {
               transition={{
                 duration: 2.0,
                 ease: [0.22, 1, 0.36, 1]
-              }} className="absolute left-0 top-[10%] w-[35%] md:w-[45%] z-230  rotate-[-8deg]">
+              }} className="absolute left-0 top-[10%] w-[48%] md:w-[45%] z-230  rotate-[-8deg]">
               <Image src="/nohavicecierne.webp" width={550} height={450} alt="Lifestyle" className="w-full shadow-lg  h-auto" />
             </motion.div>
           {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
-          <div className="absolute bottom-6 left-6 bg-white text-black font-mono text-[18px] uppercase tracking-widest ">
-            Drop 02 / Local Scenery
+          <div className="absolute bottom-6 left-6 bg-white text-black px-4  text-[18px] uppercase font-semibold tracking-tightest ">
+            Drop 02 / Nohavice - voľný stih
           </div>
         </div>
     <div className="w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden  bg-zinc-100 relative group">
@@ -447,12 +377,12 @@ export default function Home() {
               transition={{
                 duration: 2.0,
                 ease: [0.22, 1, 0.36, 1]
-              }} className="absolute right-0 top-[30%] w-[35%] md:w-[40%] z-230   rotate-[6deg]">
+              }} className="absolute right-0 md:top-[30%] top-[50%] w-[45%] md:w-[40%] z-230   rotate-[6deg]">
               <Image src="/koselabiela.webp" width={550} height={450} alt="Lifestyle" className="w-full shadow-lg   h-auto" />
             </motion.div>
           {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
-          <div className="absolute bottom-6 left-6 bg-white text-black font-mono text-[18px] uppercase tracking-widest opacity-80">
-            Drop 02 / Local Scenery
+          <div className="absolute bottom-6 left-6 bg-white text-black  text-[18px] uppercase  tracking-tightest px-4 font-semibold">
+            Drop 03 / Pruhovaná košela
           </div>
         </div>
       
@@ -558,11 +488,12 @@ export default function Home() {
       </section>
  
 
-  <section className="max-w-8xl mx-auto w-full bg-black px- pb-8   ">
+  <section className="max-w-8xl mx-auto w-full bg-black pt-0.5 pb-8   ">
+   
    
       
       {/* 2-STĹPCOVÁ MRIEŽKA: Na mobile pod sebou (grid-cols-1), od desktopu vedľa seba (md:grid-cols-2) */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap- md:gap-  items-center w-full">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-0.5 md:gap-0.5  items-center w-full">
         
         {/* --- 1. ĽAVÝ STĹPEC: Veľká kampaňová / editorial fotka --- */}
         <div className="w-full aspect-[4/5] md:aspect-[4/4] overflow-hidden  bg-orange-700/88 relative group">
@@ -580,8 +511,8 @@ export default function Home() {
              
             </motion.div>
           {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
-          <div className="absolute bottom-6 left-6 bg-white text-black font-mono text-[18px] uppercase tracking-widest opacity-80">
-            Drop 02 / Local Scenery
+          <div className="absolute bottom-6 md:left-6 bg-white left-6 text-black font-semibold text-[18px] uppercase tracking-tightest ">
+            Drop 04 / Mikina MOVES
           </div>
         </div>
     <div className="w-full aspect-[4/5] md:aspect-[4/4] overflow-hidden  bg-blue-600/90 relative group">
@@ -599,12 +530,12 @@ export default function Home() {
          
             </motion.div>
           {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
-          <div className="absolute bottom-6 left-6 bg-white text-black font-mono text-[18px] uppercase tracking-widest opacity-80">
-            Drop 02 / Local Scenery
+          <div className="absolute bottom-6 left-6 bg-white text-black font-semibold text-[18px] uppercase tracking-tightest ">
+            Drop 05 / Tričko s logom
           </div>
         </div>
 
-            <div className="w-full col-span-2 md:col-span-1 aspect-[4/5] md:aspect-[4/4] overflow-hidden  bg-red-800/70 relative group">
+            <div className="w-full col-span-2 md:col-span-1 aspect-[4/5] md:aspect-[4/4] overflow-hidden  bg-red-700/70 relative group">
           <img 
             src="/trickologo2.png" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
             alt="Summer Campaign" 
@@ -619,8 +550,8 @@ export default function Home() {
          
             </motion.div>
           {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
-          <div className="absolute bottom-6 left-6 bg-white text-black font-mono text-[18px] uppercase tracking-widest opacity-80">
-            Drop 02 / Local Scenery
+          <div className="absolute bottom-6 left-6 bg-white text-black font-semibold text-[18px] uppercase tracking-tightest ">
+            Drop 06 / Tričko s golierom
           </div>
         </div>
       
@@ -629,7 +560,7 @@ export default function Home() {
       </div>
            <div className="flex flex-col justify-center items-center py-8">
         <Link href="/">
-          <button className=" text-white border-b border-white text-[18px] font-normal uppercase tracking-widest px-8 py-1 ">
+          <button className=" text-white border-b border-white md:text-[18px] text-[12px] font-normal uppercase tracking-widest md:px-8 px-4 py-1 ">
             Zobraziť všetko
           </button>
         </Link>
@@ -656,7 +587,7 @@ export default function Home() {
       </div>
       
       {/* 2. PANORAMATICKÝ BOX: Šírka w-full, výška fixná a tenšia (na mobile 350px, na desktope 450px) */}
-      <div className="relative w-full min-h-screen bg-gray-950">
+      <div className="relative w-full h-[450px] md:h-full bg-gray-950">
         
         {/* Obrázok kampane roztiahnutý na úplné kraje monitora */}
          <video
@@ -1006,7 +937,7 @@ export default function Home() {
 
 
 
-      <section className='flex flex-col items-center bg-black   w-full h-[80vw] md:h-[12vw]  justify-center'>
+      <section className='flex flex-col items-center bg-black  py-16 md:py-24 justify-center'>
 
         <div className='relative '>
           <h2 className=' font-bold uppercase  mt-2 text-center text-white lg:text-[42px]'>

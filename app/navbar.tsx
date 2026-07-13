@@ -13,7 +13,7 @@ export default function Navbar() {
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false); // Stav pre otvorenie vyhľadávania
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   // 1. SLEDOVANIE SCROLLU
@@ -46,24 +46,27 @@ export default function Navbar() {
 
   return (
     <>
-      <div className=" flex bg-gradient-to-r from-blue-600 to-blue-500 py-2  relative w-full" />
+      {/* Horná modrá linka */}
+      <div className="flex bg-gradient-to-r from-blue-600 to-blue-500 py-1 md:py-2 relative w-full" />
     
       <nav className={`
-        fixed top-0 left-0 w-full z-[830] transition-all duration-100 px-8
+        fixed top-0 left-0 w-full z-[830] transition-all duration-100 
         ${isScrolled || isMenuOpen 
-          ? 'bg-white py-2 md:py- text-black ' 
+          ? 'bg-white py-2 text-white md:py-4 ' 
           : 'bg-transparent text-white py-2 md:py-6'
         }
       `}>
-        <div className="max-w-8xl mx-auto flex bg-gradient-to-r from-orange-600 to-yellow-600 mb-2 justify-between uppercase items-center justify-center relative w-full">
-          <h1 className="text-[10px] md:text-[12px] font-normal text-white">
+        {/* Banner s novou kolekciou */}
+        <div className="w-full mx-auto flex bg-gradient-to-r from-orange-600 to-orange-500 mb-2 justify-between uppercase items-center justify-center relative w-full py-1 ">
+          <h1 className="text-[9px] md:text-[12px] font-normal text-white tracking-wider">
             NOVÁ KOLEKCIA V PREDAJI
           </h1>
         </div>
-        {/* DOSTREDENÝ KONTAJNER: max-w-6xl zaručí, že menu drží kompaktnú, modernú šírku */}
-        <div className="max-w-8xl mx-auto flex justify-between uppercase items-center relative w-full">
+
+        {/* Hlavný kontajner Navbary */}
+        <div className="max-w-8xl mx-auto flex justify-between px-4 md:px-8 uppercase items-center relative w-full gap-2">
           
-          {/* ANIMOVANÝ SEARCH PANEL (Prekryje menu po aktivácii) */}
+          {/* ANIMOVANÝ SEARCH PANEL */}
           <AnimatePresence>
             {isSearchOpen && (
               <motion.div 
@@ -72,21 +75,21 @@ export default function Navbar() {
                 exit={{ opacity: 0, y: -10 }}
                 className="absolute inset-0 bg-white z-[140] flex items-center justify-between px-2"
               >
-                <div className="flex items-center gap-4 w-full max-w-3xl">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-zinc-400">
+                <div className="flex items-center gap-2 md:gap-4 w-full max-w-3xl">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-zinc-400 flex-shrink-0">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                   </svg>
                   <input 
                     type="text" 
-                    placeholder="HĽADAŤ PRODUKT, KOLEKCIU..." 
-                    className="w-full bg-transparent border-none outline-none text-sm uppercase font-mono tracking-wider text-black placeholder-zinc-400"
+                    placeholder="HĽADAŤ PRODUKT..." 
+                    className="w-full bg-transparent border-none outline-none text-xs md:text-sm uppercase font-mono tracking-wider text-black placeholder-zinc-400"
                     autoFocus
                   />
                 </div>
                 <button 
                   onClick={() => setIsSearchOpen(false)}
-                  className="text-[10px] uppercase font-bold tracking-widest text-zinc-500 hover:text-black transition"
+                  className="text-[9px] md:text-[10px] uppercase font-bold tracking-widest text-zinc-500 hover:text-black transition flex-shrink-0"
                 >
                   ZAVRIEŤ [X]
                 </button>
@@ -94,85 +97,71 @@ export default function Navbar() {
             )}
           </AnimatePresence>
 
-          {/* LEFT: HAMBURGER (PRE MOBIL) / LINKY (PRE DESKTOP) */}
-          <div className="flex items-center gap-8 flex-1">
-            {/* Mobilné hamburger tlačidlo */}
+          {/* LEFT: HAMBURGER (MOBIL) / LOGO & LINKY (DESKTOP) */}
+          <div className="flex items-center text-black gap-4 md:gap-8 flex-1">
+            {/* Mobilné hamburger tlačidlo - preberá farbu podľa stavu navbary */}
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden flex flex-row gap-1.5 w-6 text-black"
+              className={`md:hidden flex flex-col justify-center  items-center gap-1 w-6 h-6 z-[850] relative ${isScrolled || isMenuOpen ? 'text-black' : 'text-blue-600'}`}
             >
-              <div className={`h-[2px] w-full bg-black transition-transform ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></div>
-              <div className={`h-[2px] w-full bg-black ${isMenuOpen ? 'opacity-0' : ''}`}></div>
-              <div className={`h-[2px] w-full bg-black transition-transform ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></div>
+              <div className={`h-[2px] w-5 ${isScrolled || isMenuOpen ? 'bg-black' : 'bg-blue-600'} transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-[6px]' : ''}`}></div>
+              <div className={`h-[2px] w-5 ${isScrolled || isMenuOpen ? 'bg-black' : 'bg-blue-600'} transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></div>
+              <div className={`h-[2px] w-5 ${isScrolled || isMenuOpen ? 'bg-black' : 'bg-blue-600'} transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-[6px]' : ''}`}></div>
             </button>
 
-      <div className="flex justify-start flex-none">
-            <Link href="/">
-              <img 
-                src="/206.png" 
-                alt="logo" 
-                className={`h-auto transition-all bg-white px-2 rounded-full duration-500 ${isScrolled ? 'w-24' : 'w-28'}`}
-              />
-            </Link>
-          </div>
+            {/* LOGO - na mobile o kúsok menšie aby netlačilo ikony */}
+            <div className="flex justify-start flex-none">
+              <Link href="/">
+                <img 
+                  src="/206.png" 
+                  alt="logo" 
+                  className={`h-auto transition-all bg-white px-2 rounded-full duration-500 ${isScrolled ? 'w-20 md:w-24' : 'w-24 md:w-28'}`}
+                />
+              </Link>
+            </div>
 
-            {/* Desktopové moderné inline menu */}
-            <div className="hidden md:flex flex-row items-center gap-6 text-[14px] font-light tracking-widest  ">
-            
+            {/* Desktopové linky (skryté na mobile) */}
+            <div className="hidden md:flex flex-row items-center gap-6 text-[14px] font-normal tracking-widest">
               <Link href="/kolekcie" className="hover:opacity-60 transition">Dámske</Link>
               <Link href="/obuv" className="hover:opacity-60 border-b border-black transition">Pánske</Link>
-           
             </div>
-   <div className="hidden md:flex flex-row items-center gap-6 text-[14px] font-light tracking-widest  ">
-            
+            <div className="hidden md:flex flex-row items-center gap-6 text-[14px] font-normal tracking-widest">
               <Link href="/kolekcie" className="hover:opacity-60 transition">Novinky</Link>
-              <Link href="/obuv" className="hover:opacity-60  transition">Kolekcie</Link>
-           
-            </div>
-
-             <div hidden className="hidden md:flex flex-col items-center gap-6 text-[14px] font-bold tracking-widest text-black ">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="hover:opacity-60 transition ">
-                {isMenuOpen ? 'Zavrieť' : 'Novinky'}
-              </button>
-              <Link href="/doplnky" className="hover:opacity-60 transition">Doplnky</Link>
+              <Link href="/obuv" className="hover:opacity-60 transition">Kolekcie</Link>
             </div>
           </div>
 
-          {/* CENTER: LOGO */}
-    
-          {/* RIGHT: ICONS */}
-          <div className="flex-1 flex justify-end gap-5 md:gap-12  items-center">
+          {/* RIGHT: ICONS (Prehľadné ikony pre PC aj Mobil) */}
+          <div className="flex justify-end gap-4 md:gap-12 items-center">
             {/* SEARCH LUPA */}
-            
-            <button onClick={() => setIsSearchOpen(true)} className="hover:scale-110 transition-transform">
-              
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <button onClick={() => setIsSearchOpen(true)} className="hover:scale-110 transition-transform flex flex-col items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
-              <h1 className='font-light text-center py-1'>Hladať</h1>
+              <span className="hidden md:block text-[10px] font-normal text-center py-1">Hľadať</span>
             </button>
 
-            {/* ACCOUNT */}
-            <button className="hover:scale-110 transition-transform hidden flex flex-col items-center justify-center sm:block">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            {/* ACCOUNT (na mobile skrytý, zostáva len na SM a väčších) */}
+            <button className="hover:scale-110 transition-transform  sm:flex flex-col items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
               </svg>
-                <h1 className='font-light  text-center py-1'>Účet</h1>
+              <span className="text-[10px] hidden md:block font-normal text-center py-1">Účet</span>
             </button>
 
             {/* CART CONTAINER */}
             <div onClick={() => setIsCartOpen(true)} className="relative cursor-pointer flex justify-center items-center group">
-              <button className="group-hover:scale-110 transition-transform">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <button className="group-hover:scale-110 transition-transform flex flex-col items-center justify-center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
                   <line x1="3" y1="6" x2="21" y2="6"></line>
                   <path d="M16 10a4 4 0 0 1-8 0"></path>
                 </svg>
-                  <h1 className='font-light text-center py-1'>Košík</h1>
+                <span className="hidden md:block text-[10px] font-normal text-center py-1">Košík</span>
               </button>
-              <span className="ml-1 font-mono text-xl px-2 ml-2 font-bold ">
+              <span className="ml-1 font-mono text-sm md:text-xl px-1 font-bold">
                 ({items.length})
               </span>
             </div>
@@ -189,7 +178,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsCartOpen(false)}
-              className="fixed inset-0 bg-black/40 z-[200]"
+              className="fixed inset-0 bg-black/40 z-[900]"
             />
             
             <motion.div 
@@ -197,7 +186,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', ease: [0.22, 1, 0.36, 1], duration: 0.4 }}
-              className="fixed top-0 right-0 h-full w-full md:w-[420px] bg-white z-[210] flex flex-col shadow-2xl"
+              className="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white z-[910] flex flex-col shadow-2xl"
             >
               <div className="p-6 border-b border-zinc-100 flex justify-between items-center bg-white">
                 <h2 className="text-xs font-bold uppercase tracking-widest text-black">Tvoj košík</h2>
@@ -255,25 +244,25 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* --- 3. FULLSCREEN OVERLAY MENU --- */}
+      {/* --- 3. FULLSCREEN OVERLAY MENU (Upravené z-indexy a interakcie pre mobil) --- */}
       <div 
         onMouseMove={handleMouseMove}
-        className={`fixed inset-0 z-[120] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`fixed inset-0 z-[820] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           isMenuOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
         <div className="absolute inset-0 bg-[#09090b] overflow-hidden" />
 
-        {/* Responzívny Fullscreen Layout menu */}
-        <div className="relative h-full max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-center md:justify-between items-center gap-12 text-white">
-          <div className="flex flex-col items-center md:items-start space-y-4 md:space-y-6 text-2xl md:text-4xl font-light tracking-tight font-sans">
-            <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-zinc-400 transition-colors uppercase">Domov</Link>
-            <Link href="/kolekcie" onClick={() => setIsMenuOpen(false)} className="hover:text-zinc-400 transition-colors uppercase">Kolekcie</Link>
-            <Link href="/obuv" onClick={() => setIsMenuOpen(false)} className="hover:text-zinc-400 transition-colors uppercase">Obuv</Link>
-            <Link href="/doplnky" onClick={() => setIsMenuOpen(false)} className="hover:text-zinc-400 transition-colors uppercase">Doplnky</Link>
+        {/* Responzívny Fullscreen Layout menu - py-24 a flex-col zabezpečí, že odkazy neutečú mimo obrazovku mobilu */}
+        <div className="relative h-full max-w-6xl mx-auto px-6 py-24 flex flex-col justify-between items-center md:flex-row md:justify-between md:items-center gap-8 text-white overflow-y-auto">
+          <div className="flex flex-col items-center md:items-start space-y-6 md:space-y-6 text-xl md:text-4xl font-light tracking-tight font-sans mt-8 md:mt-0">
+            <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-zinc-400 transition-colors uppercase py-2 md:py-0">Domov</Link>
+            <Link href="/kolekcie" onClick={() => setIsMenuOpen(false)} className="hover:text-zinc-400 transition-colors uppercase py-2 md:py-0">Kolekcie</Link>
+            <Link href="/obuv" onClick={() => setIsMenuOpen(false)} className="hover:text-zinc-400 transition-colors uppercase py-2 md:py-0">Obuv</Link>
+            <Link href="/doplnky" onClick={() => setIsMenuOpen(false)} className="hover:text-zinc-400 transition-colors uppercase py-2 md:py-0">Doplnky</Link>
           </div>
           
-          <div className="flex flex-col items-center md:items-end text-sm font-mono tracking-widest text-zinc-500 space-y-2 text-center md:text-right">
+          <div className="flex flex-col items-center md:items-end text-xs font-mono tracking-widest text-zinc-500 space-y-2 text-center md:text-right mb-8 md:mb-0">
             <span>MOVES CONCEPT STORE ©2026</span>
             <span>INFO@MOVESSTUDIO.COM</span>
           </div>

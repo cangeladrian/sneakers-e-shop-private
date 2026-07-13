@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="sk" className={`${syne.variable}`}>
-      <body className="font-sans text-black antialiased shadow-none">
+    <html lang="sk" >
+  <body className="font-sans text-black antialiased shadow-none">
         {/* 1. VRSTVA: ŠÍPKA */}
       
         

@@ -5,10 +5,12 @@
   --foreground: #f7f3ee;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  
+  /* 🛠️ TU JE ZMENA: Nastavenie ostrého sans-serif fontu priamo pre Tailwind v4 */
+  --font-sans: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
@@ -20,22 +22,13 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
+  /* 🛠️ TU JE ZMENA: Prepojenie, aby body reálne tento nový font čítalo */
   font-family: var(--font-sans);
 }
 
 ::selection {
   background: #ffffff;
   color: #050505;
-}
-
-@media (min-width: 768px) {
-  html, body {
-    cursor: none !important;
-  }
-
-  a, button, input, select, textarea, span, div {
-    cursor: none !important;
-  }
 }
 
 @layer utilities {

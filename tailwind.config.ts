@@ -8,29 +8,29 @@ export default {
   ],
   theme: {
     extend: {
-      theme: {
-  extend: {
     screens: {
       'mobile-h': { 'raw': '(max-height: 500px) and (orientation: landscape)' },
     },
+     fontFamily: {
+  sans: [
+    '"Helvetica Neue"', 
+    'Helvetica', 
+    'Arial', 
+    'ui-sans-serif', 
+    'system-ui', 
+    'sans-serif'],
+},    
+  animation: {
+  'bounce-slow': 'bounce 3s infinite',
+} 
+
   },
 },
  
-    fontFamily: {
-      // Povieme Tailwindu, aby pod triedou 'font-syne' hľadal našu premennú
-      syne: ["var(--font-syne)", "sans-serif"],
-    },
-        colors: {
-        virexRed: '#C44739',
-        virexGrey: '#D1D1D1',
-        virexBlack: '#1A1A1A',
-      },
-      animation: {
-  'bounce-slow': 'bounce 3s infinite',
-}
-    },
-  },
 
-  
   plugins: [],
 } satisfies Config;
+
+
+
+  
