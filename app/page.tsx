@@ -92,7 +92,7 @@ export default function Home() {
     
     {/* Video využíva object-cover, takže sa na mobile pekne oreže bez deformácie */}
     <video
-      src="/header-nova-kolekcia.mp4" 
+      src="/leto-kolekcia.mp4" 
       className="w-full h-full object-cover"
       autoPlay      
       muted      
@@ -101,21 +101,27 @@ export default function Home() {
     />
 
     {/* GRADIENT OVERLAY: Vylepšený, aby tmavol od spodku a držal kontrast */}
-    <div className="absolute inset-0 bg-gradient-to-b from-yellow-600/30 via-transparent to-white/20 z-10" />
+    <div className="absolute  inset-0 bg-gradient-to-b from-black/10 via-transparent to-white/10 z-10" />
 
     {/* 3. OBSAH: Odstránený mb-20, ktorý to na mobile kazil. Použitý padding pre flexibilitu */}
-    <div className="absolute inset-0 z-20 max-w-8xl mx-auto px-6 md:pb-12 pb-6 flex items-end justify-center text-white">
-      <div className="w-full max-w-4xl flex flex-col items-center">
+    <div className="absolute inset-0 z-20  max-w-8xl mx-auto px-6 md:pb-12 pb-6 flex items-end justify-left text-white">
+      <div className="w-full max-w-4xl flex  flex-col items-center justify-left">
         
         {/* Podnadpis: Na mobile text-5xl až 6xl (aby sa zmestil), na PC obrovský text-[92px] */}
-        <span className="text-[44px] sm:text-[60px] md:text-[92px] text-center mix-blend-difference font-black uppercase tracking-tighter text-blue-600 leading-none mb-4 block">
-          NOVÉ KÚSKY
-        </span>
+     <span className="text-[22px] sm:text-[60px] md:text-[42px] w-full text-left mix-blend-difference font-medium  tracking-tighter text-white leading-none md:mb-4 mb-3 block">
+  SUMMER AURA
+  <h1 className="text-[12px] md:text-[16px] w-full py-2  md:px-6 text-center mix-blend-difference font-medium  tracking-tighter text-white text-left leading-none md:mb-4 mb-3 block">
+    Nové limitované kúsky obuvy a oblečenia.
+    <br />
+     Prémiové materiály a unikátne dizajny.
+  </h1>
+</span>
+
 
         {/* Tlačidlo: Jemne posunuté vyššie pomocou pt-2 */}
-        <div className="flex flex-row items-center pt-2 justify-center">
+        <div className="flex flex-col items-center z-12 pt-2 justify-left">
           <Link href="/spring">
-            <button className="text-white border-b border-white px-8 py-3 font-bold text-[12px] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
+            <button className="text-black text-left rounded-sm px-8 py-2 bg-white font-bold text-[10px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
               Nakupovať
             </button>
           </Link>
@@ -128,40 +134,44 @@ export default function Home() {
 </section>
 
 
-  <section className="w-full   ">
-  <div className="w-full max-w-8xl mx-auto  px-2 md:px-12 ">
+ <section className="w-full">
+  <div className="w-full max-w-7xl mx-auto px-2 mt-0.5 md:px-">
     
-
-
-    <div className='flex justify-left md:py-8 py-4 items-start'>
+    <div className='flex justify-left md:py-8 py-1  items-start'>
       <motion.h1  
         initial={{ opacity: 0, y: 15 }}        
         whileInView={{ opacity: 1, y: 0 }}      
         transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }} 
-        className='font-sans text-[28px] md:text-[18px] text-left font-medium  tracking-tighter text-black'
+        className='font-sans text-[18px] md:text-[18px] text-left font-normal  tracking-tighter text-black'
       >
         Odporúčané Produkty
       </motion.h1>
     </div>
 
-    {/* 🛠️ UPRAVENÝ OBAL: Na mobile flex s povoleným scrollom do boku, bez viditeľného scrollbaru, na desktopoch čistý grid */}
-    <div id="product-slider" className='font-bold flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-2 lg:grid-cols-6 text-black md:gap-x-0.5 md:gap-y-8 gap-x-0.5 md:w-full pb-2'>
+    {/* OBAL: Zväčšená medzera na md:gap-x-6 a lg:gap-x-8 */}
+    <div id="product-slider" className='font-bold flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-3 lg:grid-cols-6 text-black md:gap-x-0.5 md:gap-y-8 gap-x-0.5 w-full md:justify-center pb-2'>
 
       {/* Produkt 1 */}
-      <Link href="/produkt/dinamic" className="block bg-gray-100 group  cursor-pointer w-[45vw] sm:w-[45vw] md:w-full flex-shrink-0 snap-start">
+      {/* 🛠️ ZMENA: Zväčšené na md:max-w-[280px] */}
+      <Link href="/produkt/dinamic" className="block bg-[#FAFAFA] group cursor-pointer w-[45vw] sm:w-[45vw] md:w-full md:max-w-[280px] mx-auto flex-shrink-0 snap-start">
         <div className="flex flex-col w-full">
-          <div className="md:aspect-[16/19] aspect-square bg-transparent flex items-center justify-center p-6 overflow-hidden">
+          <div className="mt-4 flex items-left justify-center">
+            <h3 className="text-black  text-[10px] text-left font-light uppercase px-6 py-1">
+              NOVINKA
+            </h3>
+          </div>
+          <div className="md:aspect-[16/19] aspect-square bg-transparent flex items-center justify-center p-6 md:p-8 overflow-hidden">
             <img 
               src="/dinamic1.webp" 
               alt="Urban Dinamic" 
               className="w-full h-full object-contain group-hover:scale-105 transition duration-750 ease-[cubic-bezier(0.25,1,0.5,1)]" 
             />
           </div>
-          <div className="mt-4  flex flex-col items-left justify-center">
-            <h3 className="text-black text-[12px] text-left font-medium uppercase px-6">
+          <div className="mt-4 flex flex-col items-left justify-center">
+            <h3 className="text-black text-[12px] text-left font-bold uppercase px-6">
               Urban Dinamic
             </h3>
-            <h3 className="text-black text-[14px] font-medium uppercase px-6 ">
+            <h3 className="text-black text-[12px] font-medium uppercase px-6 mb-4">
               180,00 €
             </h3>
           </div>
@@ -169,9 +179,14 @@ export default function Home() {
       </Link>
 
       {/* Produkt 2 */}
-      <div className="group bg-gray-100 cursor-pointer w-[45vw] sm:w-[45vw] md:w-full flex-shrink-0 snap-start">
+      <div className="group bg-[#FAFAFA] cursor-pointer w-[45vw] sm:w-[45vw] md:w-full md:max-w-[280px] mx-auto flex-shrink-0 snap-start">
         <div className="flex flex-col w-full">
-          <div className="md:aspect-[16/19] aspect-square bg-transparent flex items-center justify-center p-6 overflow-hidden">
+               <div className="mt-4 flex items-left justify-center">
+            <h3 className="text-black  text-[10px] text-left font-light uppercase px-6 py-1">
+              NOVINKA
+            </h3>
+          </div>
+          <div className="md:aspect-[16/19] aspect-square bg-transparent flex items-center justify-center p-6 md:p-8 overflow-hidden">
             <img 
               src="/u3.1.1.webp" 
               alt="U-3" 
@@ -179,10 +194,10 @@ export default function Home() {
             />
           </div>
           <div className="mt-4 mb-6 flex flex-col items-left justify-center">
-            <h3 className="text-black text-[14px] font-medium uppercase px-6">
+            <h3 className="text-black text-[12px] font-bold uppercase px-6">
               U-3
             </h3>
-            <h3 className="text-black text-[14px] font-medium uppercase px-6 mt-1">
+            <h3 className="text-black text-[12px] font-medium uppercase px-6 mt-1">
               169,99 €
             </h3>
           </div>
@@ -190,9 +205,9 @@ export default function Home() {
       </div>
 
       {/* Produkt 3 */}
-      <div className="group bg-gray-100 cursor-pointer w-[45vw] sm:w-[45vw] md:w-full flex-shrink-0 snap-start">
+      <div className="group bg-[#FAFAFA] cursor-pointer w-[45vw] sm:w-[45vw] md:w-full md:max-w-[280px] mx-auto flex-shrink-0 snap-start">
         <div className="flex flex-col w-full">
-          <div className="flex items-center md:aspect-[16/19] aspect-square justify-center p-6 overflow-hidden">
+          <div className="flex items-center md:aspect-[16/19] aspect-square justify-center p-6 md:p-8 overflow-hidden">
             <img 
               src="/23.webp" 
               alt="Retro Low" 
@@ -200,10 +215,10 @@ export default function Home() {
             />
           </div>
           <div className="mt-4 mb-6 flex flex-col items-left justify-center">
-            <h3 className="text-black text-[14px] font-medium uppercase px-6">
+            <h3 className="text-black text-[12px] font-bold uppercase px-6">
               M-A2
             </h3>
-            <h3 className="text-black text-[14px] font-medium uppercase px-6 mt-1">
+            <h3 className="text-black text-[12px] font-medium uppercase px-6 mt-1">
               230,00 €
             </h3>
           </div>
@@ -211,9 +226,9 @@ export default function Home() {
       </div>
 
       {/* Produkt 4 */}
-      <div className="group bg-gray-100 cursor-pointer w-[45vw] sm:w-[45vw] md:w-full flex-shrink-0 snap-start">
+      <div className="group bg-[#FAFAFA] cursor-pointer w-[45vw] sm:w-[45vw] md:w-full md:max-w-[280px] mx-auto flex-shrink-0 snap-start">
         <div className="flex flex-col w-full">
-          <div className="flex items-center md:aspect-[16/19] aspect-square justify-center p-6 overflow-hidden">
+          <div className="flex items-center md:aspect-[16/19] aspect-square justify-center p-6 md:p-8 overflow-hidden">
             <img 
               src="/retrohigh1.webp" 
               alt="Retro High" 
@@ -221,7 +236,7 @@ export default function Home() {
             />
           </div>
           <div className="mt-4 mb-6 flex flex-col items-left justify-center">
-            <h3 className="text-black text-[14px] font-medium uppercase px-6">
+            <h3 className="text-black text-[14px] font-bold uppercase px-6">
               Retro High
             </h3>
             <h3 className="text-black text-[14px] font-medium uppercase px-6 mt-1">
@@ -232,9 +247,9 @@ export default function Home() {
       </div>
 
       {/* Produkt 5 */}
-      <div className="group bg-gray-100 cursor-pointer w-[45vw] sm:w-[45vw] md:w-full flex-shrink-0 snap-start">
+      <div className="group bg-gray-100 cursor-pointer w-[45vw] sm:w-[45vw] md:w-full md:max-w-[280px] mx-auto flex-shrink-0 snap-start">
         <div className="flex flex-col w-full">
-          <div className="flex items-center md:aspect-[16/19] aspect-square justify-center p-6 overflow-hidden">
+          <div className="flex items-center md:aspect-[16/19] aspect-square justify-center p-6 md:p-8 overflow-hidden">
             <img 
               src="/343.png" 
               alt="Retro Low" 
@@ -242,7 +257,7 @@ export default function Home() {
             />
           </div>
           <div className="mt-4 mb-6 flex flex-col items-left justify-center">
-            <h3 className="text-black text-[14px] font-medium uppercase px-6">
+            <h3 className="text-black text-[14px] font-bold uppercase px-6">
               Retro Low
             </h3>
             <h3 className="text-black text-[14px] font-medium uppercase px-6 mt-1">
@@ -253,9 +268,9 @@ export default function Home() {
       </div>
 
       {/* Produkt 6 */}
-      <div className="group bg-gray-100 cursor-pointer w-[45vw] sm:w-[45vw] md:w-full flex-shrink-0 snap-start">
+      <div className="group bg-gray-100 cursor-pointer w-[45vw] sm:w-[45vw] md:w-full md:max-w-[280px] mx-auto flex-shrink-0 snap-start">
         <div className="flex flex-col w-full">
-          <div className="flex items-center md:aspect-[16/19] aspect-square justify-center p-6 overflow-hidden">
+          <div className="flex items-center md:aspect-[16/19] aspect-square justify-center p-6 md:p-8 overflow-hidden">
             <img 
               src="/retrolow..png" 
               alt="Retro Low" 
@@ -272,47 +287,47 @@ export default function Home() {
           </div>
         </div>
       </div>
+   
+  
+     
 
     </div>
 
+    {/* Šípky (iba pre mobil) */}
     <div className="flex flex-row items-center justify-center gap-8 md:hidden">
-        
-        {/* Šípka DOĽAVA */}
-        <button 
-          onClick={() => {
-            const slider = document.getElementById('product-slider');
-            if (slider) slider.scrollBy({ left: -200, behavior: 'smooth' });
-          }}
-          className="p-3 text-black active:scale-90 transition-transform"
-          aria-label="Posunúť doľava"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" >
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-        </button>
+      <button 
+        onClick={() => {
+          const slider = document.getElementById('product-slider');
+          if (slider) slider.scrollBy({ left: -200, behavior: 'smooth' });
+        }}
+        className="p-3 text-black active:scale-90 transition-transform"
+        aria-label="Posunúť doľava"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </button>
 
-        {/* Šípka DOPRAVA */}
-        <button 
-          onClick={() => {
-            const slider = document.getElementById('product-slider');
-            if (slider) slider.scrollBy({ left: 200, behavior: 'smooth' });
-          }}
-          className="p-3 text-black active:scale-90 transition-transform"
-          aria-label="Posunúť doprava"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" >
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </button>
-
-      </div>
+      <button 
+        onClick={() => {
+          const slider = document.getElementById('product-slider');
+          if (slider) slider.scrollBy({ left: 200, behavior: 'smooth' });
+        }}
+        className="p-3 text-black active:scale-90 transition-transform"
+        aria-label="Posunúť doprava"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
 
     {/* Tlačidlo Zobraziť všetko */}
-    <div className="flex flex-col justify-center items-center py-8">
+    <div className="flex flex-col justify-center items-center pb-10 pt-4">
       <Link href="/">
-        <button className="text-black border-b border-black md:text-[18px] text-[12px] font-normal uppercase tracking-widest md:px-8 px-4 py-1">
+        <button className="text-white text-left rounded-sm px-8 py-2 bg-black font-bold text-[10px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
           Zobraziť všetko
         </button>
       </Link>
@@ -323,13 +338,9 @@ export default function Home() {
 
 
 
-
-
-
-
     
-      <section className="max-w-8xl mx-auto w-full bg-black px- py- md:pb- ">
-        <div className='flex  justify-left py-4  px-6 md:px-12 items-start'>
+      <section className="max-w-8xl  w-full   px- py- md:pb- ">
+        <div className='flex  justify-left pb-4  px-2 md:px-12 items-start'>
         <motion.h1  
           initial={{ opacity: 0, y: 15 }}        
           whileInView={{ opacity: 1, y: 0 }}      
@@ -337,21 +348,22 @@ export default function Home() {
             duration: 1.0,
             ease: [0.22, 1, 0.36, 1]              
           }} 
-          className='text-[28px] md:text-[32px]  text-left uppercase font-normal   tracking-tighter text-white leading-[0.95]'
+          className='font-sans text-[18px] md:text-[18px] text-left font-normal  tracking-tighter text-black'
         >
-          LIMITOVANÉ KÚSKY OBLEČENIA 
+          Limitované kúsky, ktoré sa rýchlo míňajú.   
+          <h1 className="text-[12px] pt- md:text-[38px] font-normal">Buď medzi prvými, ktorí ich získajú.</h1>
         </motion.h1>
       </div>
       
       {/* 2-STĹPCOVÁ MRIEŽKA: Na mobile pod sebou (grid-cols-1), od desktopu vedľa seba (md:grid-cols-2) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-0.5 md:gap-0.5  items-center w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2   items-center w-full">
         
         {/* --- 1. ĽAVÝ STĹPEC: Veľká kampaňová / editorial fotka --- */}
-        <div className="w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden  bg-zinc-100 relative group">
+        <div className="w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden  bg-black relative group">
           <img 
             src="/urban.webp" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
             alt="Summer Campaign" 
-            className="w-full h-full object-cover group-hover:scale-102 transition duration-700   ease-out"
+            className="w-full h-full object-cover group-hover:scale-102 transition duration-700 opacity-90  ease-out"
           />
                   <motion.div initial={{ opacity: 1, y: 80 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -362,12 +374,12 @@ export default function Home() {
               <Image src="/nohavicecierne.webp" width={550} height={450} alt="Lifestyle" className="w-full shadow-lg  h-auto" />
             </motion.div>
           {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
-          <div className="absolute bottom-6 left-6 bg-white text-black px-4  text-[18px] uppercase font-semibold tracking-tightest ">
-            Drop 02 / Nohavice - voľný stih
+          <div className="absolute bottom-6 left-6  text-black bg-white text-[12px]  py-1  tracking-tightest px-4 font-normal">
+            Drop 01 / Nohavice - voľný stih
           </div>
         </div>
     <div className="w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden  bg-zinc-100 relative group">
-          <img 
+          <img  
             src="/oblecenie.webp" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
             alt="Summer Campaign" 
             className="w-full h-full object-cover group-hover:scale-102 transition  opacity-90 duration-700 ease-out"
@@ -381,8 +393,8 @@ export default function Home() {
               <Image src="/koselabiela.webp" width={550} height={450} alt="Lifestyle" className="w-full shadow-lg   h-auto" />
             </motion.div>
           {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
-          <div className="absolute bottom-6 left-6 bg-white text-black  text-[18px] uppercase  tracking-tightest px-4 font-semibold">
-            Drop 03 / Pruhovaná košela
+          <div className="absolute bottom-6 left-6  text-black bg-white text-[12px]  py-1  tracking-tightest px-4 font-normal">
+            Drop 02 / Pruhovaná košela
           </div>
         </div>
       
@@ -488,19 +500,19 @@ export default function Home() {
       </section>
  
 
-  <section className="max-w-8xl mx-auto w-full bg-black pt-0.5 pb-8   ">
+  <section className="max-w-8xl mx-auto w-full px-     ">
    
    
       
       {/* 2-STĹPCOVÁ MRIEŽKA: Na mobile pod sebou (grid-cols-1), od desktopu vedľa seba (md:grid-cols-2) */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-0.5 md:gap-0.5  items-center w-full">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-0.5 py-4 items-center w-full">
         
         {/* --- 1. ĽAVÝ STĹPEC: Veľká kampaňová / editorial fotka --- */}
-        <div className="w-full aspect-[4/5] md:aspect-[4/4] overflow-hidden  bg-orange-700/88 relative group">
+        <div className="w-full aspect-[4/4] md:aspect-[4/4] overflow-hidden  bg-[#FAFAFA] relative group">
           <img 
-            src="/mikina2.png" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
+            src="/trickologo2.png" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
             alt="Summer Campaign" 
-            className="w-full h-full object-cover group-hover:scale-102 transition duration-700   ease-out"
+            className="w-full h-full object-cover group-hover:scale-102 transition duration-700    ease-out"
           />
                   <motion.div initial={{ opacity: 1, y: 80 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -511,11 +523,12 @@ export default function Home() {
              
             </motion.div>
           {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
-          <div className="absolute bottom-6 md:left-6 bg-white left-6 text-black font-semibold text-[18px] uppercase tracking-tightest ">
-            Drop 04 / Mikina MOVES
+          <div className="absolute bottom-0 text-center py-1 px-4 md:left-6 bg-[#262626] left-2 text-white font-normal text-[12px] uppercase tracking-tightest ">
+            Drop 03 / Tričko
           </div>
         </div>
-    <div className="w-full aspect-[4/5] md:aspect-[4/4] overflow-hidden  bg-blue-600/90 relative group">
+      
+    <div className="w-full aspect-[4/4] md:aspect-[4/4] overflow-hidden  bg-[#FAFAFA] relative group">
           <img 
             src="/tricko.png" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
             alt="Summer Campaign" 
@@ -530,14 +543,14 @@ export default function Home() {
          
             </motion.div>
           {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
-          <div className="absolute bottom-6 left-6 bg-white text-black font-semibold text-[18px] uppercase tracking-tightest ">
+          <div className="absolute bottom-0 text-center py-1 px-1 md:left-6 bg-[#262626] left-2 text-white font-normal text-[12px] uppercase tracking-tightest ">
             Drop 05 / Tričko s logom
           </div>
         </div>
 
-            <div className="w-full col-span-2 md:col-span-1 aspect-[4/5] md:aspect-[4/4] overflow-hidden  bg-red-700/70 relative group">
+            <div className="w-full col-span-1 md:col-span-1 aspect-[4/5] md:aspect-[4/4] overflow-hidden bg-[#FAFAFA] relative group">
           <img 
-            src="/trickologo2.png" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
+            src="/mikina2.png" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
             alt="Summer Campaign" 
             className="w-full h-full object-cover group-hover:scale-102 transition  duration-700 ease-out"
           />
@@ -550,15 +563,34 @@ export default function Home() {
          
             </motion.div>
           {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
-          <div className="absolute bottom-6 left-6 bg-white text-black font-semibold text-[18px] uppercase tracking-tightest ">
-            Drop 06 / Tričko s golierom
+          <div className="absolute bottom-0 text-center py-1 px-1 md:left-6 bg-[#262626] left-2 text-white font-normal text-[12px] uppercase tracking-tightest ">
+            Drop 06 / MIKINA MOVES
           </div>
         </div>
       
+      <div className="w-full col-span-1 md:col-span-1 aspect-[4/5] md:aspect-[4/4] overflow-hidden bg-[#FAFAFA] relative group">
+          <img 
+            src="/rifle.png" // Sem hoď kampaňovú fotku (napr. chalana z pláže)
+            alt="Summer Campaign" 
+            className="w-full h-full object-cover group-hover:scale-102 transition  duration-700 ease-out"
+          />
+                  <motion.div initial={{ opacity: 1, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 2.0,
+                ease: [0.22, 1, 0.36, 1]
+              }} className="absolute right-0 top-[30%] w-[35%] md:w-[35%] z-230 shadow-lg  rotate-[6deg]">
+         
+            </motion.div>
+          {/* Jemný dizajnový overlay s textom priamo na fotke, ak by si chcel */}
+          <div className="absolute bottom-0 text-center py-1 px-1 md:left-6 bg-[#262626] left-2 text-white font-normal text-[12px] uppercase tracking-tightest ">
+            Drop 06 / Baggy Rifle
+          </div>
+        </div>
       
 
       </div>
-           <div className="flex flex-col justify-center items-center py-8">
+           <div className="flex flex-col justify-center items-center ">
         <Link href="/">
           <button className=" text-white border-b border-white md:text-[18px] text-[12px] font-normal uppercase tracking-widest md:px-8 px-4 py-1 ">
             Zobraziť všetko
@@ -571,76 +603,108 @@ export default function Home() {
 
 
 
-    <section className="relative w-full min-h-screen top-0 overflow-hidden bg-black  my-8 ">
-       <div hidden className='flex relative justify-left py-4 mb- px-6 md:px-12 items-start'>
-        <motion.h1  
-          initial={{ opacity: 0, y: 15 }}        
-          whileInView={{ opacity: 1, y: 0 }}      
-          transition={{
-            duration: 1.0,
-            ease: [0.22, 1, 0.36, 1]              
-          }} 
-          className='text-[36px] md:text-[48px] py-4 text-left uppercase font-black   tracking-normal text-white leading-[0.95]'
-        >
-         SUMMER AURA
-        </motion.h1>
-      </div>
-      
-      {/* 2. PANORAMATICKÝ BOX: Šírka w-full, výška fixná a tenšia (na mobile 350px, na desktope 450px) */}
-      <div className="relative w-full h-[450px] md:h-full bg-gray-950">
+        <section className="relative w-full top-0 overflow-hidden ">
+  
+  {/* 2. PANORAMATICKÝ BOX: Zjednotená výška. Na mobile 450px, na desktope 75-80% obrazovky */}
+  <div className="relative w-full h-[450px] md:h-full px-  overflow-hidden">
+    
+    {/* Video využíva object-cover, takže sa na mobile pekne oreže bez deformácie */}
+    <video
+      src="/header10.mp4" 
+      className="w-full h-full object-cover"
+      autoPlay      
+      muted      
+      loop         
+      playsInline  
+    />
+
+    {/* GRADIENT OVERLAY: Vylepšený, aby tmavol od spodku a držal kontrast */}
+    <div className="absolute  inset-0 bg-gradient-to-b from-black/10 via-transparent to-white/10 z-10" />
+
+    {/* 3. OBSAH: Odstránený mb-20, ktorý to na mobile kazil. Použitý padding pre flexibilitu */}
+    <div className="absolute inset-0 z-20 mix-blend-difference max-w-8xl mx-auto px-6 md:pb-12 pb-6 flex items-end justify-left text-white">
+      <div className="w-full max-w-4xl flex  flex-col items-center justify-left">
         
-        {/* Obrázok kampane roztiahnutý na úplné kraje monitora */}
-         <video
-              src="/leto-kolekcia.mp4" 
-     width={450} 
-    height={350} 
-    className="w-full h-auto"
-    autoPlay      
-    muted      
-    loop         
-    playsInline  
-            />
+        {/* Podnadpis: Na mobile text-5xl až 6xl (aby sa zmestil), na PC obrovský text-[92px] */}
+     <span className="text-[22px] sm:text-[60px] md:text-[42px] w-full text-left mix-blend-difference font-medium  tracking-tighter text-white leading-none md:mb-4 mb-3 block">
+  NOVÁ KOLEKCIA
+  <h1 className="text-[12px] md:text-[16px] w-full py-2  md:px-6 text-center mix-blend-difference font-medium  tracking-tighter text-white text-left leading-none md:mb-4 mb-3 block">
+    Nové limitované kúsky obuvy a oblečenia.
+    <br />
+     Prémiové materiály a unikátne dizajny.
+  </h1>
+</span>
 
-        {/* GRADIENT OVERLAY: Pre skvelú čitateľnosť textu */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/50 " />
 
-        {/* 3. OBSAH: Zostáva zarovnaný v rovnakej mriežke ako zvyšok webu (max-w-7xl), aby nápisy neutekali úplne do rohu monitora */}
-        <div className="absolute inset-0 z-20 max-w-7xl mx-auto px-6 text-center md:px-12 py-16 flex items-center justify-center text-white">
-          <div className="max-w-xl">
-            
-            <div className=" text-center  flex items-center justify-center ">
-            {/* Podnadpis */}
-            <span className=" text-[18px] py-4 px-4 text-center mix-blend-difference font-normal bg-orange-500/70 text-white mb-2 block">
-              SUMMER AURA 2026
-            </span>
-</div>
-            {/* Nadpis */}
-            <h1  className="text-[74px] py-30 md:text-5xl lg:text-8xl text-center font-black uppercase tracking-normal leading-[0.95] mb-4 text-white ">
-              Urban SUMMER.
-            </h1>
-
-          
-          
-
-            {/* Tlačidlo */}
-            <div className="flex flex-row items-center py-8 justify-center gap-4">
-              <Link href="/spring">
-                <button className="border-b border-white text-white px-6 py-3 font-bold text-[12px] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 ">
-                  Nakupovať
-                </button>
-              </Link>
-            </div>
-
-          </div>
+        {/* Tlačidlo: Jemne posunuté vyššie pomocou pt-2 */}
+        <div className="flex flex-col items-center z-12 pt-2 justify-left">
+          <Link href="/spring">
+            <button className="text-black text-left rounded-sm px-8 py-2 bg-white font-bold text-[10px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
+              Nakupovať
+            </button>
+          </Link>
         </div>
 
       </div>
+    </div>
+
+  </div>
+</section>
 
 
 
-    </section>
 
-  <section className="w-full my- ">
+<section hidden className="w-full h-[450px] relative top-0 overflow-hidden rounded-sm grid grid-cols-1 md:grid-cols-2   md:my-16 px-1 md:px-12">
+   <div> 
+    <video src="/speed.mp4"
+autoPlay
+loop
+muted
+playsInline
+className="w-full h-full object-cover"
+
+
+    />
+   </div>
+
+   <div className="flex flex-col relative justify-center items-start">
+    <img src="/speed.jpg" alt="Speed Logo" className="w-full relative md:w-[180px] " />
+        <div className="absolute inset-0 z-20  max-w-8xl mx-auto px-6 md:pb-12 pb-6 flex items-end justify-left text-white">
+      <div className="w-full max-w-4xl flex  flex-col items-center justify-left">
+        
+        {/* Podnadpis: Na mobile text-5xl až 6xl (aby sa zmestil), na PC obrovský text-[92px] */}
+     <span className="text-[22px] sm:text-[60px] md:text-[42px] w-full text-left mix-blend-difference font-medium  tracking-tighter text-white leading-none md:mb-4 mb-3 block">
+  SUMMER AURA
+  <h1 className="text-[12px] md:text-[16px] w-full py-2  md:px-6 text-center mix-blend-difference font-medium  tracking-tighter text-white text-left leading-none md:mb-4 mb-3 block">
+    Nové limitované kúsky obuvy a oblečenia.
+    <br />
+     Prémiové materiály a unikátne dizajny.
+  </h1>
+</span>
+
+
+        {/* Tlačidlo: Jemne posunuté vyššie pomocou pt-2 */}
+        <div className="flex flex-col items-center z-12 pt-2 justify-left">
+          <Link href="/spring">
+            <button className="text-black text-left rounded-sm px-8 py-2 bg-white font-bold text-[10px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
+              Nakupovať
+            </button>
+          </Link>
+        </div>
+
+      </div>
+    </div>
+      
+   </div>
+
+
+  </section>
+
+
+
+
+
+  <section hidden className="w-full my- ">
 
     <div className="w-full max-w-8xl mx-auto  mt-0  px-6 md:px-12 ">
       {/* NADPIS SEKCE */}
@@ -937,16 +1001,16 @@ export default function Home() {
 
 
 
-      <section className='flex flex-col items-center bg-black  py-16 md:py-24 justify-center'>
+      <section className='flex flex-col items-center bg-black mt-8 py-12 md:py-24 justify-center'>
 
         <div className='relative '>
-          <h2 className=' font-bold uppercase  mt-2 text-center text-white lg:text-[42px]'>
+          <h2 className=' font-bold uppercase text-[18px]  mt- text-center text-white lg:text-[42px]'>
             Získaj 10% zľavu.</h2></div>
             <br />
-          <p className='text-center text-white text-[14px] md:text-[16px] mt-2'>
+          <p className='text-center text-white text-[12px] md:text-[16px] mt-'>
             Prihlás sa na odber newslettera a získaj 10% zľavu na prvý nákup.</p>
-        <div className='relative flex items-center justify-center gap-4 mt-6 mb-4'>
-          <button className="bg-black text-[13px] text-white px-6 py-3 font-bold border-b border-white hover:bg-white hover:text-black transition-all">
+        <div className='relative flex items-center justify-center gap-4 mt-6 mb-'>
+          <button className="bg-black text-[13px] text-white px-6 py-2 font-bold border-b border-white hover:bg-white hover:text-black transition-all">
             Prihlásiť sa
           </button>
         </div>
@@ -982,8 +1046,8 @@ export default function Home() {
       </section>
 
 
-      <footer className=" bg-white mt-16 text-black py-16 px-6 md:px-24">
-        <div className= ' max-w-7xl mx-auto  space-y-16'>
+      <footer className=" bg-white mt-8 text-black  px-6 md:px-24">
+        <div className= ' max-w-7xl mx-auto  '>
 
 
 
@@ -1085,7 +1149,7 @@ export default function Home() {
           </div>
 
           {/* SPODNÁ LIŠTA: COPYRIGHT */}
-          <div className="border-t border-gray-400 pt-8 flex flex-col w-full  md:flex-row justify-between items-center text-[10px] text-black font-normal uppercase tracking-widest">
+          <div className="border-t border-gray-400 pt-8 mt-8 mb-8 flex flex-col w-full  md:flex-row justify-between items-center text-[10px] text-black font-normal uppercase tracking-widest">
             <p>© 2026 MOVES Všetky práva vyhradené.</p>
             <div className="flex gap-4 mt-4 md:mt-0">
               <span className="hover:text-black cursor-pointer">Obchodné podmienky</span>

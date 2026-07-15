@@ -47,24 +47,25 @@ export default function Navbar() {
   return (
     <>
       {/* Horná modrá linka */}
-      <div className="flex bg-gradient-to-r from-blue-600 to-blue-500 py-1 md:py-2 relative w-full" />
+      <div hidden className="flex bg-gradient-to-r from-[#E16052] to-orange-500 py-1 md:py-2 relative w-full" />
     
       <nav className={`
         fixed top-0 left-0 w-full z-[830] transition-all duration-100 
         ${isScrolled || isMenuOpen 
-          ? 'bg-white py-2 text-white md:py-4 ' 
-          : 'bg-transparent text-white py-2 md:py-6'
+          ? 'bg-[#262626] py- text-white md:py- ' 
+          : 'bg-transparent text-white py- md:py-'
         }
       `}>
+        
         {/* Banner s novou kolekciou */}
-        <div className="w-full mx-auto flex bg-gradient-to-r from-orange-600 to-orange-500 mb-2 justify-between uppercase items-center justify-center relative w-full py-1 ">
-          <h1 className="text-[9px] md:text-[12px] font-normal text-white tracking-wider">
+        <div className="w-full mx-auto flex bg-gradient-to-r from-white to-gray-200 mb-2 justify-between uppercase items-center justify-center relative w-full py-1 ">
+          <h1 className="text-[9px] md:text-[12px] font-bold text-blue-700 tracking-wider">
             NOVÁ KOLEKCIA V PREDAJI
           </h1>
         </div>
 
         {/* Hlavný kontajner Navbary */}
-        <div className="max-w-8xl mx-auto flex justify-between px-4 md:px-8 uppercase items-center relative w-full gap-2">
+        <div className="max-w-8xl mx-auto flex py-1 justify-between px-4 md:px-8 uppercase items-center relative w-full gap-2">
           
           {/* ANIMOVANÝ SEARCH PANEL */}
           <AnimatePresence>
@@ -104,35 +105,35 @@ export default function Navbar() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`md:hidden flex flex-col justify-center  items-center gap-1 w-6 h-6 z-[850] relative ${isScrolled || isMenuOpen ? 'text-black' : 'text-blue-600'}`}
             >
-              <div className={`h-[2px] w-5 ${isScrolled || isMenuOpen ? 'bg-black' : 'bg-blue-600'} transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-[6px]' : ''}`}></div>
-              <div className={`h-[2px] w-5 ${isScrolled || isMenuOpen ? 'bg-black' : 'bg-blue-600'} transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></div>
-              <div className={`h-[2px] w-5 ${isScrolled || isMenuOpen ? 'bg-black' : 'bg-blue-600'} transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-[6px]' : ''}`}></div>
+              <div className={`h-[2px] w-5 ${isScrolled || isMenuOpen ? 'bg-[#E16052]' : 'bg-white'} transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-[6px]' : ''}`}></div>
+              <div className={`h-[2px] w-5 ${isScrolled || isMenuOpen ? 'bg-[#E16052]' : 'bg-white'} transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></div>
+              <div className={`h-[2px] w-5 ${isScrolled || isMenuOpen ? 'bg-[#E16052]' : 'bg-white'} transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-[6px]' : ''}`}></div>
             </button>
 
             {/* LOGO - na mobile o kúsok menšie aby netlačilo ikony */}
             <div className="flex justify-start flex-none">
               <Link href="/">
                 <img 
-                  src="/206.png" 
+                  src="/logon.png" 
                   alt="logo" 
-                  className={`h-auto transition-all bg-white px-2 rounded-full duration-500 ${isScrolled ? 'w-20 md:w-24' : 'w-24 md:w-28'}`}
+                  className={`h-auto transition-all  px-2 mb-1 rounded-full duration-500 ${isScrolled ? 'w-20 md:w-24' : 'w-24 md:w-28'}`}
                 />
               </Link>
             </div>
 
             {/* Desktopové linky (skryté na mobile) */}
-            <div className="hidden md:flex flex-row items-center gap-6 text-[14px] font-normal tracking-widest">
+            <div className="hidden md:flex flex-row items-center gap-6 text-white text-[14px] font-normal tracking-widest">
               <Link href="/kolekcie" className="hover:opacity-60 transition">Dámske</Link>
               <Link href="/obuv" className="hover:opacity-60 border-b border-black transition">Pánske</Link>
             </div>
-            <div className="hidden md:flex flex-row items-center gap-6 text-[14px] font-normal tracking-widest">
+            <div className="hidden md:flex flex-row items-center gap-6 text-white text-[14px] font-normal tracking-widest">
               <Link href="/kolekcie" className="hover:opacity-60 transition">Novinky</Link>
               <Link href="/obuv" className="hover:opacity-60 transition">Kolekcie</Link>
             </div>
           </div>
 
           {/* RIGHT: ICONS (Prehľadné ikony pre PC aj Mobil) */}
-          <div className="flex justify-end gap-4 md:gap-12 items-center">
+          <div className="flex justify-end gap-6 md:gap-12 items-center">
             {/* SEARCH LUPA */}
             <button onClick={() => setIsSearchOpen(true)} className="hover:scale-110 transition-transform flex flex-col items-center justify-center">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
