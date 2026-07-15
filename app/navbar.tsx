@@ -58,8 +58,8 @@ export default function Navbar() {
       `}>
         
         {/* Banner s novou kolekciou */}
-        <div className="w-full mx-auto flex bg-gradient-to-r from-white to-gray-200 mb-2 justify-between uppercase items-center justify-center relative w-full py-1 ">
-          <h1 className="text-[9px] md:text-[12px] font-bold text-blue-700 tracking-wider">
+        <div className="w-full mx-auto flex bg-gradient-to-r from-gray-100 to-gray-200 mb-2 justify-between uppercase items-center justify-center relative w-full py-1 ">
+          <h1 className="text-[10px] md:text-[12px] font-bold text-blue-700 tracking-wider">
             NOVÁ KOLEKCIA V PREDAJI
           </h1>
         </div>
@@ -116,7 +116,7 @@ export default function Navbar() {
                 <img 
                   src="/logon.png" 
                   alt="logo" 
-                  className={`h-auto transition-all  px-2 mb-1 rounded-full duration-500 ${isScrolled ? 'w-20 md:w-24' : 'w-24 md:w-28'}`}
+                  className={`h-auto transition-all  px-2 mb-1 rounded-full duration-500 ${isScrolled ? 'w-25 md:w-24' : 'w-40 md:w-28'}`}
                 />
               </Link>
             </div>

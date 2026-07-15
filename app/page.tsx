@@ -101,15 +101,15 @@ export default function Home() {
     />
 
     {/* GRADIENT OVERLAY: Vylepšený, aby tmavol od spodku a držal kontrast */}
-    <div className="absolute  inset-0 bg-gradient-to-b from-black/10 via-transparent to-white/10 z-10" />
+    <div className="absolute  inset-0 bg-gradient-to-b from-blue-500/20 via-black/20 to-transparent z-10" />
 
     {/* 3. OBSAH: Odstránený mb-20, ktorý to na mobile kazil. Použitý padding pre flexibilitu */}
-    <div className="absolute inset-0 z-20  max-w-8xl mx-auto px-6 md:pb-12 pb-6 flex items-end justify-left text-white">
+    <div className="absolute inset-0 z-20 px-2 max-w-8xl  mx-auto px-6 md:pb-12 pb-6  flex items-end justify-left text-white">
       <div className="w-full max-w-4xl flex  flex-col items-center justify-left">
         
         {/* Podnadpis: Na mobile text-5xl až 6xl (aby sa zmestil), na PC obrovský text-[92px] */}
-     <span className="text-[22px] sm:text-[60px] md:text-[42px] w-full text-left mix-blend-difference font-medium  tracking-tighter text-white leading-none md:mb-4 mb-3 block">
-  SUMMER AURA
+     <span className="text-[80px] sm:text-[60px] md:text-[42px] w-full text-left mix-blend-difference font-normal  tracking-tighter text-gray-100 leading-none md:mb-4 mb-3 block">
+  SUMMER <span className="font-black  "> AURA</span>
   <h1 className="text-[12px] md:text-[16px] w-full py-2  md:px-6 text-center mix-blend-difference font-medium  tracking-tighter text-white text-left leading-none md:mb-4 mb-3 block">
     Nové limitované kúsky obuvy a oblečenia.
     <br />
@@ -121,7 +121,7 @@ export default function Home() {
         {/* Tlačidlo: Jemne posunuté vyššie pomocou pt-2 */}
         <div className="flex flex-col items-center z-12 pt-2 justify-left">
           <Link href="/spring">
-            <button className="text-black text-left rounded-sm px-8 py-2 bg-white font-bold text-[10px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
+            <button className="text-black text-left rounded-sm px-8 py-2 bg-white font-bold text-[12px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
               Nakupovať
             </button>
           </Link>
@@ -137,12 +137,12 @@ export default function Home() {
  <section className="w-full">
   <div className="w-full max-w-7xl mx-auto px-2 mt-0.5 md:px-">
     
-    <div className='flex justify-left md:py-8 py-1  items-start'>
+    <div className='flex justify-left md:py-8 py-4  items-start'>
       <motion.h1  
         initial={{ opacity: 0, y: 15 }}        
         whileInView={{ opacity: 1, y: 0 }}      
         transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }} 
-        className='font-sans text-[18px] md:text-[18px] text-left font-normal  tracking-tighter text-black'
+        className='font-sans text-[24px] md:text-[18px] text-left font-normal  tracking-tighter text-black'
       >
         Odporúčané Produkty
       </motion.h1>
@@ -168,7 +168,7 @@ export default function Home() {
             />
           </div>
           <div className="mt-4 flex flex-col items-left justify-center">
-            <h3 className="text-black text-[12px] text-left font-bold uppercase px-6">
+            <h3 className="text-black text-[12px] text-left tracking-wider font-bold uppercase px-6">
               Urban Dinamic
             </h3>
             <h3 className="text-black text-[12px] font-medium uppercase px-6 mb-4">
@@ -194,7 +194,7 @@ export default function Home() {
             />
           </div>
           <div className="mt-4 mb-6 flex flex-col items-left justify-center">
-            <h3 className="text-black text-[12px] font-bold uppercase px-6">
+            <h3 className="text-black text-[12px] font-bold tracking-wider uppercase px-6">
               U-3
             </h3>
             <h3 className="text-black text-[12px] font-medium uppercase px-6 mt-1">
@@ -327,7 +327,7 @@ export default function Home() {
     {/* Tlačidlo Zobraziť všetko */}
     <div className="flex flex-col justify-center items-center pb-10 pt-4">
       <Link href="/">
-        <button className="text-white text-left rounded-sm px-8 py-2 bg-black font-bold text-[10px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
+        <button className="text-white text-left rounded-sm px-8 py-2 bg-black font-bold text-[12px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
           Zobraziť všetko
         </button>
       </Link>
@@ -348,7 +348,7 @@ export default function Home() {
             duration: 1.0,
             ease: [0.22, 1, 0.36, 1]              
           }} 
-          className='font-sans text-[18px] md:text-[18px] text-left font-normal  tracking-tighter text-black'
+          className='font-sans text-[24px] md:text-[24px] text-left font-normal  tracking-tighter text-black'
         >
           Limitované kúsky, ktoré sa rýchlo míňajú.   
           <h1 className="text-[12px] pt- md:text-[38px] font-normal">Buď medzi prvými, ktorí ich získajú.</h1>
@@ -404,40 +404,87 @@ export default function Home() {
     </section>
 
 
+<section className="relative w-full h-auto md:py-24 overflow-hidden">
+  <div className="absolute  inset-0 bg-gradient-to-b from-black/10 via-black/0 to-transparent z-10" />
+
+  {/* Pozadie */}
+  <div className="absolute inset-0 z-0">
+    <Image src="/pozadie2.jpg" alt="Background" fill className="object-cover grayscale opacity-90" priority />
+  </div>
+
+  <div className="max-w-[1200px] mx-auto relative z-10 px-4">
+    <div className="relative flex flex-col items-center justify-center aspect-[16/10] md:aspect-[16/8] w-full mb-12 md:mb-20">
+
+      {/* ... tvoje ostatné motion.div (obrázky/video) ... */}
+
+      {/* CENTROVANÝ BLOK S KRESBOU */}
+      <div className="absolute inset-0 flex items-center justify-center z-50">
+        <div className="relative flex flex-col justify-center items-center hover:scale-105 duration-500 w-[250px] md:w-[350px]">
+          <Image 
+            src="/kresba.png" 
+            width={300} 
+            height={400} 
+            alt="Exkluzívne modely" 
+            className="w-full h-auto" 
+          />
+          {/* Text je teraz fixne v strede obrázka kresby */}
+          <p className="absolute inset-0 flex pb-14 items-center justify-center text-black text-[24px] md:text-[32px] font-normal uppercase leading-tight">
+            Exkluzívne
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 
-
-  <section hidden className="relative w-ful  h-auto py-12 md:py-24 overflow-hidden ">
+  <section hidden  className="relative w-ful  h-auto  md:py-24 overflow-hidden ">
        
-
+        <div className="absolute     inset-0 z-0">
+            <Image
+              src="/pozadie2.jpg"
+              alt="Background"
+              fill
+              className="object-cover grayscale opacity-90 "
+              priority
+            />
+          </div>
 
         <div className="max-w-[1400px] mx-auto relative z-10 px-4">
 
 
-          <div className="relative aspect-[16/12] md:aspect-[16/8] w-full mb-10 md:mb-20">
+          <div  className="relative flex flex-col items-center justify-center aspect-[16/12] md:aspect-[16/8] w-full mb-12 md:mb-20">
 
            
-            <motion.div initial={{ opacity: 1, y: 50 }}
+            <motion.div hidden initial={{ opacity: 1, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 2.0,
                 ease: [0.22, 1, 0.36, 1]
               }} className="absolute left-0 top-[10%] w-[35%] md:w-[35%] z-230 shadow-lg  rotate-[-8deg]">
-              <Image src="/ecoeet.png" width={550} height={450} alt="Lifestyle" className="w-full h-auto" />
+              <Image src="/OBECENIE2.png" width={550} height={450} alt="Lifestyle" className="w-full h-auto" />
             </motion.div>
 
-<motion.div initial={{ opacity: 1, y: 50 }}
+<motion.div hidden initial={{ opacity: 1, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 2.0,
                 ease: [0.22, 1, 0.36, 1]
-              }} className="absolute right-30 -translate-x-1/2 top-[0%] w-[35%] md:w-[35%] z-30 shadow-lg rotate-[1deg]">
-              <Image src="/ra.jpg" width={550} height={450} alt="Lifestyle" className="w-full h-auto" />
+              }} className="absolute right-0 -translate-x-1/2 top-[0%] w-[55%] md:w-[35%] z-30 shadow-lg ">
+             <video
+      src="/sped.mp4" 
+      className="w-full h-full object-cover"
+      autoPlay      
+      muted      
+      loop         
+      playsInline  
+    />
             </motion.div>
        
 
             {/* Fotka vpravo */}
-            <motion.div initial={{ opacity: 1, y: 50 }}
+            <motion.div hidden initial={{ opacity: 1, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 2.0,
@@ -470,21 +517,21 @@ export default function Home() {
   max-md:landscape:bottom-[-5%] max-md:landscape:scale-50
 `}>
 
-              <div className="relative  group transition-transform  w-full flex flex-col items-center">
+              <div hidden className="relative  group transition-transform  w-full flex flex-col items-center">
              
-                <div className="w-[70%] mb-[-3.1%] ml-[-18%] z-10">
+                <div hidden className="w-[70%] mb-[-3.1%] ml-[-18%] z-10">
                   <Image src="/skatepro..png" width={400} height={200} alt="Retro Dinamic" className="w-full  h-auto" />
                 </div>
               
-                <div className='w-full'>
+                <div hidden className='w-full'>
                   <Image src="/beton2.png" width={550} height={200} alt="Podstavec" className="w-full h-auto" />
                 </div>
               </div>
 
               {/* Nápis pod topánkou */}
-              <div className="relative  hover:scale-105 duration-500 w-full mt-4">
+              <div className="relative flex flex-col justify-center items-center hover:scale-105 duration-500 w-full ">
                 <Image src="/kresba.png" width={300} height={400} alt="Exkluzívne modely" className="w-full h-auto" />
-                <p className="absolute inset-0 flex mb-[19.5%] items-center justify-center text-black text-[24px] md:text-[32px] font-semibold uppercase leading-tight">
+                <p className="absolute inset-0 flex mb-[59.5%] items-center justify-center text-black text-[24px] md:text-[32px] font-normal uppercase leading-tight">
                   Exkluzívne
                 </p>
               </div>
@@ -590,13 +637,13 @@ export default function Home() {
       
 
       </div>
-           <div className="flex flex-col justify-center items-center ">
-        <Link href="/">
-          <button className=" text-white border-b border-white md:text-[18px] text-[12px] font-normal uppercase tracking-widest md:px-8 px-4 py-1 ">
-            Zobraziť všetko
-          </button>
-        </Link>
-      </div>
+       <div className="flex flex-col justify-center items-center pb-10 pt-4">
+      <Link href="/">
+        <button className="text-white text-left rounded-sm px-8 py-2 bg-black font-bold text-[12px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
+          Zobraziť všetko
+        </button>
+      </Link>
+    </div>
     </section>
 
 
@@ -626,7 +673,7 @@ export default function Home() {
       <div className="w-full max-w-4xl flex  flex-col items-center justify-left">
         
         {/* Podnadpis: Na mobile text-5xl až 6xl (aby sa zmestil), na PC obrovský text-[92px] */}
-     <span className="text-[22px] sm:text-[60px] md:text-[42px] w-full text-left mix-blend-difference font-medium  tracking-tighter text-white leading-none md:mb-4 mb-3 block">
+     <span className="text-[24px] sm:text-[60px] md:text-[42px] w-full text-left mix-blend-difference font-medium  tracking-tighter text-white leading-none md:mb-4 mb-3 block">
   NOVÁ KOLEKCIA
   <h1 className="text-[12px] md:text-[16px] w-full py-2  md:px-6 text-center mix-blend-difference font-medium  tracking-tighter text-white text-left leading-none md:mb-4 mb-3 block">
     Nové limitované kúsky obuvy a oblečenia.
@@ -639,7 +686,7 @@ export default function Home() {
         {/* Tlačidlo: Jemne posunuté vyššie pomocou pt-2 */}
         <div className="flex flex-col items-center z-12 pt-2 justify-left">
           <Link href="/spring">
-            <button className="text-black text-left rounded-sm px-8 py-2 bg-white font-bold text-[10px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
+            <button className="text-black text-left rounded-sm px-8 py-2 bg-white font-bold text-[12px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
               Nakupovať
             </button>
           </Link>
@@ -686,7 +733,7 @@ className="w-full h-full object-cover"
         {/* Tlačidlo: Jemne posunuté vyššie pomocou pt-2 */}
         <div className="flex flex-col items-center z-12 pt-2 justify-left">
           <Link href="/spring">
-            <button className="text-black text-left rounded-sm px-8 py-2 bg-white font-bold text-[10px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
+            <button className="text-black text-left rounded-sm px-8 py-2 bg-white font-bold text-[12px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
               Nakupovať
             </button>
           </Link>
@@ -907,19 +954,19 @@ className="w-full h-full object-cover"
 
 
 
-      <section hidden className="relative bg-gradient-to-b from-white to-gray-200  w-full flex flex-col items-center">
+      <section hidden className="relative bg-gradient-to-b from-black/10 to-white  w-full flex flex-col items-center">
 
 
 
         <div className="relative w-full aspect-[3.5/5]   md:aspect-video flex items-center justify-center   overflow-hidden z-10  ">
 
      
-          <div className="absolute   inset-0 z-0">
+          <div className="absolute     inset-0 z-0">
             <Image
-              src="/group.png"
+              src="/pozadie4.png"
               alt="Background"
               fill
-              className="object-cover grayscale opacity-0 blur-sm"
+              className="object-cover grayscale opacity-90 "
               priority
             />
           </div>
@@ -953,7 +1000,7 @@ className="w-full h-full object-cover"
             className="relative z-20 w-[140%] md:w-[40%]   hover:scale-110  duration-1200">
 
             <Image
-              src="/airzoom.png"
+              src="/poz.png"
               alt="Topánka na kocke"
               width={1200}
               height={800}
@@ -1001,18 +1048,20 @@ className="w-full h-full object-cover"
 
 
 
-      <section className='flex flex-col items-center bg-black mt-8 py-12 md:py-24 justify-center'>
+      <section className='flex flex-col items-center bg-[#E16052] mt-8 py-12 md:py-24 justify-center'>
 
         <div className='relative '>
-          <h2 className=' font-bold uppercase text-[18px]  mt- text-center text-white lg:text-[42px]'>
+          <h2 className=' font-bold uppercase text-[24px]  mt- text-center text-white lg:text-[42px]'>
             Získaj 10% zľavu.</h2></div>
             <br />
           <p className='text-center text-white text-[12px] md:text-[16px] mt-'>
             Prihlás sa na odber newslettera a získaj 10% zľavu na prvý nákup.</p>
-        <div className='relative flex items-center justify-center gap-4 mt-6 mb-'>
-          <button className="bg-black text-[13px] text-white px-6 py-2 font-bold border-b border-white hover:bg-white hover:text-black transition-all">
-            Prihlásiť sa
-          </button>
+       <div className="flex flex-col items-center z-12 pt-2 justify-left">
+          <Link href="/spring">
+            <button className="text-black mt-4 text-left rounded-sm px-8 py-2 bg-white font-bold text-[12px] uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-300">
+              Prihlásiť sa
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -1072,8 +1121,8 @@ className="w-full h-full object-cover"
           {/* 3. SEKČIA: HLAVNÉ MENU  */}
           <div className="grid grid-cols-2 md:grid-cols-4 justify-items-center gap-12 pt-12">
             <div className="space-y-4">
-              <h4 className="font-bold uppercase  text-12px">Pomoc</h4>
-              <ul className="space-y-2 text-16px text-black">
+              <h4 className="font-bold uppercase  text-[16px]">Pomoc</h4>
+              <ul className="space-y-2 text-[12px] text-black">
                 <li className="hover:text-black cursor-pointer transition">Sledovanie objednávky</li>
                 <li className="hover:text-black cursor-pointer transition">Platba</li>
                 <li className="hover:text-black cursor-pointer transition">Vrátenie a výmena</li>
@@ -1085,8 +1134,8 @@ className="w-full h-full object-cover"
             </div>
 
             <div className="space-y-4">
-              <h4 className="font-bold uppercase  text-12px">Kategórie</h4>
-              <ul className="space-y-2 text-16px text-black">
+              <h4 className="font-bold uppercase  text-[16px]">Kategórie</h4>
+              <ul className="space-y-2 text-[12px] text-black">
                
                 <li className="hover:text-black cursor-pointer transition">Ženy</li>
                 <li className="hover:text-black cursor-pointer transition">Muži</li> 
@@ -1098,7 +1147,7 @@ className="w-full h-full object-cover"
 
             <div className="space-y-4">
               <h4 className="font-bold uppercase  text-12px">Kontakt</h4>
-              <ul className="space-y-2 text-16px text-black">
+              <ul className="space-y-2 text-[12px] text-black">
                 <li className="font-medium">+421 980 000 222</li>
                 <li>info@moves.sk</li>
                 <li className="text-xs text-black">Pon - Pia: 08:00 - 18:00</li>
